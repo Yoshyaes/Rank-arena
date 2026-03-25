@@ -1,11 +1,27 @@
-// In production, API is served from the same origin on port 3001
+// In production, API goes through PHP proxy at /arena/api-proxy.php
 // In development, Vite proxies /arena/api to localhost:3001
-const API_BASE = import.meta.env.PROD
-  ? (window.location.protocol + '//' + window.location.hostname + ':3001/api')
-  : '/arena/api';
+const IS_PROD = import.meta.env.PROD;
 
-async function request(url, options = {}) {
-  const res = await fetch(`${API_BASE}${url}`, {
+function buildUrl(apiPath) {
+  if (IS_PROD) {
+    // Route through PHP proxy: /arena/api-proxy.php?path=challenge/today
+    const cleanPath = apiPath.replace(/^\//, '');
+    return `/arena/api-proxy.php?path=${encodeURIComponent(cleanPath)}`;
+  }
+  return `/arena/api${apiPath}`;
+}
+
+async function request(apiPath, options = {}) {
+  const url = buildUrl(apiPath);
+
+  // For GET requests with query params through the proxy, append them
+  let finalUrl = url;
+  if (IS_PROD && apiPath.includes('?')) {
+    const [path, query] = apiPath.split('?');
+    finalUrl = `/arena/api-proxy.php?path=${encodeURIComponent(path.replace(/^\//, ''))}&${query}`;
+  }
+
+  const res = await fetch(finalUrl, {
     headers: { 'Content-Type': 'application/json', ...options.headers },
     ...options,
   });
