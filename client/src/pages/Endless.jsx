@@ -141,6 +141,8 @@ export default function Endless() {
         onHigher={() => makeChoice('a')}
         onLower={() => makeChoice('b')}
         disabled={buttonsDisabled}
+        gameATitle={gameA?.title}
+        gameBTitle={gameB?.title}
       />
 
       {/* Next round auto-advance for endless */}
