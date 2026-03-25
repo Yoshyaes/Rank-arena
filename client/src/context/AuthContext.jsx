@@ -12,9 +12,9 @@ export function AuthProvider({ children }) {
 
   async function checkAuth() {
     try {
-      // Check WordPress login status via REST API
-      const res = await fetch('/wp-json/rank-arena/v1/me', {
-        credentials: 'same-origin', // Send WordPress cookies
+      // Check WordPress login via direct PHP file (avoids REST API nonce requirement)
+      const res = await fetch('/arena/auth-check.php', {
+        credentials: 'same-origin',
       });
       if (res.ok) {
         const data = await res.json();
@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
         }
       }
     } catch {
-      // WordPress API not available — continue as guest
+      // Auth check failed — continue as guest
     } finally {
       setLoading(false);
     }

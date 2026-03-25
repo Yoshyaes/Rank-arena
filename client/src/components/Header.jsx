@@ -50,7 +50,7 @@ export default function Header() {
             </div>
           ) : !loading ? (
             <a
-              href="/login"
+              href="/wp-login.php?redirect_to=/arena/"
               className="text-sm font-semibold text-accent-blue hover:text-text-primary transition-colors"
             >
               Sign In
