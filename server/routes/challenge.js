@@ -128,7 +128,7 @@ router.post('/submit', (req, res) => {
 // POST /api/challenge/result
 router.post('/result', optionalAuth, (req, res) => {
   try {
-    const { date, score } = req.body;
+    const { date, score, wp_user_id, wp_display_name } = req.body;
 
     if (!date || typeof score !== 'number' || score < 0 || score > 10) {
       return res.status(400).json({ message: 'Invalid request' });
@@ -138,11 +138,22 @@ router.post('/result', optionalAuth, (req, res) => {
       return res.status(400).json({ message: 'Can only submit results for today' });
     }
 
-    if (req.user) {
-      const result = queries.insertDailyResult(req.user.id, date, score);
+    // Use WordPress user if provided (from PHP proxy), or Supabase user
+    let userId = req.user?.id;
+    let displayName = req.user?.displayName;
+
+    if (wp_user_id) {
+      userId = 'wp_' + wp_user_id;
+      displayName = wp_display_name || 'Player';
+      // Upsert the WordPress user into our users table
+      queries.upsertUser(userId, null, displayName);
+    }
+
+    if (userId) {
+      const result = queries.insertDailyResult(userId, date, score);
 
       // Update streak
-      const streak = queries.getStreak(req.user.id);
+      const streak = queries.getStreak(userId);
       if (streak) {
         const lastPlayed = streak.last_played;
         const dayDiff = lastPlayed
@@ -154,12 +165,12 @@ router.post('/result', optionalAuth, (req, res) => {
         } else if (dayDiff === 1) {
           const newStreak = streak.current_streak + 1;
           const longest = Math.max(newStreak, streak.longest_streak);
-          queries.upsertStreak(req.user.id, newStreak, longest, date);
+          queries.upsertStreak(userId, newStreak, longest, date);
         } else {
-          queries.upsertStreak(req.user.id, 1, Math.max(1, streak.longest_streak), date);
+          queries.upsertStreak(userId, 1, Math.max(1, streak.longest_streak), date);
         }
       } else {
-        queries.upsertStreak(req.user.id, 1, 1, date);
+        queries.upsertStreak(userId, 1, 1, date);
       }
 
       return res.json({ saved: true, result });

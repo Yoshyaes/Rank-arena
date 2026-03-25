@@ -87,12 +87,19 @@ router.post('/score', (req, res) => {
 // POST /api/endless/result
 router.post('/result', optionalAuth, (req, res) => {
   try {
-    const { score } = req.body;
+    const { score, wp_user_id, wp_display_name } = req.body;
     if (typeof score !== 'number' || score < 0) {
       return res.status(400).json({ message: 'Invalid score' });
     }
-    if (req.user) {
-      const result = queries.insertEndlessScore(req.user.id, score);
+
+    let userId = req.user?.id;
+    if (wp_user_id) {
+      userId = 'wp_' + wp_user_id;
+      queries.upsertUser(userId, null, wp_display_name || 'Player');
+    }
+
+    if (userId) {
+      const result = queries.insertEndlessScore(userId, score);
       return res.json({ saved: true, result });
     }
     res.json({ saved: false, message: 'Sign in to save your score' });

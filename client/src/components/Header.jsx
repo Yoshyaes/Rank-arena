@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Header() {
   const location = useLocation();
+  const { user, loading } = useAuth();
 
   const navLinks = [
     { to: '/challenge', label: 'Daily' },
@@ -32,8 +34,28 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="w-24 flex justify-end">
-          {/* Auth button placeholder — Step 14 */}
+        <div className="flex items-center gap-3">
+          {!loading && user ? (
+            <div className="flex items-center gap-2">
+              {user.avatarUrl && (
+                <img
+                  src={user.avatarUrl}
+                  alt={user.displayName}
+                  className="w-8 h-8 rounded-full border border-border"
+                />
+              )}
+              <span className="text-sm text-text-primary font-medium hidden sm:inline">
+                {user.displayName}
+              </span>
+            </div>
+          ) : !loading ? (
+            <a
+              href="/login"
+              className="text-sm font-semibold text-accent-blue hover:text-text-primary transition-colors"
+            >
+              Sign In
+            </a>
+          ) : null}
         </div>
       </div>
     </header>
