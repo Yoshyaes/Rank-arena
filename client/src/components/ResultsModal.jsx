@@ -202,6 +202,7 @@ export default function ResultsModal({
             score={score}
             totalRounds={totalRounds}
             results={results}
+            statCategory={statCategory}
             statLabel={statLabel}
             challengeNumber={challengeNumber}
             date={date}

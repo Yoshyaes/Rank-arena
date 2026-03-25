@@ -12,6 +12,7 @@ export default function ShareCard({
   score,
   totalRounds,
   results,
+  statCategory,
   statLabel,
   challengeNumber,
   date,
@@ -35,8 +36,19 @@ export default function ShareCard({
     return dt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
   };
 
-  // Share text stays clean for clipboard/social
+  // Build trail string for URL (1 = correct, 0 = wrong)
+  const trailStr = results.map(r => r.correct ? '1' : '0').join('');
   const emojiTrail = results.map(r => r.correct ? '\u2705' : '\u274C').join('');
+
+  // Share URL with OG image unfurling
+  const shareParams = new URLSearchParams({
+    s: score, t: totalRounds, n: challengeNumber,
+    c: statCategory || 'metacritic', trail: trailStr,
+    streak: streak?.current || 0, d: date,
+  });
+  const shareUrl = `https://twoaveragegamers.com/arena/share.php?${shareParams}`;
+
+  // Share text includes both the visual text and the URL
   const shareText = [
     `Rank Arena Daily #${challengeNumber} \u2014 ${formatDate(date)}`,
     `${emoji} ${statLabel}`,
@@ -46,7 +58,7 @@ export default function ShareCard({
     streak && streak.current > 0
       ? `\u{1F525} ${streak.current} day streak`
       : '',
-    'Beat me: twoaveragegamers.com/arena',
+    shareUrl,
   ].filter(Boolean).join('\n');
 
   async function handleCopy() {
@@ -62,7 +74,7 @@ export default function ShareCard({
   async function handleShare() {
     if (navigator.share) {
       try {
-        await navigator.share({ text: shareText });
+        await navigator.share({ text: shareText, url: shareUrl });
       } catch {
         handleCopy();
       }
@@ -78,10 +90,19 @@ export default function ShareCard({
     return 'text-accent-lose';
   }
 
+  // Image preview URL (direct to Node.js)
+  const imageParams = new URLSearchParams({
+    s: score, t: totalRounds, n: challengeNumber,
+    c: statCategory || 'metacritic', trail: trailStr,
+    streak: streak?.current || 0, d: date,
+  });
+  const host = window.location.hostname;
+  const imagePreviewUrl = `${window.location.protocol}//${host}:3001/api/share/image?${imageParams}`;
+
   return (
     <div className="absolute inset-0 bg-bg-surface rounded-3xl flex flex-col animate-card-pop overflow-hidden">
-      {/* Gradient header */}
-      <div className="relative bg-gradient-to-r from-accent-blue to-accent-purple px-6 py-4">
+      {/* Header */}
+      <div className="relative bg-gradient-to-r from-accent-blue to-accent-purple px-6 py-3">
         <button onClick={onClose} className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -95,78 +116,17 @@ export default function ShareCard({
         </div>
       </div>
 
-      {/* Card body */}
-      <div className="flex-1 px-6 py-5 flex flex-col items-center">
-        {/* Stat category badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-bg-card border border-border text-sm mb-4">
-          <span>{emoji}</span>
-          <span className="text-text-secondary font-medium">{statLabel}</span>
+      {/* Image preview */}
+      <div className="flex-1 px-4 py-4 flex flex-col items-center justify-center overflow-hidden">
+        <div className="w-full max-w-[360px] rounded-xl overflow-hidden border border-border shadow-lg">
+          <img
+            src={imagePreviewUrl}
+            alt="Share card preview"
+            className="w-full h-auto"
+            loading="eager"
+          />
         </div>
-
-        {/* Score ring */}
-        <div className="relative w-28 h-28 mb-4">
-          <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-            {/* Background ring */}
-            <circle cx="50" cy="50" r="45" fill="none" stroke="var(--border)" strokeWidth="6" />
-            {/* Score ring */}
-            <circle
-              cx="50" cy="50" r="45" fill="none"
-              stroke={isPerfect ? 'var(--accent-gold)' : percentage >= 70 ? 'var(--accent-win)' : percentage >= 40 ? 'var(--accent-blue)' : 'var(--accent-lose)'}
-              strokeWidth="6"
-              strokeLinecap="round"
-              strokeDasharray="283"
-              strokeDashoffset={283 - (283 * percentage) / 100}
-              style={{ animation: 'ring-fill 800ms ease-out forwards', transition: 'stroke-dashoffset 800ms ease-out' }}
-            />
-          </svg>
-          <div className={`absolute inset-0 flex flex-col items-center justify-center ${isPerfect ? 'animate-glow' : ''}`}>
-            <span className={`font-grotesk text-3xl font-extrabold ${getScoreColor()}`}>
-              {score}/{totalRounds}
-            </span>
-          </div>
-        </div>
-
-        {/* Emoji trail */}
-        <div className="flex gap-1.5 mb-4 flex-wrap justify-center">
-          {results.map((r, i) => (
-            <div
-              key={i}
-              className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold
-                ${r.correct ? 'bg-accent-win/20 border border-accent-win/40' : 'bg-accent-lose/20 border border-accent-lose/40'}`}
-              style={{
-                opacity: showEmojis ? 1 : 0,
-                transform: showEmojis ? 'scale(1)' : 'scale(0)',
-                transition: `all 200ms ease-out ${i * 60}ms`,
-              }}
-            >
-              {r.correct ? (
-                <svg className="w-4 h-4 text-accent-win" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              ) : (
-                <svg className="w-4 h-4 text-accent-lose" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Streak */}
-        {streak && streak.current > 0 && (
-          <div className="flex items-center gap-2 text-sm text-text-secondary mb-2">
-            <span className="text-lg">{'\u{1F525}'}</span>
-            <span>{streak.current} day streak</span>
-          </div>
-        )}
-
-        {/* Perfect score sparkles */}
-        {isPerfect && (
-          <p className="text-accent-gold text-sm font-bold animate-glow">{'\u2728'} FLAWLESS {'\u2728'}</p>
-        )}
-
-        {/* Branded footer */}
-        <p className="text-text-secondary/50 text-[10px] mt-auto pt-2">twoaveragegamers.com/arena</p>
+        <p className="text-text-secondary/60 text-xs mt-2">This is what others will see when you share</p>
       </div>
 
       {/* Action buttons */}

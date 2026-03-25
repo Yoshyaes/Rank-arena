@@ -17,6 +17,7 @@ app.use('/api/endless', require('./routes/endless'));
 app.use('/api/leaderboard', require('./routes/leaderboard'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/share', require('./routes/share'));
 
 // Mirror under /arena/api for WordPress integration
 app.use('/arena/api/challenge', require('./routes/challenge'));
@@ -24,6 +25,7 @@ app.use('/arena/api/endless', require('./routes/endless'));
 app.use('/arena/api/leaderboard', require('./routes/leaderboard'));
 app.use('/arena/api/user', require('./routes/user'));
 app.use('/arena/api/admin', require('./routes/admin'));
+app.use('/arena/api/share', require('./routes/share'));
 
 // Health check
 app.get('/api/health', (req, res) => {
