@@ -216,13 +216,30 @@ export default function useGame(mode = 'challenge') {
       // Clean up progress
       localStorage.removeItem(`rankArena_progress_${challengeData.date}`);
 
-      // Submit to server (fire and forget)
-      submitChallengeResult(challengeData.date, finalScore).catch(() => {});
+      // Submit to server — track if it was saved
+      submitChallengeResult(challengeData.date, finalScore)
+        .then(res => {
+          if (res?.saved) {
+            markScoreSynced('daily', challengeData.date);
+          } else {
+            queueUnsyncedScore('daily', { date: challengeData.date, score: finalScore });
+          }
+        })
+        .catch(() => {
+          queueUnsyncedScore('daily', { date: challengeData.date, score: finalScore });
+        });
     }
 
     if (mode === 'endless' && finalScore > 0) {
-      // Submit endless score to server
-      submitEndlessResult(finalScore).catch(() => {});
+      submitEndlessResult(finalScore)
+        .then(res => {
+          if (!res?.saved) {
+            queueUnsyncedScore('endless', { score: finalScore, timestamp: Date.now() });
+          }
+        })
+        .catch(() => {
+          queueUnsyncedScore('endless', { score: finalScore, timestamp: Date.now() });
+        });
     }
   }
 
@@ -285,4 +302,46 @@ export default function useGame(mode = 'challenge') {
   };
 }
 
-export { STATES };
+// --- Unsynced score queue (for guest → login flow) ---
+
+const UNSYNCED_KEY = 'rankArena_unsynced_scores';
+
+function queueUnsyncedScore(type, data) {
+  try {
+    const existing = JSON.parse(localStorage.getItem(UNSYNCED_KEY) || '[]');
+    // Avoid duplicates for daily (same date)
+    if (type === 'daily') {
+      const alreadyQueued = existing.some(e => e.type === 'daily' && e.data.date === data.date);
+      if (alreadyQueued) return;
+    }
+    existing.push({ type, data });
+    localStorage.setItem(UNSYNCED_KEY, JSON.stringify(existing));
+  } catch {
+    // localStorage full or unavailable
+  }
+}
+
+function markScoreSynced(type, dateOrId) {
+  try {
+    const existing = JSON.parse(localStorage.getItem(UNSYNCED_KEY) || '[]');
+    const filtered = existing.filter(e => {
+      if (type === 'daily') return !(e.type === 'daily' && e.data.date === dateOrId);
+      return !(e.type === 'endless' && e.data.timestamp === dateOrId);
+    });
+    localStorage.setItem(UNSYNCED_KEY, JSON.stringify(filtered));
+  } catch {}
+}
+
+function getUnsyncedScores() {
+  try {
+    return JSON.parse(localStorage.getItem(UNSYNCED_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function clearUnsyncedScores() {
+  localStorage.removeItem(UNSYNCED_KEY);
+}
+
+export { STATES, getUnsyncedScores, clearUnsyncedScores };

@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { submitChallengeResult, submitEndlessResult } from '../lib/api';
+import { getUnsyncedScores, clearUnsyncedScores } from '../hooks/useGame';
 
 const AuthContext = createContext(null);
 
@@ -10,9 +12,15 @@ export function AuthProvider({ children }) {
     checkAuth();
   }, []);
 
+  // When user is detected, sync any guest scores
+  useEffect(() => {
+    if (user) {
+      syncUnsavedScores();
+    }
+  }, [user]);
+
   async function checkAuth() {
     try {
-      // Check WordPress login via direct PHP file (avoids REST API nonce requirement)
       const res = await fetch('/arena/auth-check.php', {
         credentials: 'same-origin',
       });
@@ -31,6 +39,30 @@ export function AuthProvider({ children }) {
       // Auth check failed — continue as guest
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function syncUnsavedScores() {
+    const unsynced = getUnsyncedScores();
+    if (unsynced.length === 0) return;
+
+    let allSynced = true;
+    for (const entry of unsynced) {
+      try {
+        if (entry.type === 'daily') {
+          const res = await submitChallengeResult(entry.data.date, entry.data.score);
+          if (!res?.saved) allSynced = false;
+        } else if (entry.type === 'endless') {
+          const res = await submitEndlessResult(entry.data.score);
+          if (!res?.saved) allSynced = false;
+        }
+      } catch {
+        allSynced = false;
+      }
+    }
+
+    if (allSynced) {
+      clearUnsyncedScores();
     }
   }
 
