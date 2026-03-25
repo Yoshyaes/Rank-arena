@@ -20,8 +20,10 @@ export default function GameCard({
   });
 
   const showStat = cardState !== 'idle';
-  const isCorrect = cardState === 'correct' || cardState === 'winner';
+  const isCorrect = cardState === 'correct';       // The card YOU picked correctly
+  const isWinner = cardState === 'winner';          // The other card (just reveals stat, no icon)
   const isWrong = cardState === 'wrong';
+  const isRevealed = isCorrect || isWinner;         // Both show green border + overlay
 
   return (
     <button
@@ -31,15 +33,15 @@ export default function GameCard({
         relative w-full rounded-2xl overflow-hidden transition-all duration-150 ease-out
         border-2 text-left cursor-pointer
         ${cardState === 'idle' ? 'border-border bg-bg-card hover:border-accent-blue hover:bg-bg-card-hover hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]' : ''}
-        ${isCorrect ? 'border-accent-win' : ''}
+        ${isRevealed ? 'border-accent-win' : ''}
         ${isWrong ? 'border-accent-lose' : ''}
         ${disabled && cardState === 'idle' ? 'opacity-70 cursor-not-allowed' : ''}
         focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-bg-primary
       `}
     >
       {/* Result overlay */}
-      {isCorrect && (
-        <div className="absolute inset-0 bg-accent-win/20 z-10 pointer-events-none" />
+      {isRevealed && (
+        <div className="absolute inset-0 bg-accent-win/10 z-10 pointer-events-none" />
       )}
       {isWrong && (
         <div className="absolute inset-0 bg-accent-lose/20 z-10 pointer-events-none" />
