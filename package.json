@@ -1,0 +1,27 @@
+{
+  "name": "rank-arena",
+  "version": "1.0.0",
+  "description": "Rank Arena — Daily Higher/Lower game for Two Average Gamers",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npx vite",
+    "dev:server": "cd server && node --watch index.js",
+    "build": "cd client && npx vite build",
+    "start": "node server/index.js",
+    "seed": "node server/db/seed.js",
+    "fetch-covers": "node server/scripts/fetchCovers.js",
+    "generate-challenge": "node server/lib/challengeGenerator.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "better-sqlite3": "^12.8.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

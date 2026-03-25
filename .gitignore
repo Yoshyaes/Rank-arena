@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+Thumbs.db
+
+# SQLite database files (regenerated via npm run seed)
+data/*.db
+data/*.db-shm
+data/*.db-wal
