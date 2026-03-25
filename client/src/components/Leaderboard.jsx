@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchDailyLeaderboard, fetchEndlessLeaderboard } from '../lib/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function Leaderboard() {
+  const { user } = useAuth();
   const [tab, setTab] = useState('daily');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -92,9 +94,14 @@ export default function Leaderboard() {
       )}
 
       {/* CTA for guests */}
-      <div className="text-center mt-8 text-text-secondary text-sm">
-        Sign in to appear on the leaderboard
-      </div>
+      {!user && (
+        <div className="text-center mt-8 text-text-secondary text-sm">
+          <a href="/wp-login.php?redirect_to=/arena/leaderboard" className="text-accent-blue hover:text-text-primary transition-colors">
+            Sign in
+          </a>
+          {' '}to appear on the leaderboard
+        </div>
+      )}
     </div>
   );
 }
