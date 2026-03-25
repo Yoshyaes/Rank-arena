@@ -48,18 +48,8 @@ export default function ShareCard({
   });
   const shareUrl = `https://twoaveragegamers.com/arena/share.php?${shareParams}`;
 
-  // Share text includes both the visual text and the URL
-  const shareText = [
-    `Rank Arena Daily #${challengeNumber} \u2014 ${formatDate(date)}`,
-    `${emoji} ${statLabel}`,
-    '',
-    `${emojiTrail} \u2014 ${score}/${totalRounds}`,
-    '',
-    streak && streak.current > 0
-      ? `\u{1F525} ${streak.current} day streak`
-      : '',
-    shareUrl,
-  ].filter(Boolean).join('\n');
+  // Short share text — let the image card do the talking
+  const shareText = `Rank Arena Daily #${challengeNumber} \u2014 can you beat my score?\n${shareUrl}`;
 
   async function handleCopy() {
     try {
