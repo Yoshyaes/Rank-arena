@@ -2,794 +2,5512 @@
   {
     "title": "Minecraft",
     "year": 2011,
-    "genre": ["Sandbox", "Survival"],
+    "genre": [
+      "Sandbox",
+      "Survival"
+    ],
     "metacritic": 93,
     "user_score": 7.5,
-    "sales_millions": 350.0,
+    "sales_millions": 350,
     "peak_players": 510000,
-    "avg_playtime_hours": 120.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch", "Mobile"],
+    "avg_playtime_hours": 120,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "The all-time best-selling game ever — more than GTA V, Tetris, and Wii Sports combined on most measures.",
     "surprise_factor": "high"
   },
   {
     "title": "Grand Theft Auto V",
     "year": 2013,
-    "genre": ["Action", "Open World"],
+    "genre": [
+      "Action",
+      "Open World"
+    ],
     "metacritic": 97,
-    "user_score": 8.0,
-    "sales_millions": 225.0,
+    "user_score": 8,
+    "sales_millions": 225,
     "peak_players": 364548,
-    "avg_playtime_hours": 80.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "PS4"],
+    "avg_playtime_hours": 80,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
     "fun_fact": "Still sells roughly 5–7 million copies per year, 12 years after launch.",
     "surprise_factor": "low"
   },
   {
     "title": "Terraria",
     "year": 2011,
-    "genre": ["Sandbox", "Action"],
+    "genre": [
+      "Sandbox",
+      "Action"
+    ],
     "metacritic": 85,
     "user_score": 9.2,
     "sales_millions": 58.7,
     "peak_players": 489886,
-    "avg_playtime_hours": 63.0,
-    "platform_tags": ["PC", "PS4", "Xbox", "Switch", "Mobile"],
+    "avg_playtime_hours": 63,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "A $10 indie game made by one developer has outsold most AAA franchises in history.",
     "surprise_factor": "high"
   },
   {
     "title": "Stardew Valley",
     "year": 2016,
-    "genre": ["Simulation", "RPG"],
+    "genre": [
+      "Simulation",
+      "RPG"
+    ],
     "metacritic": 89,
-    "user_score": 9.0,
-    "sales_millions": 41.0,
+    "user_score": 9,
+    "sales_millions": 41,
     "peak_players": 481038,
     "avg_playtime_hours": 80.5,
-    "platform_tags": ["PC", "PS4", "Xbox", "Switch", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "Created by a single developer over four years. Has outsold Cyberpunk 2077 and Elden Ring.",
     "surprise_factor": "high"
   },
   {
     "title": "PUBG: Battlegrounds",
     "year": 2017,
-    "genre": ["Battle Royale", "Shooter"],
+    "genre": [
+      "Battle Royale",
+      "Shooter"
+    ],
     "metacritic": 86,
     "user_score": 5.1,
-    "sales_millions": 75.0,
+    "sales_millions": 75,
     "peak_players": 3257248,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS4", "Xbox", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Mobile"
+    ],
     "fun_fact": "Still holds the all-time Steam peak player record — set in January 2018 — more than 7 years later.",
     "surprise_factor": "medium"
   },
   {
     "title": "Elden Ring",
     "year": 2022,
-    "genre": ["Action RPG", "Soulslike"],
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
     "metacritic": 96,
     "user_score": 8.7,
-    "sales_millions": 30.0,
+    "sales_millions": 30,
     "peak_players": 952523,
-    "avg_playtime_hours": 59.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "PS4"],
+    "avg_playtime_hours": 59,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
     "fun_fact": "Its DLC Shadow of the Erdtree pushed peak concurrent players to 953k — higher than launch.",
     "surprise_factor": "low"
   },
   {
     "title": "Cyberpunk 2077",
     "year": 2020,
-    "genre": ["Action RPG", "Open World"],
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
     "metacritic": 86,
     "user_score": 7.4,
-    "sales_millions": 30.0,
+    "sales_millions": 30,
     "peak_players": 1054388,
     "avg_playtime_hours": 25.5,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Launched so broken it was pulled from the PS Store. Sold 30M anyway and became one of Steam's biggest peaks ever.",
     "surprise_factor": "medium"
   },
   {
     "title": "Palworld",
     "year": 2024,
-    "genre": ["Survival", "Action"],
+    "genre": [
+      "Survival",
+      "Action"
+    ],
     "metacritic": 69,
     "user_score": 7.5,
     "sales_millions": 17.4,
     "peak_players": 2101535,
-    "avg_playtime_hours": 35.0,
-    "platform_tags": ["PC", "Xbox", "PS5"],
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "PS5"
+    ],
     "fun_fact": "Hit 2.1M concurrent Steam players in its first week — beating Elden Ring's all-time record in days.",
     "surprise_factor": "medium"
   },
   {
     "title": "Black Myth: Wukong",
     "year": 2024,
-    "genre": ["Action RPG"],
+    "genre": [
+      "Action RPG"
+    ],
     "metacritic": 82,
     "user_score": 8.8,
-    "sales_millions": 28.0,
+    "sales_millions": 28,
     "peak_players": 2400000,
     "avg_playtime_hours": 26.5,
-    "platform_tags": ["PC", "PS5"],
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
     "fun_fact": "The first Chinese-developed AAA to crack the global top 50 best-sellers ever. Sold 10M copies in 3 days.",
     "surprise_factor": "medium"
   },
   {
     "title": "Hogwarts Legacy",
     "year": 2023,
-    "genre": ["Action RPG", "Open World"],
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
     "metacritic": 84,
     "user_score": 8.7,
-    "sales_millions": 40.0,
+    "sales_millions": 40,
     "peak_players": 879308,
-    "avg_playtime_hours": 27.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "avg_playtime_hours": 27,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Best-selling game of 2023 globally. Outsold every mainline Harry Potter game combined.",
     "surprise_factor": "medium"
   },
   {
     "title": "Red Dead Redemption 2",
     "year": 2018,
-    "genre": ["Action", "Open World", "Western"],
+    "genre": [
+      "Action",
+      "Open World",
+      "Western"
+    ],
     "metacritic": 97,
-    "user_score": 8.0,
-    "sales_millions": 61.0,
+    "user_score": 8,
+    "sales_millions": 61,
     "peak_players": 93093,
     "avg_playtime_hours": 50.5,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "Has an incredibly low Steam peak despite massive total sales — most players are on console.",
     "surprise_factor": "high"
   },
   {
     "title": "The Witcher 3: Wild Hunt",
     "year": 2015,
-    "genre": ["Action RPG", "Open World"],
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
     "metacritic": 92,
     "user_score": 9.2,
-    "sales_millions": 50.0,
+    "sales_millions": 50,
     "peak_players": 92627,
     "avg_playtime_hours": 52.5,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Sold 50 million copies after 10 years — more than every Elder Scrolls game ever made combined.",
     "surprise_factor": "medium"
   },
   {
     "title": "Baldur's Gate 3",
     "year": 2023,
-    "genre": ["RPG", "CRPG"],
+    "genre": [
+      "RPG",
+      "CRPG"
+    ],
     "metacritic": 96,
     "user_score": 8.8,
-    "sales_millions": 15.0,
+    "sales_millions": 15,
     "peak_players": 875343,
     "avg_playtime_hours": 100.5,
-    "platform_tags": ["PC", "PS5"],
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
     "fun_fact": "Swept every major Game of the Year award in 2023. Its peak Steam player count rivals Cyberpunk 2077.",
     "surprise_factor": "medium"
   },
   {
     "title": "God of War (2018)",
     "year": 2018,
-    "genre": ["Action", "Adventure"],
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
     "metacritic": 94,
     "user_score": 9.2,
-    "sales_millions": 23.0,
+    "sales_millions": 23,
     "peak_players": 73529,
-    "avg_playtime_hours": 21.0,
-    "platform_tags": ["PC", "PS4", "PS5"],
+    "avg_playtime_hours": 21,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
     "fun_fact": "Released on PS4 in 2018, it still regularly outsells new releases on PSN charts years later.",
     "surprise_factor": "low"
   },
   {
     "title": "God of War Ragnarök",
     "year": 2022,
-    "genre": ["Action", "Adventure"],
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
     "metacritic": 94,
-    "user_score": 9.0,
-    "sales_millions": 15.0,
+    "user_score": 9,
+    "sales_millions": 15,
     "peak_players": 59197,
-    "avg_playtime_hours": 26.0,
-    "platform_tags": ["PC", "PS5", "PS4"],
+    "avg_playtime_hours": 26,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4"
+    ],
     "fun_fact": "Sold 5 million copies in its first week — the fastest-selling PlayStation Studios game ever at launch.",
     "surprise_factor": "low"
   },
   {
     "title": "Hades",
     "year": 2020,
-    "genre": ["Roguelike", "Action"],
+    "genre": [
+      "Roguelike",
+      "Action"
+    ],
     "metacritic": 93,
     "user_score": 9.3,
     "sales_millions": 6.4,
     "peak_players": 100854,
     "avg_playtime_hours": 22.5,
-    "platform_tags": ["PC", "Switch", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "First game ever to win the Hugo Award for Best Video Game. Scored 93 on Metacritic on a $25 indie budget.",
     "surprise_factor": "medium"
   },
   {
     "title": "Disco Elysium",
     "year": 2019,
-    "genre": ["RPG", "Detective"],
+    "genre": [
+      "RPG",
+      "Detective"
+    ],
     "metacritic": 97,
     "user_score": 8.7,
-    "sales_millions": 2.0,
+    "sales_millions": 2,
     "peak_players": 17238,
-    "avg_playtime_hours": 23.0,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "avg_playtime_hours": 23,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Scored a 97 on Metacritic — tied with GTA V and Red Dead 2 — but has fewer Steam players than most indie games.",
     "surprise_factor": "high"
   },
   {
     "title": "Hollow Knight",
     "year": 2017,
-    "genre": ["Metroidvania", "Action"],
+    "genre": [
+      "Metroidvania",
+      "Action"
+    ],
     "metacritic": 90,
     "user_score": 9.3,
     "sales_millions": 3.5,
     "peak_players": 36000,
-    "avg_playtime_hours": 41.0,
-    "platform_tags": ["PC", "Switch", "PS4", "Xbox"],
+    "avg_playtime_hours": 41,
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "Developed by 3 people for around $57,000 AUD. Now one of the most critically acclaimed games ever made.",
     "surprise_factor": "medium"
   },
   {
     "title": "Celeste",
     "year": 2018,
-    "genre": ["Platformer", "Indie"],
+    "genre": [
+      "Platformer",
+      "Indie"
+    ],
     "metacritic": 94,
-    "user_score": 9.0,
-    "sales_millions": 4.0,
+    "user_score": 9,
+    "sales_millions": 4,
     "peak_players": 22000,
     "avg_playtime_hours": 11.5,
-    "platform_tags": ["PC", "Switch", "PS4", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "94 on Metacritic — same score as God of War 2018 — on a budget of essentially zero.",
     "surprise_factor": "high"
   },
   {
     "title": "Valheim",
     "year": 2021,
-    "genre": ["Survival", "Sandbox"],
+    "genre": [
+      "Survival",
+      "Sandbox"
+    ],
     "metacritic": 80,
     "user_score": 8.1,
     "sales_millions": 16.5,
     "peak_players": 502387,
     "avg_playtime_hours": 53.5,
-    "platform_tags": ["PC", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
     "fun_fact": "Developed by 5 people. Sold 10M copies in its first month in Early Access.",
     "surprise_factor": "high"
   },
   {
     "title": "Monster Hunter: World",
     "year": 2018,
-    "genre": ["Action RPG", "Co-op"],
+    "genre": [
+      "Action RPG",
+      "Co-op"
+    ],
     "metacritic": 90,
     "user_score": 8.5,
     "sales_millions": 21.8,
     "peak_players": 329387,
     "avg_playtime_hours": 48.5,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "Capcom's best-selling game ever — and it came out after 14 years of Monster Hunter being a niche franchise.",
     "surprise_factor": "medium"
   },
   {
     "title": "Dark Souls III",
     "year": 2016,
-    "genre": ["Action RPG", "Soulslike"],
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
     "metacritic": 89,
     "user_score": 8.2,
-    "sales_millions": 10.0,
+    "sales_millions": 10,
     "peak_players": 129975,
-    "avg_playtime_hours": 32.0,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "avg_playtime_hours": 32,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "Sold faster than any other game in the Souls series at launch, despite being the 'final' entry.",
     "surprise_factor": "low"
   },
   {
     "title": "Sekiro: Shadows Die Twice",
     "year": 2019,
-    "genre": ["Action", "Soulslike"],
+    "genre": [
+      "Action",
+      "Soulslike"
+    ],
     "metacritic": 90,
-    "user_score": 8.0,
-    "sales_millions": 10.0,
+    "user_score": 8,
+    "sales_millions": 10,
     "peak_players": 125233,
     "avg_playtime_hours": 30.5,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "2019 Game of the Year at The Game Awards — but has fewer Steam players than Stardew Valley.",
     "surprise_factor": "medium"
   },
   {
     "title": "ARK: Survival Evolved",
     "year": 2017,
-    "genre": ["Survival", "Open World"],
+    "genre": [
+      "Survival",
+      "Open World"
+    ],
     "metacritic": 70,
     "user_score": 4.8,
     "sales_millions": 34.3,
     "peak_players": 296385,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS4", "Xbox", "Switch", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "Reviewed poorly (70 Metacritic) yet sold 34M copies — more than Elden Ring, Sekiro, and Dark Souls combined.",
     "surprise_factor": "high"
   },
   {
     "title": "Rust",
     "year": 2018,
-    "genre": ["Survival", "Sandbox"],
+    "genre": [
+      "Survival",
+      "Sandbox"
+    ],
     "metacritic": 69,
     "user_score": 6.9,
     "sales_millions": 28.2,
     "peak_players": 245243,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "69 on Metacritic. Still sold 28M copies — the same as Black Myth: Wukong.",
     "surprise_factor": "high"
   },
   {
     "title": "Apex Legends",
     "year": 2019,
-    "genre": ["Battle Royale", "Shooter"],
+    "genre": [
+      "Battle Royale",
+      "Shooter"
+    ],
     "metacritic": 89,
     "user_score": 6.9,
     "sales_millions": null,
     "peak_players": 228439,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Free-to-play, so sales don't apply — but it has generated over $2 billion in lifetime revenue.",
     "surprise_factor": "low"
   },
   {
     "title": "Fortnite",
     "year": 2017,
-    "genre": ["Battle Royale", "Shooter"],
+    "genre": [
+      "Battle Royale",
+      "Shooter"
+    ],
     "metacritic": 81,
     "user_score": 4.5,
     "sales_millions": null,
     "peak_players": null,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "Not on Steam at all — so its Steam concurrent player count is literally zero. Has 350M+ registered players.",
     "surprise_factor": "high"
   },
   {
     "title": "Among Us",
     "year": 2020,
-    "genre": ["Social Deduction", "Party"],
+    "genre": [
+      "Social Deduction",
+      "Party"
+    ],
     "metacritic": 85,
     "user_score": 6.7,
     "sales_millions": null,
     "peak_players": 447476,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "Switch", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "Was released in 2018 and almost abandoned. Two years later it hit 500M players worldwide after a viral TikTok moment.",
     "surprise_factor": "high"
   },
   {
     "title": "Helldivers 2",
     "year": 2024,
-    "genre": ["Co-op Shooter", "Action"],
+    "genre": [
+      "Co-op Shooter",
+      "Action"
+    ],
     "metacritic": 82,
     "user_score": 8.9,
-    "sales_millions": 12.0,
+    "sales_millions": 12,
     "peak_players": 458709,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5"],
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
     "fun_fact": "Sold 12M in its first 12 weeks — Sony's fastest-selling game ever at the time.",
     "surprise_factor": "medium"
   },
   {
     "title": "Diablo IV",
     "year": 2023,
-    "genre": ["Action RPG", "Hack and Slash"],
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
     "metacritic": 88,
     "user_score": 7.1,
-    "sales_millions": 10.0,
+    "sales_millions": 10,
     "peak_players": 247861,
-    "avg_playtime_hours": 30.0,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Fastest Blizzard game to $1 billion in revenue. Hit that milestone in its first 5 days.",
     "surprise_factor": "low"
   },
   {
     "title": "Starfield",
     "year": 2023,
-    "genre": ["RPG", "Space", "Open World"],
+    "genre": [
+      "RPG",
+      "Space",
+      "Open World"
+    ],
     "metacritic": 83,
     "user_score": 6.5,
     "sales_millions": 11.5,
     "peak_players": 330723,
-    "avg_playtime_hours": 28.0,
-    "platform_tags": ["PC", "Xbox"],
+    "avg_playtime_hours": 28,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
     "fun_fact": "Bethesda's most-played launch ever with 330K Steam peak — but critically considered a disappointment.",
     "surprise_factor": "medium"
   },
   {
     "title": "Sons of the Forest",
     "year": 2023,
-    "genre": ["Survival", "Horror"],
+    "genre": [
+      "Survival",
+      "Horror"
+    ],
     "metacritic": 80,
-    "user_score": 8.0,
-    "sales_millions": 8.0,
+    "user_score": 8,
+    "sales_millions": 8,
     "peak_players": 413866,
-    "avg_playtime_hours": 22.0,
-    "platform_tags": ["PC"],
+    "avg_playtime_hours": 22,
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "Sold 2M copies in its first 24 hours — a sequel to a game most people have never heard of.",
     "surprise_factor": "high"
   },
   {
     "title": "Lethal Company",
     "year": 2023,
-    "genre": ["Co-op Horror", "Indie"],
+    "genre": [
+      "Co-op Horror",
+      "Indie"
+    ],
     "metacritic": null,
     "user_score": 9.7,
     "sales_millions": 4.5,
     "peak_players": 169768,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "Made by one person, sold for $10, and hit 170K concurrent Steam players. No Metacritic score because it launched in Early Access.",
     "surprise_factor": "high"
   },
   {
     "title": "Dead Cells",
     "year": 2018,
-    "genre": ["Roguelike", "Metroidvania"],
+    "genre": [
+      "Roguelike",
+      "Metroidvania"
+    ],
     "metacritic": 89,
     "user_score": 8.8,
-    "sales_millions": 6.0,
+    "sales_millions": 6,
     "peak_players": 35000,
     "avg_playtime_hours": 20.5,
-    "platform_tags": ["PC", "Switch", "PS4", "Xbox", "Mobile"],
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "PS4",
+      "Xbox",
+      "Mobile"
+    ],
     "fun_fact": "89 on Metacritic and 6M sales — but a lower Steam peak than most people would expect.",
     "surprise_factor": "medium"
   },
   {
     "title": "Monster Hunter Wilds",
     "year": 2025,
-    "genre": ["Action RPG", "Co-op"],
+    "genre": [
+      "Action RPG",
+      "Co-op"
+    ],
     "metacritic": 91,
     "user_score": 7.9,
-    "sales_millions": 10.0,
+    "sales_millions": 10,
     "peak_players": 1325257,
-    "avg_playtime_hours": 35.0,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Broke the record for peak concurrent players at a Monster Hunter launch on day one — hitting 1.3M on Steam.",
     "surprise_factor": "medium"
   },
   {
     "title": "Doom Eternal",
     "year": 2020,
-    "genre": ["FPS", "Action"],
+    "genre": [
+      "FPS",
+      "Action"
+    ],
     "metacritic": 88,
-    "user_score": 8.0,
+    "user_score": 8,
     "sales_millions": 3.5,
     "peak_players": 105397,
-    "avg_playtime_hours": 14.0,
-    "platform_tags": ["PC", "PS4", "Xbox", "Switch"],
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "88 on Metacritic, one of the best FPS games ever made — but sold far fewer copies than ARK: Survival Evolved.",
     "surprise_factor": "high"
   },
   {
     "title": "Destiny 2",
     "year": 2017,
-    "genre": ["FPS", "MMO", "Looter Shooter"],
+    "genre": [
+      "FPS",
+      "MMO",
+      "Looter Shooter"
+    ],
     "metacritic": 84,
-    "user_score": 6.0,
+    "user_score": 6,
     "sales_millions": null,
     "peak_players": 292530,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Free to play, so sales don't apply — but it has generated over $4 billion in total revenue.",
     "surprise_factor": "low"
   },
   {
     "title": "Overwatch",
     "year": 2016,
-    "genre": ["Hero Shooter", "FPS"],
+    "genre": [
+      "Hero Shooter",
+      "FPS"
+    ],
     "metacritic": 91,
     "user_score": 6.7,
-    "sales_millions": 50.0,
+    "sales_millions": 50,
     "peak_players": null,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS4", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Not on Steam — sold 50M copies through Battle.net before going free-to-play as Overwatch 2.",
     "surprise_factor": "medium"
   },
   {
     "title": "Overwatch 2",
     "year": 2022,
-    "genre": ["Hero Shooter", "FPS"],
+    "genre": [
+      "Hero Shooter",
+      "FPS"
+    ],
     "metacritic": 72,
     "user_score": 1.6,
     "sales_millions": null,
     "peak_players": 35000,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Has one of the lowest user scores in gaming history (1.6) despite 35M players in its first month.",
     "surprise_factor": "high"
   },
   {
     "title": "Marvel Rivals",
     "year": 2024,
-    "genre": ["Hero Shooter", "FPS"],
+    "genre": [
+      "Hero Shooter",
+      "FPS"
+    ],
     "metacritic": 81,
     "user_score": 7.8,
     "sales_millions": null,
     "peak_players": 480990,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Hit 40M players in its first 30 days — the fastest-growing hero shooter launch ever.",
     "surprise_factor": "medium"
   },
   {
     "title": "Counter-Strike 2",
     "year": 2023,
-    "genre": ["FPS", "Tactical Shooter"],
+    "genre": [
+      "FPS",
+      "Tactical Shooter"
+    ],
     "metacritic": 77,
-    "user_score": 5.0,
+    "user_score": 5,
     "sales_millions": null,
     "peak_players": 1818773,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "CS:GO (its predecessor) holds one of Steam's all-time CCU records. CS2 continues that legacy with 1.8M peak.",
     "surprise_factor": "low"
   },
   {
     "title": "Path of Exile 2",
     "year": 2024,
-    "genre": ["Action RPG", "Hack and Slash"],
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
     "metacritic": 88,
-    "user_score": 8.0,
+    "user_score": 8,
     "sales_millions": null,
     "peak_players": 576897,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "Free to play in Early Access and still hit 577K concurrent Steam players at launch.",
     "surprise_factor": "medium"
   },
   {
     "title": "The Last of Us Part I",
     "year": 2022,
-    "genre": ["Action", "Adventure", "Survival"],
+    "genre": [
+      "Action",
+      "Adventure",
+      "Survival"
+    ],
     "metacritic": 95,
     "user_score": 8.2,
     "sales_millions": 26.6,
     "peak_players": 42485,
     "avg_playtime_hours": 15.5,
-    "platform_tags": ["PC", "PS5"],
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
     "fun_fact": "95 on Metacritic and 26M sales — but the PC version had a disastrous launch that tanked Steam reviews.",
     "surprise_factor": "medium"
   },
   {
     "title": "Outer Wilds",
     "year": 2019,
-    "genre": ["Adventure", "Exploration"],
+    "genre": [
+      "Adventure",
+      "Exploration"
+    ],
     "metacritic": 85,
     "user_score": 9.2,
     "sales_millions": 1.5,
     "peak_players": 12000,
-    "avg_playtime_hours": 15.0,
-    "platform_tags": ["PC", "PS4", "Xbox"],
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
     "fun_fact": "Considered by many to be one of the greatest games ever made. Only 1.5M sales.",
     "surprise_factor": "high"
   },
   {
     "title": "Hi-Fi Rush",
     "year": 2023,
-    "genre": ["Action", "Rhythm"],
+    "genre": [
+      "Action",
+      "Rhythm"
+    ],
     "metacritic": 88,
     "user_score": 9.3,
-    "sales_millions": 3.0,
+    "sales_millions": 3,
     "peak_players": 23000,
-    "avg_playtime_hours": 12.0,
-    "platform_tags": ["PC", "Xbox", "PS5"],
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "PS5"
+    ],
     "fun_fact": "Was a surprise Xbox Game Pass shadow drop. Won multiple awards. Publisher Tango Gameworks was shut down by Microsoft 3 months later.",
     "surprise_factor": "high"
   },
   {
     "title": "Dave the Diver",
     "year": 2023,
-    "genre": ["RPG", "Simulation", "Adventure"],
+    "genre": [
+      "RPG",
+      "Simulation",
+      "Adventure"
+    ],
     "metacritic": 90,
     "user_score": 9.1,
-    "sales_millions": 4.0,
+    "sales_millions": 4,
     "peak_players": 22000,
-    "avg_playtime_hours": 18.0,
-    "platform_tags": ["PC", "Switch", "PS5"],
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "PS5"
+    ],
     "fun_fact": "90 on Metacritic — higher than ARK, Cyberpunk, and Palworld — and somehow nobody was expecting it.",
     "surprise_factor": "high"
   },
   {
     "title": "Lies of P",
     "year": 2023,
-    "genre": ["Action RPG", "Soulslike"],
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
     "metacritic": 80,
     "user_score": 8.2,
-    "sales_millions": 2.0,
+    "sales_millions": 2,
     "peak_players": 114053,
     "avg_playtime_hours": 27.5,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "A Korean Souls-like based on Pinocchio. 80 on Metacritic and its Steam peak rivals God of War on PC.",
     "surprise_factor": "high"
   },
   {
     "title": "Alan Wake 2",
     "year": 2023,
-    "genre": ["Survival Horror", "Action"],
+    "genre": [
+      "Survival Horror",
+      "Action"
+    ],
     "metacritic": 89,
-    "user_score": 9.0,
+    "user_score": 9,
     "sales_millions": 1.5,
     "peak_players": 27000,
-    "avg_playtime_hours": 17.0,
-    "platform_tags": ["PC", "PS5", "Xbox"],
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
     "fun_fact": "89 on Metacritic, praised as one of 2023's best — but its PC player count is lower than most expect for a AAA.",
     "surprise_factor": "high"
   },
   {
     "title": "Cocoon",
     "year": 2023,
-    "genre": ["Puzzle", "Adventure"],
+    "genre": [
+      "Puzzle",
+      "Adventure"
+    ],
     "metacritic": 90,
-    "user_score": 9.0,
+    "user_score": 9,
     "sales_millions": 0.5,
     "peak_players": 5800,
-    "avg_playtime_hours": 6.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "avg_playtime_hours": 6,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Made by a single developer. 90 on Metacritic. Fewer Steam players at peak than a small Discord server.",
     "surprise_factor": "high"
   },
   {
     "title": "Phasmophobia",
     "year": 2022,
-    "genre": ["Co-op Horror", "Indie"],
+    "genre": [
+      "Co-op Horror",
+      "Indie"
+    ],
     "metacritic": 85,
     "user_score": 9.1,
-    "sales_millions": 22.0,
+    "sales_millions": 22,
     "peak_players": 75000,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "Developed by one person. Sold 22M copies from Early Access — more than Doom Eternal, Hades, and Dead Cells combined.",
     "surprise_factor": "high"
   },
   {
     "title": "Balatro",
     "year": 2024,
-    "genre": ["Roguelike", "Card Game"],
+    "genre": [
+      "Roguelike",
+      "Card Game"
+    ],
     "metacritic": 90,
     "user_score": 9.2,
-    "sales_millions": 5.0,
+    "sales_millions": 5,
     "peak_players": 66620,
-    "avg_playtime_hours": 30.0,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch", "Mobile"],
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
     "fun_fact": "A poker-themed roguelike made by one developer that was nominated for Game of the Year at The Game Awards 2024.",
     "surprise_factor": "high"
   },
   {
     "title": "Ghost of Tsushima",
     "year": 2024,
-    "genre": ["Action", "Open World"],
+    "genre": [
+      "Action",
+      "Open World"
+    ],
     "metacritic": 83,
     "user_score": 8.8,
-    "sales_millions": 13.0,
+    "sales_millions": 13,
     "peak_players": 77981,
-    "avg_playtime_hours": 25.0,
-    "platform_tags": ["PC", "PS5", "PS4"],
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4"
+    ],
     "fun_fact": "A PS4 exclusive that became Sony's biggest PC launch when it finally came to Steam in 2024.",
     "surprise_factor": "medium"
   },
   {
     "title": "Forza Horizon 5",
     "year": 2021,
-    "genre": ["Racing", "Open World"],
+    "genre": [
+      "Racing",
+      "Open World"
+    ],
     "metacritic": 92,
     "user_score": 8.2,
-    "sales_millions": 35.0,
+    "sales_millions": 35,
     "peak_players": 70183,
-    "avg_playtime_hours": 35.0,
-    "platform_tags": ["PC", "Xbox"],
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
     "fun_fact": "92 on Metacritic and 35M players — but available on Game Pass, so most players never paid for it.",
     "surprise_factor": "medium"
   },
   {
     "title": "Fall Guys",
     "year": 2020,
-    "genre": ["Battle Royale", "Party"],
+    "genre": [
+      "Battle Royale",
+      "Party"
+    ],
     "metacritic": 80,
-    "user_score": 7.0,
+    "user_score": 7,
     "sales_millions": null,
     "peak_players": 172207,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Sold 7M copies in its first month when paid, then went free-to-play. Total players hit 100M after the switch.",
     "surprise_factor": "medium"
   },
   {
     "title": "Vampire Survivors",
     "year": 2022,
-    "genre": ["Roguelike", "Bullet Hell"],
+    "genre": [
+      "Roguelike",
+      "Bullet Hell"
+    ],
     "metacritic": 86,
     "user_score": 9.2,
-    "sales_millions": 6.0,
+    "sales_millions": 6,
     "peak_players": 35000,
-    "avg_playtime_hours": 25.0,
-    "platform_tags": ["PC", "Switch", "Xbox", "Mobile"],
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "Xbox",
+      "Mobile"
+    ],
     "fun_fact": "Originally sold for $2.99. Made by one developer. 86 on Metacritic — same as PUBG and Cyberpunk 2077.",
     "surprise_factor": "high"
   },
   {
     "title": "Dota 2",
     "year": 2013,
-    "genre": ["MOBA", "Strategy"],
+    "genre": [
+      "MOBA",
+      "Strategy"
+    ],
     "metacritic": 90,
-    "user_score": 6.0,
+    "user_score": 6,
     "sales_millions": null,
     "peak_players": 1295114,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "Free to play. Still one of the top 3 games on Steam by concurrent players more than 12 years after launch.",
     "surprise_factor": "low"
   },
   {
     "title": "Warframe",
     "year": 2013,
-    "genre": ["Action", "Looter Shooter", "Co-op"],
+    "genre": [
+      "Action",
+      "Looter Shooter",
+      "Co-op"
+    ],
     "metacritic": 75,
-    "user_score": 8.0,
+    "user_score": 8,
     "sales_millions": null,
     "peak_players": 136000,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "Free to play and now 12 years old — still generates hundreds of millions in revenue annually with zero major marketing spend.",
     "surprise_factor": "medium"
   },
   {
     "title": "FIFA 23 / EA Sports FC 24",
     "year": 2023,
-    "genre": ["Sports", "Soccer"],
+    "genre": [
+      "Sports",
+      "Soccer"
+    ],
     "metacritic": 79,
     "user_score": 4.4,
-    "sales_millions": 14.0,
+    "sales_millions": 14,
     "peak_players": 105000,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC", "PS5", "Xbox", "Switch"],
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
     "fun_fact": "79 on Metacritic. 4.4 user score. Still one of the best-selling games of its release year every single year.",
     "surprise_factor": "medium"
   },
   {
     "title": "The Forest",
     "year": 2018,
-    "genre": ["Survival", "Horror"],
+    "genre": [
+      "Survival",
+      "Horror"
+    ],
     "metacritic": 72,
     "user_score": 8.5,
     "sales_millions": 30.6,
     "peak_players": 198010,
-    "avg_playtime_hours": 18.0,
-    "platform_tags": ["PC", "PS4"],
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4"
+    ],
     "fun_fact": "72 on Metacritic and 30M sales — more than Cyberpunk 2077. Players clearly ignored the critics.",
     "surprise_factor": "high"
   },
   {
     "title": "Project Zomboid",
     "year": 2013,
-    "genre": ["Survival", "Zombie", "Sandbox"],
+    "genre": [
+      "Survival",
+      "Zombie",
+      "Sandbox"
+    ],
     "metacritic": null,
     "user_score": 9.3,
     "sales_millions": 16.4,
     "peak_players": 42000,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "Has been in Early Access since 2013 — over 12 years. Still has one of the highest user scores on Steam.",
     "surprise_factor": "high"
   },
   {
     "title": "Garry's Mod",
     "year": 2006,
-    "genre": ["Sandbox", "Indie"],
+    "genre": [
+      "Sandbox",
+      "Indie"
+    ],
     "metacritic": 90,
     "user_score": 9.2,
     "sales_millions": 25.5,
     "peak_players": 99720,
     "avg_playtime_hours": null,
-    "platform_tags": ["PC"],
+    "platform_tags": [
+      "PC"
+    ],
     "fun_fact": "A $10 sandbox game from 2006 has sold 25.5M copies — more than any FromSoftware game ever made.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Horizon Zero Dawn",
+    "year": 2017,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 89,
+    "user_score": 8.3,
+    "sales_millions": 24.3,
+    "peak_players": 56557,
+    "avg_playtime_hours": 23,
+    "platform_tags": [
+      "PC",
+      "PS4"
+    ],
+    "fun_fact": "Sold 24M copies — more than most long-running franchises achieve across multiple entries.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Horizon Forbidden West",
+    "year": 2022,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 88,
+    "user_score": 8.5,
+    "sales_millions": 8.5,
+    "peak_players": 40000,
+    "avg_playtime_hours": 29,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4"
+    ],
+    "fun_fact": "88 on Metacritic but sold far less than its predecessor despite being a bigger game.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Marvel's Spider-Man",
+    "year": 2018,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 87,
+    "user_score": 8.7,
+    "sales_millions": 33,
+    "peak_players": 66436,
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
+    "fun_fact": "The best-selling superhero game ever made with 33M copies sold.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Marvel's Spider-Man 2",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 90,
+    "user_score": 8.4,
+    "sales_millions": 11,
+    "peak_players": null,
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PS5"
+    ],
+    "fun_fact": "Sold 11M copies in just 3 months — the fastest-selling PlayStation Studios game.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Spider-Man: Miles Morales",
+    "year": 2020,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 85,
+    "user_score": 8.2,
+    "sales_millions": 10.8,
+    "peak_players": 30182,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4"
+    ],
+    "fun_fact": "A shorter spin-off that still sold over 10M — proving Miles can carry a game solo.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Uncharted 4: A Thief's End",
+    "year": 2016,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 93,
+    "user_score": 8.7,
+    "sales_millions": 37,
+    "peak_players": 10510,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "PS4"
+    ],
+    "fun_fact": "37M copies sold but only 10K peak on Steam — it's overwhelmingly a PlayStation game.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Death Stranding",
+    "year": 2019,
+    "genre": [
+      "Action",
+      "Open World"
+    ],
+    "metacritic": 82,
+    "user_score": 7.3,
+    "sales_millions": 15,
+    "peak_players": 32513,
+    "avg_playtime_hours": 40,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
+    "fun_fact": "Kojima's divisive post-Konami debut sold 15M copies despite mixed fan reception.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Final Fantasy VII Remake",
+    "year": 2020,
+    "genre": [
+      "Action RPG",
+      "JRPG"
+    ],
+    "metacritic": 87,
+    "user_score": 8,
+    "sales_millions": 7,
+    "peak_players": 34900,
+    "avg_playtime_hours": 33,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
+    "fun_fact": "A remake of a 1997 game that took 5 years to develop and only covers the first act of the original.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Final Fantasy XVI",
+    "year": 2023,
+    "genre": [
+      "Action RPG",
+      "JRPG"
+    ],
+    "metacritic": 87,
+    "user_score": 7.7,
+    "sales_millions": 3.5,
+    "peak_players": 22361,
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "Only 3.5M sales despite being a mainline Final Fantasy — the series' commercial peak is long past.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Final Fantasy XV",
+    "year": 2016,
+    "genre": [
+      "Action RPG",
+      "JRPG"
+    ],
+    "metacritic": 81,
+    "user_score": 7.7,
+    "sales_millions": 10,
+    "peak_players": 29281,
+    "avg_playtime_hours": 28,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Took 10 years to develop across two console generations. Sold 10M copies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Resident Evil Village",
+    "year": 2021,
+    "genre": [
+      "Survival Horror",
+      "Action"
+    ],
+    "metacritic": 84,
+    "user_score": 8.1,
+    "sales_millions": 9,
+    "peak_players": 105916,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "Lady Dimitrescu broke the internet and drove this to 9M sales.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Resident Evil 4 Remake",
+    "year": 2023,
+    "genre": [
+      "Survival Horror",
+      "Action"
+    ],
+    "metacritic": 93,
+    "user_score": 8.2,
+    "sales_millions": 7,
+    "peak_players": 125906,
+    "avg_playtime_hours": 16,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "93 on Metacritic — matching the original's legendary status 18 years later.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Resident Evil 2 Remake",
+    "year": 2019,
+    "genre": [
+      "Survival Horror"
+    ],
+    "metacritic": 91,
+    "user_score": 8.8,
+    "sales_millions": 13,
+    "peak_players": 74227,
+    "avg_playtime_hours": 8.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Outsold the 1998 original within months. 13M copies of a remake of a 20-year-old game.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Resident Evil 7: Biohazard",
+    "year": 2017,
+    "genre": [
+      "Survival Horror"
+    ],
+    "metacritic": 86,
+    "user_score": 8,
+    "sales_millions": 13,
+    "peak_players": 17564,
+    "avg_playtime_hours": 9,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Revived the franchise by going first-person. Low Steam peak despite 13M total sales.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Devil May Cry 5",
+    "year": 2019,
+    "genre": [
+      "Action",
+      "Hack and Slash"
+    ],
+    "metacritic": 88,
+    "user_score": 8.6,
+    "sales_millions": 7,
+    "peak_players": 88735,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Brought the series back to form after the controversial DmC reboot.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Mass Effect Legendary Edition",
+    "year": 2021,
+    "genre": [
+      "RPG",
+      "Shooter"
+    ],
+    "metacritic": 86,
+    "user_score": 8.1,
+    "sales_millions": 3,
+    "peak_players": 59817,
+    "avg_playtime_hours": 80,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Three massive RPGs remastered in one package — over 80 hours to complete.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Star Wars Jedi: Fallen Order",
+    "year": 2019,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 79,
+    "user_score": 8.3,
+    "sales_millions": 20,
+    "peak_players": 41719,
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Proved single-player Star Wars games could sell 20M without multiplayer or microtransactions.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Star Wars Jedi: Survivor",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 85,
+    "user_score": 7.6,
+    "sales_millions": 7,
+    "peak_players": 67069,
+    "avg_playtime_hours": 19,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Higher Metacritic than its predecessor but sold far fewer copies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Assassin's Creed Valhalla",
+    "year": 2020,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 80,
+    "user_score": 5.6,
+    "sales_millions": 20,
+    "peak_players": null,
+    "avg_playtime_hours": 60,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "20M sales but a 5.6 user score — one of the biggest critic-fan divides in AC history.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Assassin's Creed Odyssey",
+    "year": 2018,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 83,
+    "user_score": 6.7,
+    "sales_millions": 15,
+    "peak_players": 67329,
+    "avg_playtime_hours": 44,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "So massive that 100% completion takes over 130 hours.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Assassin's Creed Mirage",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Stealth"
+    ],
+    "metacritic": 76,
+    "user_score": 7.2,
+    "sales_millions": 5,
+    "peak_players": 37000,
+    "avg_playtime_hours": 16,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "A deliberate return to shorter, classic AC gameplay after years of bloated RPGs.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Far Cry 5",
+    "year": 2018,
+    "genre": [
+      "FPS",
+      "Open World"
+    ],
+    "metacritic": 78,
+    "user_score": 6.3,
+    "sales_millions": 25,
+    "peak_players": 93000,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "25M copies sold on a 78 Metacritic — Far Cry sells despite middling reviews.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Far Cry 6",
+    "year": 2021,
+    "genre": [
+      "FPS",
+      "Open World"
+    ],
+    "metacritic": 73,
+    "user_score": 5,
+    "sales_millions": 10,
+    "peak_players": 38423,
+    "avg_playtime_hours": 23,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "Featured Giancarlo Esposito as the villain but received the lowest Metacritic in the mainline series.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Halo Infinite",
+    "year": 2021,
+    "genre": [
+      "FPS",
+      "Shooter"
+    ],
+    "metacritic": 87,
+    "user_score": 5.8,
+    "sales_millions": 20,
+    "peak_players": 272586,
+    "avg_playtime_hours": 11,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "The multiplayer was F2P with 272K Steam peak, but the player base collapsed within months.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Gears 5",
+    "year": 2019,
+    "genre": [
+      "Third-Person Shooter"
+    ],
+    "metacritic": 84,
+    "user_score": 5.4,
+    "sales_millions": 6,
+    "peak_players": 10604,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Excellent reviews but low Steam numbers — Xbox exclusive games struggle on PC.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Sea of Thieves",
+    "year": 2018,
+    "genre": [
+      "Adventure",
+      "Multiplayer"
+    ],
+    "metacritic": 69,
+    "user_score": 5.8,
+    "sales_millions": 25,
+    "peak_players": 66499,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "PS5"
+    ],
+    "fun_fact": "Launched to a 69 Metacritic but grew to 25M players — a rare live-service success story.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Titanfall 2",
+    "year": 2016,
+    "genre": [
+      "FPS",
+      "Shooter"
+    ],
+    "metacritic": 89,
+    "user_score": 8.7,
+    "sales_millions": 4,
+    "peak_players": 17024,
+    "avg_playtime_hours": 6.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "89 Metacritic and one of the best FPS campaigns ever — but EA launched it between Battlefield and CoD.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Borderlands 3",
+    "year": 2019,
+    "genre": [
+      "FPS",
+      "Looter Shooter"
+    ],
+    "metacritic": 81,
+    "user_score": 5.3,
+    "sales_millions": 18,
+    "peak_players": 93924,
+    "avg_playtime_hours": 23,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Sold 18M copies in under 2 years despite a 5.3 user score.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dying Light 2",
+    "year": 2022,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 76,
+    "user_score": 6.9,
+    "sales_millions": 5,
+    "peak_players": 274621,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "275K peak on Steam — one of the highest for a non-franchise sequel.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Hitman 3",
+    "year": 2021,
+    "genre": [
+      "Stealth",
+      "Action"
+    ],
+    "metacritic": 87,
+    "user_score": 7.4,
+    "sales_millions": 6,
+    "peak_players": 12810,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "The World of Assassination trilogy is widely considered the peak of modern stealth gaming.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Control",
+    "year": 2019,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 85,
+    "user_score": 8.1,
+    "sales_millions": 3,
+    "peak_players": 15370,
+    "avg_playtime_hours": 11,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Won multiple GOTY awards but only sold 3M — a cult classic in every sense.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Deathloop",
+    "year": 2021,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": 88,
+    "user_score": 5.5,
+    "sales_millions": 2,
+    "peak_players": 14082,
+    "avg_playtime_hours": 16,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "88 Metacritic but only 2M sales — one of the biggest gaps between critical and commercial success.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Returnal",
+    "year": 2021,
+    "genre": [
+      "Roguelike",
+      "Third-Person Shooter"
+    ],
+    "metacritic": 86,
+    "user_score": 8.1,
+    "sales_millions": 2,
+    "peak_players": 13700,
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "A $70 roguelike that divided players on pricing but earned 86 on Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Ratchet & Clank: Rift Apart",
+    "year": 2021,
+    "genre": [
+      "Platformer",
+      "Action"
+    ],
+    "metacritic": 88,
+    "user_score": 8.2,
+    "sales_millions": 4.6,
+    "peak_players": 7800,
+    "avg_playtime_hours": 11,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "One of the first true PS5 showcases — stunning visuals but modest sales.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Astro Bot",
+    "year": 2024,
+    "genre": [
+      "Platformer",
+      "Action"
+    ],
+    "metacritic": 94,
+    "user_score": 9,
+    "sales_millions": 1.5,
+    "peak_players": null,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PS5"
+    ],
+    "fun_fact": "94 on Metacritic — the highest-rated PS5 exclusive. Won GOTY 2024 at The Game Awards.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "It Takes Two",
+    "year": 2021,
+    "genre": [
+      "Co-op",
+      "Adventure"
+    ],
+    "metacritic": 88,
+    "user_score": 8.5,
+    "sales_millions": 16,
+    "peak_players": 20000,
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "Won GOTY 2021 and sold 16M — proving co-op-only games can be massive hits.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "A Way Out",
+    "year": 2018,
+    "genre": [
+      "Co-op",
+      "Adventure"
+    ],
+    "metacritic": 73,
+    "user_score": 7.8,
+    "sales_millions": 3.5,
+    "peak_players": 13500,
+    "avg_playtime_hours": 6,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Director Josef Fares famously said 'F*** the Oscars' at The Game Awards before its launch.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Atomic Heart",
+    "year": 2023,
+    "genre": [
+      "FPS",
+      "Action RPG"
+    ],
+    "metacritic": 70,
+    "user_score": 7.5,
+    "sales_millions": 5,
+    "peak_players": 78291,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "A Russian-developed alt-history shooter that generated massive controversy and massive sales.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dead Space Remake",
+    "year": 2023,
+    "genre": [
+      "Survival Horror"
+    ],
+    "metacritic": 89,
+    "user_score": 8.5,
+    "sales_millions": 2,
+    "peak_players": 35000,
+    "avg_playtime_hours": 11,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "89 Metacritic — the remake matched the legendary original's quality, but EA shut down the studio anyway.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Gotham Knights",
+    "year": 2022,
+    "genre": [
+      "Action RPG",
+      "Co-op"
+    ],
+    "metacritic": 61,
+    "user_score": 5.5,
+    "sales_millions": 2,
+    "peak_players": 13000,
+    "avg_playtime_hours": 17,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "61 Metacritic — one of the lowest-rated DC games ever despite years of hype.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Suicide Squad: Kill the Justice League",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Shooter"
+    ],
+    "metacritic": 60,
+    "user_score": 3.2,
+    "sales_millions": 1.5,
+    "peak_players": 13459,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Rocksteady's follow-up to the Arkham trilogy scored 60 on Metacritic. A spectacular fall from grace.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Skull and Bones",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Multiplayer"
+    ],
+    "metacritic": 59,
+    "user_score": 3.4,
+    "sales_millions": 1,
+    "peak_players": 7000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Took 11 years to develop and scored 59 on Metacritic. Cost Ubisoft an estimated $200M.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Redfall",
+    "year": 2023,
+    "genre": [
+      "FPS",
+      "Co-op"
+    ],
+    "metacritic": 55,
+    "user_score": 2.5,
+    "sales_millions": 1,
+    "peak_players": 6175,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Arkane Austin's final game before closure. 55 Metacritic — the studio's worst-ever score.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Anthem",
+    "year": 2019,
+    "genre": [
+      "Action RPG",
+      "Shooter"
+    ],
+    "metacritic": 59,
+    "user_score": 4.4,
+    "sales_millions": 6,
+    "peak_players": 43000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "BioWare's biggest commercial failure. EA pulled the plug on its planned overhaul in 2021.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Marvel's Avengers",
+    "year": 2020,
+    "genre": [
+      "Action",
+      "Co-op"
+    ],
+    "metacritic": 67,
+    "user_score": 4.8,
+    "sales_millions": 4,
+    "peak_players": 31165,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Servers shut down in 2024. Lost Square Enix an estimated $200M despite the Marvel brand.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Undertale",
+    "year": 2015,
+    "genre": [
+      "RPG",
+      "Indie"
+    ],
+    "metacritic": 92,
+    "user_score": 8.5,
+    "sales_millions": 10,
+    "peak_players": 48000,
+    "avg_playtime_hours": 7,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch",
+      "Xbox"
+    ],
+    "fun_fact": "Made by one person. 92 on Metacritic. Changed how people think about RPG combat forever.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Cuphead",
+    "year": 2017,
+    "genre": [
+      "Platformer",
+      "Indie"
+    ],
+    "metacritic": 86,
+    "user_score": 8.3,
+    "sales_millions": 12,
+    "peak_players": 75000,
+    "avg_playtime_hours": 11,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "Switch",
+      "PS4"
+    ],
+    "fun_fact": "Hand-animated in 1930s cartoon style. Took 7 years to make. Sold 12M copies.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Slay the Spire",
+    "year": 2019,
+    "genre": [
+      "Roguelike",
+      "Card Game"
+    ],
+    "metacritic": 89,
+    "user_score": 8.8,
+    "sales_millions": 7,
+    "peak_players": 56000,
+    "avg_playtime_hours": 36,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch",
+      "Xbox",
+      "Mobile"
+    ],
+    "fun_fact": "Created the deckbuilder roguelike genre. 7M copies sold of a game made by 2 people.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Into the Breach",
+    "year": 2018,
+    "genre": [
+      "Strategy",
+      "Roguelike"
+    ],
+    "metacritic": 89,
+    "user_score": 8.2,
+    "sales_millions": 2,
+    "peak_players": 8000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "Mobile"
+    ],
+    "fun_fact": "From the makers of FTL. 89 Metacritic. Tiny player count but enormous critical acclaim.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "FTL: Faster Than Light",
+    "year": 2012,
+    "genre": [
+      "Roguelike",
+      "Strategy"
+    ],
+    "metacritic": 84,
+    "user_score": 8.5,
+    "sales_millions": 3.5,
+    "peak_players": 12000,
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "Mobile"
+    ],
+    "fun_fact": "Kickstarted for $200K in 2012. Helped launch the entire roguelike indie boom.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "The Binding of Isaac: Rebirth",
+    "year": 2014,
+    "genre": [
+      "Roguelike",
+      "Action"
+    ],
+    "metacritic": 84,
+    "user_score": 8.5,
+    "sales_millions": 5,
+    "peak_players": 56000,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch",
+      "Xbox"
+    ],
+    "fun_fact": "Has received continuous updates for over 10 years. Players average 50+ hours.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Risk of Rain 2",
+    "year": 2020,
+    "genre": [
+      "Roguelike",
+      "Third-Person Shooter"
+    ],
+    "metacritic": 85,
+    "user_score": 8,
+    "sales_millions": 5,
+    "peak_players": 106000,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Jumped from 2D to 3D and somehow improved on the original in every way.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Subnautica",
+    "year": 2018,
+    "genre": [
+      "Survival",
+      "Adventure"
+    ],
+    "metacritic": 87,
+    "user_score": 8.4,
+    "sales_millions": 8,
+    "peak_players": 60000,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A survival game where the scariest enemy is the ocean itself. 8M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Satisfactory",
+    "year": 2024,
+    "genre": [
+      "Simulation",
+      "Sandbox"
+    ],
+    "metacritic": 86,
+    "user_score": 9,
+    "sales_millions": 7,
+    "peak_players": 103152,
+    "avg_playtime_hours": 80,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Spent 6 years in Early Access. Players average 80 hours — and many hit 500+.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Factorio",
+    "year": 2020,
+    "genre": [
+      "Simulation",
+      "Strategy"
+    ],
+    "metacritic": 90,
+    "user_score": 9.3,
+    "sales_millions": 3.5,
+    "peak_players": 31000,
+    "avg_playtime_hours": 80,
+    "platform_tags": [
+      "PC",
+      "Switch"
+    ],
+    "fun_fact": "One of the highest-rated games on Steam with 98% positive reviews. Notoriously addictive.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "RimWorld",
+    "year": 2018,
+    "genre": [
+      "Simulation",
+      "Strategy"
+    ],
+    "metacritic": 86,
+    "user_score": 8.5,
+    "sales_millions": 4,
+    "peak_players": 67000,
+    "avg_playtime_hours": 65,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "A colony sim with emergent storytelling so wild that players write novels about their colonies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Ori and the Blind Forest",
+    "year": 2015,
+    "genre": [
+      "Metroidvania",
+      "Platformer"
+    ],
+    "metacritic": 88,
+    "user_score": 8.6,
+    "sales_millions": 5,
+    "peak_players": 16000,
+    "avg_playtime_hours": 9,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "An Xbox exclusive so beautiful it made grown adults cry. 5M sales.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Ori and the Will of the Wisps",
+    "year": 2020,
+    "genre": [
+      "Metroidvania",
+      "Platformer"
+    ],
+    "metacritic": 90,
+    "user_score": 8.9,
+    "sales_millions": 3,
+    "peak_players": 13000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Improved on the original in every way. 90 on Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Tunic",
+    "year": 2022,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 85,
+    "user_score": 8.4,
+    "sales_millions": 1.5,
+    "peak_players": 9000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A Zelda-inspired game with a secret language players had to collectively decode.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Sifu",
+    "year": 2022,
+    "genre": [
+      "Action",
+      "Beat 'em Up"
+    ],
+    "metacritic": 80,
+    "user_score": 8.2,
+    "sales_millions": 3,
+    "peak_players": 17000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Switch"
+    ],
+    "fun_fact": "Your character ages every time they die. Start as a 20-year-old, end as an elderly martial artist.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Inscryption",
+    "year": 2021,
+    "genre": [
+      "Card Game",
+      "Horror"
+    ],
+    "metacritic": 86,
+    "user_score": 8.8,
+    "sales_millions": 2,
+    "peak_players": 14000,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Switch"
+    ],
+    "fun_fact": "Starts as a card game, becomes something completely different. Multiple Game of the Year awards.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Cult of the Lamb",
+    "year": 2022,
+    "genre": [
+      "Roguelike",
+      "Simulation"
+    ],
+    "metacritic": 83,
+    "user_score": 7.6,
+    "sales_millions": 5,
+    "peak_players": 62000,
+    "avg_playtime_hours": 16,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Run a cult as an adorable lamb. 5M sales. Devolver Digital's biggest hit ever.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Neon White",
+    "year": 2022,
+    "genre": [
+      "FPS",
+      "Platformer"
+    ],
+    "metacritic": 88,
+    "user_score": 8.4,
+    "sales_millions": 1,
+    "peak_players": 7000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Switch"
+    ],
+    "fun_fact": "88 Metacritic but only 1M sales — beloved by critics but under-discovered by players.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Pizza Tower",
+    "year": 2023,
+    "genre": [
+      "Platformer",
+      "Indie"
+    ],
+    "metacritic": 88,
+    "user_score": 9.2,
+    "sales_millions": 2,
+    "peak_players": 8000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "Switch"
+    ],
+    "fun_fact": "Made by one person. 88 Metacritic. Compared to Wario Land but somehow even more chaotic.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Ultrakill",
+    "year": 2022,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": null,
+    "user_score": 9.5,
+    "sales_millions": 2,
+    "peak_players": 28000,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "An Early Access retro FPS with one of the highest user scores on Steam. Coin-shotgun combo.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Deep Rock Galactic",
+    "year": 2020,
+    "genre": [
+      "Co-op",
+      "FPS"
+    ],
+    "metacritic": 85,
+    "user_score": 9.1,
+    "sales_millions": 6,
+    "peak_players": 34000,
+    "avg_playtime_hours": 45,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Rock and Stone! A co-op mining FPS with one of gaming's most wholesome communities.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Darkest Dungeon",
+    "year": 2016,
+    "genre": [
+      "Roguelike",
+      "RPG"
+    ],
+    "metacritic": 84,
+    "user_score": 7.9,
+    "sales_millions": 5,
+    "peak_players": 33000,
+    "avg_playtime_hours": 40,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch",
+      "Mobile"
+    ],
+    "fun_fact": "Made stress and mental health a core game mechanic. 5M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Hades II",
+    "year": 2024,
+    "genre": [
+      "Roguelike",
+      "Action"
+    ],
+    "metacritic": null,
+    "user_score": 8.5,
+    "sales_millions": 3,
+    "peak_players": 99623,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Hit 100K concurrent Steam players in Early Access — before it was even finished.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Spiritfarer",
+    "year": 2020,
+    "genre": [
+      "Simulation",
+      "Adventure"
+    ],
+    "metacritic": 84,
+    "user_score": 8.4,
+    "sales_millions": 1.5,
+    "peak_players": 8000,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A cozy management game about dying — somehow one of the most touching games ever made.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "The Witness",
+    "year": 2016,
+    "genre": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "metacritic": 87,
+    "user_score": 7.5,
+    "sales_millions": 1.5,
+    "peak_players": 10000,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Mobile"
+    ],
+    "fun_fact": "Made by Jonathan Blow (of Braid fame). Over 600 puzzles. No dialogue.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Limbo",
+    "year": 2010,
+    "genre": [
+      "Platformer",
+      "Puzzle"
+    ],
+    "metacritic": 90,
+    "user_score": 8.3,
+    "sales_millions": 6,
+    "peak_players": 8000,
+    "avg_playtime_hours": 3.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
+    "fun_fact": "90 Metacritic for a silent black-and-white puzzle game that takes 3 hours to finish.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Inside",
+    "year": 2016,
+    "genre": [
+      "Platformer",
+      "Puzzle"
+    ],
+    "metacritic": 93,
+    "user_score": 8.7,
+    "sales_millions": 3,
+    "peak_players": 5000,
+    "avg_playtime_hours": 3.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "93 on Metacritic — higher than most AAA games. Entire playthrough is under 4 hours.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Little Nightmares",
+    "year": 2017,
+    "genre": [
+      "Platformer",
+      "Horror"
+    ],
+    "metacritic": 81,
+    "user_score": 8.1,
+    "sales_millions": 6,
+    "peak_players": 18000,
+    "avg_playtime_hours": 4,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "6M sales for a 4-hour horror platformer with no dialogue.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Little Nightmares II",
+    "year": 2021,
+    "genre": [
+      "Platformer",
+      "Horror"
+    ],
+    "metacritic": 82,
+    "user_score": 8.3,
+    "sales_millions": 3,
+    "peak_players": 19000,
+    "avg_playtime_hours": 5.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "The sequel was praised but sold half as many copies as the original.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Firewatch",
+    "year": 2016,
+    "genre": [
+      "Adventure",
+      "Walking Sim"
+    ],
+    "metacritic": 76,
+    "user_score": 7.5,
+    "sales_millions": 2.5,
+    "peak_players": 30000,
+    "avg_playtime_hours": 4,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A 4-hour walking simulator that sparked a massive debate about what counts as a game.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "What Remains of Edith Finch",
+    "year": 2017,
+    "genre": [
+      "Adventure",
+      "Walking Sim"
+    ],
+    "metacritic": 89,
+    "user_score": 8.3,
+    "sales_millions": 2,
+    "peak_players": 6000,
+    "avg_playtime_hours": 2,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "89 Metacritic for a 2-hour game. Won BAFTA Game of the Year.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Journey",
+    "year": 2012,
+    "genre": [
+      "Adventure",
+      "Indie"
+    ],
+    "metacritic": 92,
+    "user_score": 8.5,
+    "sales_millions": 5,
+    "peak_players": 11000,
+    "avg_playtime_hours": 2,
+    "platform_tags": [
+      "PC",
+      "PS4"
+    ],
+    "fun_fact": "92 Metacritic. 2 hours long. No words. The first game ever nominated for a Grammy.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Katana ZERO",
+    "year": 2019,
+    "genre": [
+      "Action",
+      "Platformer"
+    ],
+    "metacritic": 83,
+    "user_score": 8.6,
+    "sales_millions": 1.5,
+    "peak_players": 8000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "Switch",
+      "Xbox"
+    ],
+    "fun_fact": "A neo-noir action game where you can deflect bullets with a katana.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Hotline Miami",
+    "year": 2012,
+    "genre": [
+      "Action",
+      "Indie"
+    ],
+    "metacritic": 85,
+    "user_score": 8.3,
+    "sales_millions": 3,
+    "peak_players": 12000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "Ultra-violent, neon-soaked, and made by 2 people. Spawned an entire aesthetic movement.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Hotline Miami 2: Wrong Number",
+    "year": 2015,
+    "genre": [
+      "Action",
+      "Indie"
+    ],
+    "metacritic": 74,
+    "user_score": 7.4,
+    "sales_millions": 1.5,
+    "peak_players": 8000,
+    "avg_playtime_hours": 7,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "Banned in Australia for extreme violence. Lower Metacritic than the original.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Noita",
+    "year": 2020,
+    "genre": [
+      "Roguelike",
+      "Action"
+    ],
+    "metacritic": 80,
+    "user_score": 8.7,
+    "sales_millions": 2.5,
+    "peak_players": 18000,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Every pixel is physically simulated. You can burn, melt, or dissolve the entire world.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Rain World",
+    "year": 2017,
+    "genre": [
+      "Platformer",
+      "Survival"
+    ],
+    "metacritic": 68,
+    "user_score": 8.5,
+    "sales_millions": 1.5,
+    "peak_players": 14000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "68 Metacritic at launch, now considered a masterpiece. The DLC pushed Steam reviews to Overwhelmingly Positive.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Shovel Knight",
+    "year": 2014,
+    "genre": [
+      "Platformer",
+      "Indie"
+    ],
+    "metacritic": 90,
+    "user_score": 8.5,
+    "sales_millions": 3,
+    "peak_players": 6000,
+    "avg_playtime_hours": 7,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A Kickstarter success that became one of the most beloved indie games of all time. 90 Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Return of the Obra Dinn",
+    "year": 2018,
+    "genre": [
+      "Puzzle",
+      "Mystery"
+    ],
+    "metacritic": 89,
+    "user_score": 8.6,
+    "sales_millions": 1.5,
+    "peak_players": 5000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Made entirely by one person using 1-bit graphics. Won IGF Grand Prize and multiple GOTY awards.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Unpacking",
+    "year": 2021,
+    "genre": [
+      "Puzzle",
+      "Simulation"
+    ],
+    "metacritic": 84,
+    "user_score": 7.8,
+    "sales_millions": 1.5,
+    "peak_players": 5000,
+    "avg_playtime_hours": 3,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A game about unpacking boxes. No dialogue, no combat. 84 Metacritic.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Braid",
+    "year": 2008,
+    "genre": [
+      "Platformer",
+      "Puzzle"
+    ],
+    "metacritic": 90,
+    "user_score": 8,
+    "sales_millions": 1,
+    "peak_players": 3000,
+    "avg_playtime_hours": 5.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Jonathan Blow spent $200K of his own money making it. Helped launch the entire indie game movement.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Oxenfree",
+    "year": 2016,
+    "genre": [
+      "Adventure",
+      "Horror"
+    ],
+    "metacritic": 80,
+    "user_score": 7.8,
+    "sales_millions": 2,
+    "peak_players": 4000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Pioneered a real-time dialogue system that many games have since copied.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "The Messenger",
+    "year": 2018,
+    "genre": [
+      "Platformer",
+      "Metroidvania"
+    ],
+    "metacritic": 86,
+    "user_score": 8.4,
+    "sales_millions": 1,
+    "peak_players": 4000,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Switch"
+    ],
+    "fun_fact": "Starts as an 8-bit platformer, then transforms into a 16-bit Metroidvania halfway through.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "CrossCode",
+    "year": 2018,
+    "genre": [
+      "Action RPG",
+      "Indie"
+    ],
+    "metacritic": 83,
+    "user_score": 8.7,
+    "sales_millions": 1,
+    "peak_players": 5000,
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A retro-styled ARPG with 35+ hours of content. Took 7 years to develop.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Superliminal",
+    "year": 2019,
+    "genre": [
+      "Puzzle",
+      "Indie"
+    ],
+    "metacritic": 77,
+    "user_score": 7.9,
+    "sales_millions": 1.5,
+    "peak_players": 7000,
+    "avg_playtime_hours": 2.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Perspective-based puzzles — pick up a small object and it becomes huge. A real mind-bender.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "A Short Hike",
+    "year": 2019,
+    "genre": [
+      "Adventure",
+      "Indie"
+    ],
+    "metacritic": 83,
+    "user_score": 8.8,
+    "sales_millions": 0.5,
+    "peak_players": 2000,
+    "avg_playtime_hours": 1.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A 90-minute game about climbing a mountain. 83 Metacritic. Costs $8.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "The Elder Scrolls V: Skyrim",
+    "year": 2011,
+    "genre": [
+      "RPG",
+      "Open World"
+    ],
+    "metacritic": 94,
+    "user_score": 8.1,
+    "sales_millions": 60,
+    "peak_players": 97000,
+    "avg_playtime_hours": 34,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch",
+      "PS4"
+    ],
+    "fun_fact": "Re-released on 14 different platforms. 60M copies sold. Todd Howard's magnum opus.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Fallout 4",
+    "year": 2015,
+    "genre": [
+      "RPG",
+      "Open World"
+    ],
+    "metacritic": 84,
+    "user_score": 6.3,
+    "sales_millions": 25,
+    "peak_players": 471955,
+    "avg_playtime_hours": 27,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "472K Steam peak at launch. TV show in 2024 brought so many players back that it set a new peak.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Fallout: New Vegas",
+    "year": 2010,
+    "genre": [
+      "RPG",
+      "Open World"
+    ],
+    "metacritic": 84,
+    "user_score": 8.5,
+    "sales_millions": 12,
+    "peak_players": 65000,
+    "avg_playtime_hours": 28,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Obsidian made it in 18 months. Fans consider it the best Fallout ever — Bethesda hasn't topped it.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Portal 2",
+    "year": 2011,
+    "genre": [
+      "Puzzle",
+      "FPS"
+    ],
+    "metacritic": 95,
+    "user_score": 8.8,
+    "sales_millions": 12,
+    "peak_players": 30000,
+    "avg_playtime_hours": 8.5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "95 on Metacritic — one of the highest-rated games of all time. The co-op ruined friendships.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Half-Life 2",
+    "year": 2004,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": 96,
+    "user_score": 9,
+    "sales_millions": 12,
+    "peak_players": 25000,
+    "avg_playtime_hours": 13,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "96 Metacritic. Revolutionized gaming physics. Fans have waited 20 years for a sequel.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Left 4 Dead 2",
+    "year": 2009,
+    "genre": [
+      "FPS",
+      "Co-op"
+    ],
+    "metacritic": 89,
+    "user_score": 8.2,
+    "sales_millions": 15,
+    "peak_players": 162000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Still has 15-30K concurrent players in 2025 — over 15 years after launch.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Team Fortress 2",
+    "year": 2007,
+    "genre": [
+      "FPS",
+      "Hero Shooter"
+    ],
+    "metacritic": 92,
+    "user_score": 8.5,
+    "sales_millions": null,
+    "peak_players": 154308,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Free-to-play since 2011. Its hat economy is worth millions. Valve barely updates it anymore.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "BioShock Infinite",
+    "year": 2013,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": 94,
+    "user_score": 8,
+    "sales_millions": 11,
+    "peak_players": 60000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "94 Metacritic. The ending is still debated over a decade later.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Civilization VI",
+    "year": 2016,
+    "genre": [
+      "Strategy",
+      "4X"
+    ],
+    "metacritic": 88,
+    "user_score": 6.2,
+    "sales_millions": 12,
+    "peak_players": 162000,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
+    "fun_fact": "12M sales but a 6.2 user score — fans are divided on whether it's better than Civ V.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Civilization V",
+    "year": 2010,
+    "genre": [
+      "Strategy",
+      "4X"
+    ],
+    "metacritic": 90,
+    "user_score": 7.9,
+    "sales_millions": 11,
+    "peak_players": 98000,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "90 Metacritic. Average playtime is 50 hours but many players have 1,000+.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "XCOM 2",
+    "year": 2016,
+    "genre": [
+      "Strategy",
+      "Tactics"
+    ],
+    "metacritic": 88,
+    "user_score": 7.9,
+    "sales_millions": 6,
+    "peak_players": 62000,
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "One of the hardest strategy games ever. Ironman mode runs can end with a single bad decision.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Total War: Warhammer III",
+    "year": 2022,
+    "genre": [
+      "Strategy",
+      "RTS"
+    ],
+    "metacritic": 86,
+    "user_score": 5.2,
+    "sales_millions": 3,
+    "peak_players": 166754,
+    "avg_playtime_hours": 40,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "167K peak on Steam. The combined map with all three games is the biggest Total War map ever.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Cities: Skylines",
+    "year": 2015,
+    "genre": [
+      "Simulation",
+      "City Builder"
+    ],
+    "metacritic": 85,
+    "user_score": 7.5,
+    "sales_millions": 12,
+    "peak_players": 70000,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Killed SimCity. 12M copies sold. The modding community is enormous.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Divinity: Original Sin 2",
+    "year": 2017,
+    "genre": [
+      "RPG",
+      "CRPG"
+    ],
+    "metacritic": 93,
+    "user_score": 8.8,
+    "sales_millions": 6,
+    "peak_players": 93000,
+    "avg_playtime_hours": 59,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "93 Metacritic — tied with the greatest RPGs of all time. Directly inspired Baldur's Gate 3.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dragon's Dogma 2",
+    "year": 2024,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 83,
+    "user_score": 5.6,
+    "sales_millions": 3,
+    "peak_players": 231723,
+    "avg_playtime_hours": 35,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "232K peak on Steam but a 5.6 user score — controversial microtransactions tanked reception.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dark Souls",
+    "year": 2011,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 89,
+    "user_score": 8,
+    "sales_millions": 13,
+    "peak_players": 50000,
+    "avg_playtime_hours": 42,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Created an entire genre named after it. 'Soulslike' is now a standard game category.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Dark Souls II",
+    "year": 2014,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 87,
+    "user_score": 7.1,
+    "sales_millions": 5,
+    "peak_players": 44000,
+    "avg_playtime_hours": 38,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "The 'worst' Dark Souls is still 87 on Metacritic. Directed by a different team than 1 and 3.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Bloodborne",
+    "year": 2015,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 92,
+    "user_score": 8.9,
+    "sales_millions": 7,
+    "peak_players": null,
+    "avg_playtime_hours": 34,
+    "platform_tags": [
+      "PS4"
+    ],
+    "fun_fact": "92 Metacritic. Still a PS4 exclusive 10 years later. Fans have begged for a PC port since launch.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "NieR: Automata",
+    "year": 2017,
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
+    "metacritic": 88,
+    "user_score": 8.8,
+    "sales_millions": 8,
+    "peak_players": 54000,
+    "avg_playtime_hours": 21,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "You have to beat the game 3 times to see the real ending. 8M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Persona 5 Royal",
+    "year": 2020,
+    "genre": [
+      "JRPG",
+      "Social Sim"
+    ],
+    "metacritic": 95,
+    "user_score": 8.9,
+    "sales_millions": 5,
+    "peak_players": 41000,
+    "avg_playtime_hours": 103,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "95 Metacritic. 103 hours average playtime. One of the greatest JRPGs ever made.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dragon Quest XI S",
+    "year": 2018,
+    "genre": [
+      "JRPG",
+      "RPG"
+    ],
+    "metacritic": 92,
+    "user_score": 8.7,
+    "sales_millions": 7,
+    "peak_players": 19000,
+    "avg_playtime_hours": 57,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "92 on Metacritic. 57-hour average. Revived Western interest in the Dragon Quest franchise.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Rocket League",
+    "year": 2015,
+    "genre": [
+      "Sports",
+      "Racing"
+    ],
+    "metacritic": 86,
+    "user_score": 7.8,
+    "sales_millions": null,
+    "peak_players": 143000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Went F2P in 2020. Soccer with rocket cars — simple concept, infinite skill ceiling.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Rainbow Six Siege",
+    "year": 2015,
+    "genre": [
+      "FPS",
+      "Tactical Shooter"
+    ],
+    "metacritic": 79,
+    "user_score": 6.6,
+    "sales_millions": 85,
+    "peak_players": 199000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Almost died at launch. Now 85M players and one of the biggest esports in the world.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Escape from Tarkov",
+    "year": 2017,
+    "genre": [
+      "FPS",
+      "Survival"
+    ],
+    "metacritic": null,
+    "user_score": 5,
+    "sales_millions": 7,
+    "peak_players": 200000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "No Metacritic score, no Steam release, and still sold 7M copies. The hardcore shooter king.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Hunt: Showdown",
+    "year": 2019,
+    "genre": [
+      "FPS",
+      "Horror"
+    ],
+    "metacritic": 82,
+    "user_score": 7.5,
+    "sales_millions": 4,
+    "peak_players": 32000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "A PvPvE horror shooter with some of the best sound design in gaming.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dead by Daylight",
+    "year": 2016,
+    "genre": [
+      "Horror",
+      "Multiplayer"
+    ],
+    "metacritic": 71,
+    "user_score": 5.5,
+    "sales_millions": 15,
+    "peak_players": 105000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch",
+      "Mobile"
+    ],
+    "fun_fact": "71 Metacritic yet 15M sales and still growing. Licensed killers from every horror franchise.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "The Finals",
+    "year": 2023,
+    "genre": [
+      "FPS",
+      "Multiplayer"
+    ],
+    "metacritic": 80,
+    "user_score": 6.8,
+    "sales_millions": null,
+    "peak_players": 264860,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "265K peak players at launch — fully destructible environments set it apart from other shooters.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Valorant",
+    "year": 2020,
+    "genre": [
+      "FPS",
+      "Tactical Shooter"
+    ],
+    "metacritic": 80,
+    "user_score": 4.3,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Not on Steam. 30M+ monthly players. Riot's answer to CS:GO became a massive esport.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "League of Legends",
+    "year": 2009,
+    "genre": [
+      "MOBA",
+      "Strategy"
+    ],
+    "metacritic": 78,
+    "user_score": 5.5,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "The most-played PC game in the world for over a decade. 180M+ monthly players.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Lost Ark",
+    "year": 2022,
+    "genre": [
+      "Action RPG",
+      "MMO"
+    ],
+    "metacritic": 81,
+    "user_score": 5.2,
+    "sales_millions": null,
+    "peak_players": 1325305,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Hit 1.3M peak on Steam at Western launch — the second-highest ever at the time.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "New World",
+    "year": 2021,
+    "genre": [
+      "MMO",
+      "RPG"
+    ],
+    "metacritic": 71,
+    "user_score": 4.8,
+    "sales_millions": 5,
+    "peak_players": 913634,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "914K peak on Steam at launch — then lost 90% of players within 3 months.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Final Fantasy XIV",
+    "year": 2013,
+    "genre": [
+      "MMO",
+      "RPG"
+    ],
+    "metacritic": 86,
+    "user_score": 8,
+    "sales_millions": 27,
+    "peak_players": 95000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Launched as a disaster in 2010 (49 Metacritic), rebooted as A Realm Reborn and became the best MMO ever.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Genshin Impact",
+    "year": 2020,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 84,
+    "user_score": 5.2,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Mobile"
+    ],
+    "fun_fact": "Generated over $5 billion in revenue. Not on Steam. Changed the gacha game industry forever.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Honkai: Star Rail",
+    "year": 2023,
+    "genre": [
+      "Turn-Based RPG"
+    ],
+    "metacritic": 83,
+    "user_score": 8,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Mobile"
+    ],
+    "fun_fact": "Generated $1B+ in its first year. Made by the same studio as Genshin Impact.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "NBA 2K24",
+    "year": 2023,
+    "genre": [
+      "Sports",
+      "Basketball"
+    ],
+    "metacritic": 66,
+    "user_score": 1.2,
+    "sales_millions": 8,
+    "peak_players": 34000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "1.2 user score — one of the lowest ever — yet still sold 8M copies. Sports games sell no matter what.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Gran Turismo 7",
+    "year": 2022,
+    "genre": [
+      "Racing",
+      "Simulation"
+    ],
+    "metacritic": 87,
+    "user_score": 2,
+    "sales_millions": 8,
+    "peak_players": null,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PS5",
+      "PS4",
+      "PC"
+    ],
+    "fun_fact": "87 Metacritic but a 2.0 user score — monetization backlash tanked player reviews.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Age of Empires IV",
+    "year": 2021,
+    "genre": [
+      "RTS",
+      "Strategy"
+    ],
+    "metacritic": 81,
+    "user_score": 6.5,
+    "sales_millions": 3,
+    "peak_players": 73628,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Brought back the classic RTS franchise after 16 years. 74K Steam peak.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Crusader Kings III",
+    "year": 2020,
+    "genre": [
+      "Strategy",
+      "Grand Strategy"
+    ],
+    "metacritic": 91,
+    "user_score": 7.5,
+    "sales_millions": 3,
+    "peak_players": 100000,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "A strategy game where you can seduce the Pope. 91 Metacritic. 100K Steam peak.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Stellaris",
+    "year": 2016,
+    "genre": [
+      "Strategy",
+      "4X"
+    ],
+    "metacritic": 78,
+    "user_score": 6.9,
+    "sales_millions": 4,
+    "peak_players": 68000,
+    "avg_playtime_hours": 40,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Paradox's space 4X that lets you commit interstellar genocide or uplift primitive species.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Anno 1800",
+    "year": 2019,
+    "genre": [
+      "Strategy",
+      "City Builder"
+    ],
+    "metacritic": 81,
+    "user_score": 7,
+    "sales_millions": 3,
+    "peak_players": 25000,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Was an Epic exclusive that still sold 3M — proving the Anno franchise has dedicated fans.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Frostpunk",
+    "year": 2018,
+    "genre": [
+      "Strategy",
+      "Survival"
+    ],
+    "metacritic": 84,
+    "user_score": 8.1,
+    "sales_millions": 5,
+    "peak_players": 43000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "A city builder where child labor and organ harvesting are legitimate survival strategies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Manor Lords",
+    "year": 2024,
+    "genre": [
+      "Strategy",
+      "City Builder"
+    ],
+    "metacritic": null,
+    "user_score": 7.5,
+    "sales_millions": 3,
+    "peak_players": 173336,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Made by one person. 173K peak on Steam in Early Access. 3M copies in 3 weeks.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Amnesia: The Dark Descent",
+    "year": 2010,
+    "genre": [
+      "Horror",
+      "Survival"
+    ],
+    "metacritic": 85,
+    "user_score": 8.3,
+    "sales_millions": 4,
+    "peak_players": 10000,
+    "avg_playtime_hours": 7,
+    "platform_tags": [
+      "PC",
+      "PS4"
+    ],
+    "fun_fact": "Defined the modern horror game genre. PewDiePie's Let's Play of it helped launch YouTube gaming.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Outlast",
+    "year": 2013,
+    "genre": [
+      "Horror",
+      "Survival"
+    ],
+    "metacritic": 80,
+    "user_score": 7.8,
+    "sales_millions": 4,
+    "peak_players": 15000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "No weapons, just a night-vision camcorder. 4M sales from pure terror.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "SOMA",
+    "year": 2015,
+    "genre": [
+      "Horror",
+      "Adventure"
+    ],
+    "metacritic": 84,
+    "user_score": 8.6,
+    "sales_millions": 2,
+    "peak_players": 10000,
+    "avg_playtime_hours": 9,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "From the makers of Amnesia. Asks the question: what does it mean to be human?",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Alien: Isolation",
+    "year": 2014,
+    "genre": [
+      "Horror",
+      "Survival"
+    ],
+    "metacritic": 79,
+    "user_score": 8.5,
+    "sales_millions": 5,
+    "peak_players": 13000,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "The Alien AI learns your hiding patterns. 5M sales. Considered the best Alien game ever.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Doom (2016)",
+    "year": 2016,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": 85,
+    "user_score": 8.4,
+    "sales_millions": 5,
+    "peak_players": 44000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Revived the Doom franchise with a game about being too angry to die.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Prey (2017)",
+    "year": 2017,
+    "genre": [
+      "FPS",
+      "Immersive Sim"
+    ],
+    "metacritic": 82,
+    "user_score": 8.3,
+    "sales_millions": 2,
+    "peak_players": 15000,
+    "avg_playtime_hours": 16,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Critically acclaimed but commercially underperformed. A cult classic in the immersive sim genre.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dishonored 2",
+    "year": 2016,
+    "genre": [
+      "Action",
+      "Stealth"
+    ],
+    "metacritic": 86,
+    "user_score": 7.2,
+    "sales_millions": 3,
+    "peak_players": 42000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "The Clockwork Mansion level is considered one of the greatest levels in gaming history.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Doom (1993)",
+    "year": 1993,
+    "genre": [
+      "FPS",
+      "Action"
+    ],
+    "metacritic": null,
+    "user_score": 9,
+    "sales_millions": 10,
+    "peak_players": null,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Created the FPS genre. Has been ported to everything — calculators, pregnancy tests, ATMs.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Halo: The Master Chief Collection",
+    "year": 2019,
+    "genre": [
+      "FPS",
+      "Shooter"
+    ],
+    "metacritic": 85,
+    "user_score": 6.9,
+    "sales_millions": 10,
+    "peak_players": 161024,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "6 Halo games in one package. 161K Steam peak when it finally came to PC.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Metal Gear Solid V: The Phantom Pain",
+    "year": 2015,
+    "genre": [
+      "Action",
+      "Stealth"
+    ],
+    "metacritic": 95,
+    "user_score": 8.2,
+    "sales_millions": 6,
+    "peak_players": 131000,
+    "avg_playtime_hours": 46,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "95 Metacritic. Kojima's final Metal Gear. Famously unfinished due to his fallout with Konami.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Resident Evil 3 Remake",
+    "year": 2020,
+    "genre": [
+      "Survival Horror",
+      "Action"
+    ],
+    "metacritic": 79,
+    "user_score": 5.6,
+    "sales_millions": 7,
+    "peak_players": 58000,
+    "avg_playtime_hours": 6,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "7M sales despite being the shortest RE remake at just 6 hours.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Nioh 2",
+    "year": 2020,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 85,
+    "user_score": 8.1,
+    "sales_millions": 3,
+    "peak_players": 22000,
+    "avg_playtime_hours": 60,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
+    "fun_fact": "Team Ninja's answer to Dark Souls — harder, faster, and with 60 hours of content.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Biomutant",
+    "year": 2021,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 62,
+    "user_score": 6,
+    "sales_millions": 1,
+    "peak_players": 55836,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "56K Steam peak from hype alone. 62 Metacritic. A cautionary tale of marketing vs reality.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Warhammer 40,000: Space Marine 2",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Third-Person Shooter"
+    ],
+    "metacritic": 81,
+    "user_score": 8,
+    "sales_millions": 5,
+    "peak_players": 225690,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "226K Steam peak. Surprised everyone by being genuinely great.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "The Outer Worlds",
+    "year": 2019,
+    "genre": [
+      "RPG",
+      "FPS"
+    ],
+    "metacritic": 82,
+    "user_score": 7.3,
+    "sales_millions": 5,
+    "peak_players": 25000,
+    "avg_playtime_hours": 13,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Obsidian's 'Fallout in space.' 5M copies. Shorter than expected but well-loved.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "No Man's Sky",
+    "year": 2016,
+    "genre": [
+      "Survival",
+      "Exploration"
+    ],
+    "metacritic": 61,
+    "user_score": 4.9,
+    "sales_millions": 10,
+    "peak_players": 212321,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Launched as a disaster (61 Metacritic). Years of free updates turned it into one of gaming's greatest redemption stories.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Grounded",
+    "year": 2022,
+    "genre": [
+      "Survival",
+      "Co-op"
+    ],
+    "metacritic": 79,
+    "user_score": 7.8,
+    "sales_millions": 15,
+    "peak_players": 18000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Honey I Shrunk the Kids as a survival game. 15M players through Game Pass.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Warhammer: Vermintide 2",
+    "year": 2018,
+    "genre": [
+      "Co-op",
+      "FPS"
+    ],
+    "metacritic": 82,
+    "user_score": 7.7,
+    "sales_millions": 5,
+    "peak_players": 73000,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Left 4 Dead meets Warhammer Fantasy. 5M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "V Rising",
+    "year": 2024,
+    "genre": [
+      "Survival",
+      "Action RPG"
+    ],
+    "metacritic": 82,
+    "user_score": 8,
+    "sales_millions": 4,
+    "peak_players": 150000,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "Build a vampire castle, hunt for blood. 150K Steam peak. 4M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Enshrouded",
+    "year": 2024,
+    "genre": [
+      "Survival",
+      "RPG"
+    ],
+    "metacritic": null,
+    "user_score": 7.5,
+    "sales_millions": 3,
+    "peak_players": 161020,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "161K peak players in Early Access. Valheim-like survival with RPG combat.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Remnant 2",
+    "year": 2023,
+    "genre": [
+      "Soulslike",
+      "Co-op Shooter"
+    ],
+    "metacritic": 80,
+    "user_score": 7.2,
+    "sales_millions": 3,
+    "peak_players": 88000,
+    "avg_playtime_hours": 22,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "88K Steam peak. A Soulslike shooter that no one expected to be this good.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Wo Long: Fallen Dynasty",
+    "year": 2023,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 78,
+    "user_score": 6.8,
+    "sales_millions": 3,
+    "peak_players": 42000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "Team Ninja's Three Kingdoms Soulslike. 3M copies in its first month.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Armored Core VI: Fires of Rubicon",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Mech"
+    ],
+    "metacritic": 86,
+    "user_score": 8,
+    "sales_millions": 3,
+    "peak_players": 148898,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "FromSoftware's return to Armored Core after 10 years. 149K peak — more than any previous AC.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Immortals Fenyx Rising",
+    "year": 2020,
+    "genre": [
+      "Action",
+      "Open World"
+    ],
+    "metacritic": 79,
+    "user_score": 7.5,
+    "sales_millions": 3,
+    "peak_players": 8000,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Ubisoft's Breath of the Wild clone. Decent reviews but lost in the shuffle.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Watch Dogs 2",
+    "year": 2016,
+    "genre": [
+      "Action",
+      "Open World"
+    ],
+    "metacritic": 82,
+    "user_score": 7.3,
+    "sales_millions": 10,
+    "peak_players": 27000,
+    "avg_playtime_hours": 19,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Universally considered better than the first Watch Dogs but sold fewer copies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Tiny Tina's Wonderlands",
+    "year": 2022,
+    "genre": [
+      "FPS",
+      "Looter Shooter"
+    ],
+    "metacritic": 73,
+    "user_score": 5.5,
+    "sales_millions": 3,
+    "peak_players": 44000,
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "Borderlands meets D&D. Fun concept but DLC was universally panned.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Ghostwire: Tokyo",
+    "year": 2022,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 73,
+    "user_score": 7,
+    "sales_millions": 2,
+    "peak_players": 16000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Tango Gameworks' supernatural action game set in an empty Tokyo.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Sable",
+    "year": 2021,
+    "genre": [
+      "Adventure",
+      "Exploration"
+    ],
+    "metacritic": 73,
+    "user_score": 7.5,
+    "sales_millions": 0.5,
+    "peak_players": 4000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Moebius-inspired open world. Beautiful but buggy at launch.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Pentiment",
+    "year": 2022,
+    "genre": [
+      "Adventure",
+      "RPG"
+    ],
+    "metacritic": 87,
+    "user_score": 8.5,
+    "sales_millions": 0.5,
+    "peak_players": 3000,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "87 Metacritic for a medieval detective game by Obsidian. Incredibly niche but acclaimed.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Psychonauts 2",
+    "year": 2021,
+    "genre": [
+      "Platformer",
+      "Adventure"
+    ],
+    "metacritic": 87,
+    "user_score": 8.4,
+    "sales_millions": 2,
+    "peak_players": 10000,
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Tim Schafer's long-awaited sequel. 87 Metacritic. Took 6 years to make.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Kena: Bridge of Spirits",
+    "year": 2021,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 80,
+    "user_score": 8.2,
+    "sales_millions": 2.5,
+    "peak_players": 12000,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5"
+    ],
+    "fun_fact": "Made by a 15-person team. Looks like a Pixar movie. 80 on Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dying Light",
+    "year": 2015,
+    "genre": [
+      "Action",
+      "Survival"
+    ],
+    "metacritic": 74,
+    "user_score": 8.3,
+    "sales_millions": 30,
+    "peak_players": 78000,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "74 Metacritic but 30M sales. Zombie parkour sells.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Warzone",
+    "year": 2020,
+    "genre": [
+      "Battle Royale",
+      "FPS"
+    ],
+    "metacritic": 80,
+    "user_score": 3.2,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "F2P with 100M+ players. Helped Call of Duty dominate the battle royale space.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Call of Duty: Modern Warfare II (2022)",
+    "year": 2022,
+    "genre": [
+      "FPS",
+      "Shooter"
+    ],
+    "metacritic": 75,
+    "user_score": 3.4,
+    "sales_millions": 30,
+    "peak_players": null,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "30M copies sold in 10 days. 75 Metacritic. 3.4 user score. CoD sells regardless of quality.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Raft",
+    "year": 2022,
+    "genre": [
+      "Survival",
+      "Co-op"
+    ],
+    "metacritic": 76,
+    "user_score": 7.8,
+    "sales_millions": 5,
+    "peak_players": 24000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Survive on a raft in the ocean. Started as a student project. 5M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "7 Days to Die",
+    "year": 2013,
+    "genre": [
+      "Survival",
+      "Zombie"
+    ],
+    "metacritic": null,
+    "user_score": 6.5,
+    "sales_millions": 15,
+    "peak_players": 63000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "In Early Access since 2013 — over 12 years. Still sold 15M copies.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Don't Starve Together",
+    "year": 2016,
+    "genre": [
+      "Survival",
+      "Co-op"
+    ],
+    "metacritic": 83,
+    "user_score": 8,
+    "sales_millions": 8,
+    "peak_players": 40000,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Klei Entertainment's gothic survival. 8M copies and still getting major updates.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Civilization VII",
+    "year": 2025,
+    "genre": [
+      "Strategy",
+      "4X"
+    ],
+    "metacritic": 84,
+    "user_score": 4,
+    "sales_millions": 3,
+    "peak_players": 170000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "170K Steam peak at launch but a divisive 4.0 user score — fans debated its new Age system.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Metaphor: ReFantazio",
+    "year": 2024,
+    "genre": [
+      "JRPG",
+      "RPG"
+    ],
+    "metacritic": 94,
+    "user_score": 9,
+    "sales_millions": 2,
+    "peak_players": 86280,
+    "avg_playtime_hours": 65,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "94 Metacritic — from the Persona team. The highest-rated JRPG of 2024.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Like a Dragon: Infinite Wealth",
+    "year": 2024,
+    "genre": [
+      "JRPG",
+      "Action"
+    ],
+    "metacritic": 92,
+    "user_score": 8.8,
+    "sales_millions": 3,
+    "peak_players": 65000,
+    "avg_playtime_hours": 60,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "92 Metacritic. The Yakuza series reinvented as a JRPG and it's better than ever.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Tekken 8",
+    "year": 2024,
+    "genre": [
+      "Fighting",
+      "Action"
+    ],
+    "metacritic": 90,
+    "user_score": 5.5,
+    "sales_millions": 3,
+    "peak_players": 91000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "90 Metacritic but a 5.5 user score — battle pass monetization infuriated the community.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Street Fighter 6",
+    "year": 2023,
+    "genre": [
+      "Fighting",
+      "Action"
+    ],
+    "metacritic": 92,
+    "user_score": 8.2,
+    "sales_millions": 4,
+    "peak_players": 71000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Revived the franchise after Street Fighter V's rough launch. 92 Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Mortal Kombat 1",
+    "year": 2023,
+    "genre": [
+      "Fighting",
+      "Action"
+    ],
+    "metacritic": 84,
+    "user_score": 5.2,
+    "sales_millions": 3,
+    "peak_players": 35000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "The timeline reboot. 84 Metacritic. Switch version was infamously terrible.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Guilty Gear Strive",
+    "year": 2021,
+    "genre": [
+      "Fighting",
+      "Action"
+    ],
+    "metacritic": 87,
+    "user_score": 7.5,
+    "sales_millions": 3,
+    "peak_players": 31000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "Arc System Works made a fighting game that looks like an anime. 3M copies sold.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "MultiVersus",
+    "year": 2024,
+    "genre": [
+      "Fighting",
+      "Platform Fighter"
+    ],
+    "metacritic": 63,
+    "user_score": 3,
+    "sales_millions": null,
+    "peak_players": 145000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Batman vs Bugs Bunny. 145K peak. 63 Metacritic. A spectacular failure after a promising beta.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Dragon Ball FighterZ",
+    "year": 2018,
+    "genre": [
+      "Fighting",
+      "Action"
+    ],
+    "metacritic": 86,
+    "user_score": 7.5,
+    "sales_millions": 10,
+    "peak_players": 44000,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "10M copies — the best-selling Dragon Ball game ever. Captures the anime perfectly.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Wuthering Waves",
+    "year": 2024,
+    "genre": [
+      "Action RPG",
+      "Open World"
+    ],
+    "metacritic": 69,
+    "user_score": 7,
+    "sales_millions": null,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Mobile"
+    ],
+    "fun_fact": "Genshin Impact's main competitor. 69 Metacritic at launch but improved rapidly.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Stellar Blade",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 80,
+    "user_score": 8.5,
+    "sales_millions": 2,
+    "peak_players": null,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PS5"
+    ],
+    "fun_fact": "A PS5 exclusive that generated massive debate about character design.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Still Wakes the Deep",
+    "year": 2024,
+    "genre": [
+      "Horror",
+      "Adventure"
+    ],
+    "metacritic": 77,
+    "user_score": 7.5,
+    "sales_millions": 1,
+    "peak_players": 6000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "An oil rig horror game by the Dear Esther team. 5 hours of pure atmosphere.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Animal Well",
+    "year": 2024,
+    "genre": [
+      "Puzzle",
+      "Metroidvania"
+    ],
+    "metacritic": 91,
+    "user_score": 8.5,
+    "sales_millions": 1,
+    "peak_players": 8000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Switch"
+    ],
+    "fun_fact": "91 Metacritic. Made by one person. Has secret puzzles no one has solved yet.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Pacific Drive",
+    "year": 2024,
+    "genre": [
+      "Survival",
+      "Driving"
+    ],
+    "metacritic": 79,
+    "user_score": 7.8,
+    "sales_millions": 1.5,
+    "peak_players": 17000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "A survival game where your car is your home, your weapon, and your best friend.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Satisfactory 1.0",
+    "year": 2024,
+    "genre": [
+      "Simulation",
+      "Sandbox"
+    ],
+    "metacritic": 86,
+    "user_score": 9,
+    "sales_millions": 7,
+    "peak_players": 103152,
+    "avg_playtime_hours": 80,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "Spent 6 years in Early Access before 1.0 launch. Players average 80+ hours.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Titanfall",
+    "year": 2014,
+    "genre": [
+      "FPS",
+      "Mech"
+    ],
+    "metacritic": 86,
+    "user_score": 7.3,
+    "sales_millions": 10,
+    "peak_players": null,
+    "avg_playtime_hours": 6,
+    "platform_tags": [
+      "PC",
+      "Xbox"
+    ],
+    "fun_fact": "Defined the wallrunning FPS movement but servers were shut down due to hacking.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Splatoon 3",
+    "year": 2022,
+    "genre": [
+      "Shooter",
+      "Multiplayer"
+    ],
+    "metacritic": 83,
+    "user_score": 7.2,
+    "sales_millions": 12,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "Nintendo's shooter franchise. 12M copies on Switch alone.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Mario Kart 8 Deluxe",
+    "year": 2017,
+    "genre": [
+      "Racing",
+      "Party"
+    ],
+    "metacritic": 92,
+    "user_score": 8.6,
+    "sales_millions": 64,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "64M copies — the best-selling Switch game ever. More than most entire franchises.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "The Legend of Zelda: Tears of the Kingdom",
+    "year": 2023,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 96,
+    "user_score": 8.4,
+    "sales_millions": 20,
+    "peak_players": null,
+    "avg_playtime_hours": 55,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "96 Metacritic — tied for the highest-rated game of the 2020s.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "year": 2017,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 97,
+    "user_score": 8.3,
+    "sales_millions": 32,
+    "peak_players": null,
+    "avg_playtime_hours": 50,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "97 Metacritic. Redefined open-world game design. Every game since has been compared to it.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Super Smash Bros. Ultimate",
+    "year": 2018,
+    "genre": [
+      "Fighting",
+      "Platform Fighter"
+    ],
+    "metacritic": 93,
+    "user_score": 8.4,
+    "sales_millions": 34,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "34M copies. 89 playable characters. The ultimate crossover event in gaming history.",
+    "surprise_factor": "low"
+  },
+  {
+    "title": "Animal Crossing: New Horizons",
+    "year": 2020,
+    "genre": [
+      "Simulation",
+      "Social"
+    ],
+    "metacritic": 90,
+    "user_score": 5.4,
+    "sales_millions": 44,
+    "peak_players": null,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "44M copies — launched during COVID lockdowns and became a global cultural phenomenon.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Pokemon Legends: Arceus",
+    "year": 2022,
+    "genre": [
+      "Action RPG",
+      "Adventure"
+    ],
+    "metacritic": 83,
+    "user_score": 7.5,
+    "sales_millions": 14,
+    "peak_players": null,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "Finally gave Pokemon fans the open-world game they'd been requesting for 20 years.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Pokemon Scarlet & Violet",
+    "year": 2022,
+    "genre": [
+      "RPG",
+      "Adventure"
+    ],
+    "metacritic": 72,
+    "user_score": 2.8,
+    "sales_millions": 25,
+    "peak_players": null,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "25M sales despite a 72 Metacritic and 2.8 user score. Pokemon is critic-proof.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Fire Emblem: Three Houses",
+    "year": 2019,
+    "genre": [
+      "Strategy",
+      "RPG"
+    ],
+    "metacritic": 89,
+    "user_score": 8.6,
+    "sales_millions": 4,
+    "peak_players": null,
+    "avg_playtime_hours": 46,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "Turned Fire Emblem from niche to mainstream. 4M copies and a massive fan community.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Xenoblade Chronicles 3",
+    "year": 2022,
+    "genre": [
+      "JRPG",
+      "Action"
+    ],
+    "metacritic": 89,
+    "user_score": 8.5,
+    "sales_millions": 2,
+    "peak_players": null,
+    "avg_playtime_hours": 65,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "89 Metacritic. 65-hour main story. One of the most ambitious JRPGs ever made.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Metroid Dread",
+    "year": 2021,
+    "genre": [
+      "Metroidvania",
+      "Action"
+    ],
+    "metacritic": 88,
+    "user_score": 8.6,
+    "sales_millions": 3,
+    "peak_players": null,
+    "avg_playtime_hours": 10,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "The first new 2D Metroid in 19 years. Sold 3M copies — a franchise record.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Bayonetta 3",
+    "year": 2022,
+    "genre": [
+      "Action",
+      "Hack and Slash"
+    ],
+    "metacritic": 86,
+    "user_score": 6.5,
+    "sales_millions": 1.5,
+    "peak_players": null,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "86 Metacritic but controversy over voice actor recasting tanked the user score.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Pikmin 4",
+    "year": 2023,
+    "genre": [
+      "Strategy",
+      "Adventure"
+    ],
+    "metacritic": 87,
+    "user_score": 8.3,
+    "sales_millions": 3.5,
+    "peak_players": null,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "Switch"
+    ],
+    "fun_fact": "The best-selling Pikmin game ever. Finally made the franchise mainstream.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Contra: Operation Galuga",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Platformer"
+    ],
+    "metacritic": 73,
+    "user_score": 7.5,
+    "sales_millions": 0.5,
+    "peak_players": 2000,
+    "avg_playtime_hours": 4,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A modern revival of the classic run-and-gun franchise.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Diablo III",
+    "year": 2012,
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
+    "metacritic": 88,
+    "user_score": 3.8,
+    "sales_millions": 30,
+    "peak_players": null,
+    "avg_playtime_hours": 18,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "30M copies sold but a 3.8 user score at launch — the real-money auction house disaster.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Diablo II: Resurrected",
+    "year": 2021,
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
+    "metacritic": 81,
+    "user_score": 4.2,
+    "sales_millions": 5,
+    "peak_players": null,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A remaster of one of the greatest games ever. Blizzard somehow fumbled the launch.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Overcooked! 2",
+    "year": 2018,
+    "genre": [
+      "Co-op",
+      "Party"
+    ],
+    "metacritic": 82,
+    "user_score": 7.5,
+    "sales_millions": 5,
+    "peak_players": 8000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "The game most likely to end friendships and relationships. Chaotic co-op cooking.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Stray",
+    "year": 2022,
+    "genre": [
+      "Adventure",
+      "Indie"
+    ],
+    "metacritic": 83,
+    "user_score": 8.8,
+    "sales_millions": 3,
+    "peak_players": 62000,
+    "avg_playtime_hours": 5,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox"
+    ],
+    "fun_fact": "You play as a cat. That's it. That's why it sold 3M copies.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "PowerWash Simulator",
+    "year": 2022,
+    "genre": [
+      "Simulation",
+      "Indie"
+    ],
+    "metacritic": 79,
+    "user_score": 8,
+    "sales_millions": 5,
+    "peak_players": 15000,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "PS5",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A game about pressure washing. 5M copies sold. Somehow incredibly relaxing.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Paladin's Oath",
+    "year": 2024,
+    "genre": [
+      "Strategy",
+      "RPG"
+    ],
+    "metacritic": null,
+    "user_score": 8,
+    "sales_millions": 1,
+    "peak_players": 5000,
+    "avg_playtime_hours": 25,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "A tactics RPG inspired by Final Fantasy Tactics that flew under the radar.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Elden Ring: Shadow of the Erdtree",
+    "year": 2024,
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "metacritic": 94,
+    "user_score": 6.5,
+    "sales_millions": 5,
+    "peak_players": 952523,
+    "avg_playtime_hours": 30,
+    "platform_tags": [
+      "PC",
+      "PS5",
+      "Xbox",
+      "PS4"
+    ],
+    "fun_fact": "94 Metacritic but 6.5 user score — fans review-bombed it for being too hard.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Wukong: Black Myth DLC",
+    "year": 2025,
+    "genre": [
+      "Action RPG"
+    ],
+    "metacritic": null,
+    "user_score": 8.5,
+    "sales_millions": 3,
+    "peak_players": 500000,
+    "avg_playtime_hours": 15,
+    "platform_tags": [
+      "PC",
+      "PS5"
+    ],
+    "fun_fact": "The highly anticipated expansion to one of 2024's biggest games.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Indiana Jones and the Great Circle",
+    "year": 2024,
+    "genre": [
+      "Action",
+      "Adventure"
+    ],
+    "metacritic": 85,
+    "user_score": 8,
+    "sales_millions": 3,
+    "peak_players": 30000,
+    "avg_playtime_hours": 14,
+    "platform_tags": [
+      "PC",
+      "Xbox",
+      "PS5"
+    ],
+    "fun_fact": "MachineGames (Wolfenstein devs) made an Indiana Jones game. 85 Metacritic.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Path of Exile",
+    "year": 2013,
+    "genre": [
+      "Action RPG",
+      "Hack and Slash"
+    ],
+    "metacritic": 85,
+    "user_score": 8,
+    "sales_millions": null,
+    "peak_players": 157000,
+    "avg_playtime_hours": null,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox"
+    ],
+    "fun_fact": "Free-to-play. Considered the true spiritual successor to Diablo 2 by hardcore ARPG fans.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Wargroove",
+    "year": 2019,
+    "genre": [
+      "Strategy",
+      "Tactics"
+    ],
+    "metacritic": 80,
+    "user_score": 8,
+    "sales_millions": 1,
+    "peak_players": 4000,
+    "avg_playtime_hours": 12,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "A spiritual successor to Advance Wars made by an indie studio.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "Chants of Sennaar",
+    "year": 2023,
+    "genre": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "metacritic": 82,
+    "user_score": 8.5,
+    "sales_millions": 0.5,
+    "peak_players": 3000,
+    "avg_playtime_hours": 7,
+    "platform_tags": [
+      "PC",
+      "PS4",
+      "Xbox",
+      "Switch"
+    ],
+    "fun_fact": "Learn fictional languages to solve puzzles. One of the most unique games of 2023.",
+    "surprise_factor": "high"
+  },
+  {
+    "title": "Voices of the Void",
+    "year": 2024,
+    "genre": [
+      "Horror",
+      "Simulation"
+    ],
+    "metacritic": null,
+    "user_score": 9,
+    "sales_millions": 0.5,
+    "peak_players": 8000,
+    "avg_playtime_hours": 20,
+    "platform_tags": [
+      "PC"
+    ],
+    "fun_fact": "A free indie horror game about a scientist alone at a satellite array. Cult following.",
+    "surprise_factor": "medium"
+  },
+  {
+    "title": "1000xRESIST",
+    "year": 2024,
+    "genre": [
+      "Adventure",
+      "Visual Novel"
+    ],
+    "metacritic": 90,
+    "user_score": 8.8,
+    "sales_millions": 0.3,
+    "peak_players": 2000,
+    "avg_playtime_hours": 8,
+    "platform_tags": [
+      "PC",
+      "Switch"
+    ],
+    "fun_fact": "90 Metacritic. One of the most critically acclaimed indie games of 2024.",
     "surprise_factor": "high"
   }
 ]

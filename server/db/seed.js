@@ -52,7 +52,7 @@ function seedChallenges() {
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - 3);
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() + 14);
+  endDate.setDate(endDate.getDate() + 365);
 
   let challengeCount = 0;
   const current = new Date(startDate);
