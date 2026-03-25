@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult } from '../lib/api';
+import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult } from '../lib/api';
 
 // States: LOADING | IDLE | ROUND_ACTIVE | REVEALING | NEXT_ROUND | GAME_OVER
 const STATES = {
@@ -218,6 +218,11 @@ export default function useGame(mode = 'challenge') {
 
       // Submit to server (fire and forget)
       submitChallengeResult(challengeData.date, finalScore).catch(() => {});
+    }
+
+    if (mode === 'endless' && finalScore > 0) {
+      // Submit endless score to server
+      submitEndlessResult(finalScore).catch(() => {});
     }
   }
 

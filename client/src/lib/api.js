@@ -62,6 +62,13 @@ export function submitEndlessAnswer(gameAId, gameBId, statCategory, choice) {
   });
 }
 
+export function submitEndlessResult(score) {
+  return request('/endless/result', {
+    method: 'POST',
+    body: JSON.stringify({ score }),
+  });
+}
+
 export function fetchDailyLeaderboard(date) {
   const params = date ? `?date=${date}` : '';
   return request(`/leaderboard/daily${params}`);
