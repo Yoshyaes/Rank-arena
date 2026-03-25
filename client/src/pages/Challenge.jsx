@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import useStreak from '../hooks/useStreak';
@@ -31,9 +32,11 @@ export default function Challenge() {
   } = useGame('challenge');
 
   // Record streak when game completes
-  if (isComplete && challengeData?.date) {
-    recordPlay(challengeData.date);
-  }
+  useEffect(() => {
+    if (isComplete && challengeData?.date) {
+      recordPlay(challengeData.date);
+    }
+  }, [isComplete, challengeData?.date]);
 
   function getCardState(side) {
     if (state === STATES.IDLE || state === STATES.ROUND_ACTIVE || state === STATES.LOADING) {

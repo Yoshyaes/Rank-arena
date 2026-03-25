@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import GameCard from '../components/GameCard';
@@ -47,9 +48,11 @@ export default function Endless() {
   } = useGame('endless');
 
   // Update personal best on game over
-  if (isComplete) {
-    setPersonalBest(score);
-  }
+  useEffect(() => {
+    if (isComplete) {
+      setPersonalBest(score);
+    }
+  }, [isComplete, score]);
 
   function getCardState(side) {
     if (state === STATES.IDLE || state === STATES.ROUND_ACTIVE || state === STATES.LOADING) {
