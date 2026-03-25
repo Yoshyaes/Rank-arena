@@ -109,10 +109,11 @@ function insertEndlessScore(userId, score) {
 
 function getEndlessLeaderboard(limit = 20) {
   return db.prepare(
-    `SELECT es.score, es.achieved_at, u.display_name
+    `SELECT MAX(es.score) as score, es.achieved_at, u.display_name
      FROM endless_scores es
      LEFT JOIN users u ON es.user_id = u.id
-     ORDER BY es.score DESC, es.achieved_at ASC
+     GROUP BY es.user_id
+     ORDER BY score DESC, es.achieved_at ASC
      LIMIT ?`
   ).all(limit);
 }
