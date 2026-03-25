@@ -1,4 +1,8 @@
-const API_BASE = '/arena/api';
+// In production, API is served from the same origin on port 3001
+// In development, Vite proxies /arena/api to localhost:3001
+const API_BASE = import.meta.env.PROD
+  ? (window.location.protocol + '//' + window.location.hostname + ':3001/api')
+  : '/arena/api';
 
 async function request(url, options = {}) {
   const res = await fetch(`${API_BASE}${url}`, {
