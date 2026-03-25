@@ -33,14 +33,15 @@ export default function GameCard({
         relative w-full rounded-2xl overflow-hidden transition-all duration-150 ease-out
         border-2 text-left cursor-pointer
         ${cardState === 'idle' ? 'border-border bg-bg-card hover:border-accent-blue hover:bg-bg-card-hover hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]' : ''}
-        ${isRevealed ? 'border-accent-win' : ''}
+        ${isCorrect ? 'border-accent-win' : ''}
+        ${isWinner ? 'border-border' : ''}
         ${isWrong ? 'border-accent-lose' : ''}
         ${disabled && cardState === 'idle' ? 'opacity-70 cursor-not-allowed' : ''}
         focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-bg-primary
       `}
     >
       {/* Result overlay */}
-      {isRevealed && (
+      {isCorrect && (
         <div className="absolute inset-0 bg-accent-win/10 z-10 pointer-events-none" />
       )}
       {isWrong && (
