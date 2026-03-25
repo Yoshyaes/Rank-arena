@@ -90,14 +90,13 @@ export default function ShareCard({
     return 'text-accent-lose';
   }
 
-  // Image preview URL (direct to Node.js)
+  // Image preview URL (through PHP proxy, same domain)
   const imageParams = new URLSearchParams({
     s: score, t: totalRounds, n: challengeNumber,
     c: statCategory || 'metacritic', trail: trailStr,
     streak: streak?.current || 0, d: date,
   });
-  const host = window.location.hostname;
-  const imagePreviewUrl = `${window.location.protocol}//${host}:3001/api/share/image?${imageParams}`;
+  const imagePreviewUrl = `/arena/share-image.php?${imageParams}`;
 
   return (
     <div className="absolute inset-0 bg-bg-surface rounded-3xl flex flex-col animate-card-pop overflow-hidden">

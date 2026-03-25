@@ -36,9 +36,10 @@ $imageParams = http_build_query([
     'd' => $dateStr,
 ]);
 
-// Use the server's hostname for the image URL
+// Image URL goes through PHP proxy (same domain, no port issues)
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'];
-$imageUrl = "http://" . preg_replace('/:\d+$/', '', $host) . ":3001/api/share/image?" . $imageParams;
+$imageUrl = "$scheme://$host/arena/share-image.php?" . $imageParams;
 
 $title = "Rank Arena Daily #$challengeNum — $score/$total";
 $description = "$statLabel • " . ($score == $total ? "FLAWLESS!" : "$score out of $total correct") . " • Can you beat me?";
