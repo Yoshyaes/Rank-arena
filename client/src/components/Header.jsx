@@ -14,9 +14,21 @@ export default function Header() {
   return (
     <header className="border-b border-border">
       <div className="max-w-[1200px] mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="font-grotesk text-xl font-bold text-text-primary hover:text-accent-gold transition-colors">
-          RANK ARENA
-        </Link>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://twoaveragegamers.com/"
+            className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors text-sm font-semibold"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            TAG
+          </a>
+          <span className="text-border">|</span>
+          <Link to="/" className="font-grotesk text-xl font-bold text-text-primary hover:text-accent-gold transition-colors">
+            RANK ARENA
+          </Link>
+        </div>
 
         <nav className="flex items-center gap-6">
           {navLinks.map(({ to, label }) => (
