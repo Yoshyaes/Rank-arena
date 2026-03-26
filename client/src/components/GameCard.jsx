@@ -24,7 +24,6 @@ export default function GameCard({
   const isCorrect = cardState === 'correct';
   const isWinner = cardState === 'winner';
   const isWrong = cardState === 'wrong';
-  const isRevealed = isCorrect || isWinner;
 
   return (
     <button

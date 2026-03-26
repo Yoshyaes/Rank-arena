@@ -44,7 +44,7 @@ export default function Challenge() {
     if (isComplete && challengeData?.date) {
       recordPlay(challengeData.date);
     }
-  }, [isComplete, challengeData?.date]);
+  }, [isComplete, challengeData?.date, recordPlay]);
 
   function getCardState(side) {
     if (state === STATES.IDLE && selectedCard === side) return 'selected';

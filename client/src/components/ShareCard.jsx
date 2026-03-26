@@ -1,35 +1,17 @@
-import { useState, useEffect } from 'react';
-
-const STAT_EMOJI = {
-  'Metacritic Score': '\u{1F4CA}',
-  'Total Sales': '\u{1F4B0}',
-  'Peak Steam Players': '\u{1F3AE}',
-  'Avg Playtime': '\u23F1\uFE0F',
-  'User Score': '\u2B50',
-};
+import { useState } from 'react';
 
 export default function ShareCard({
   score,
   totalRounds,
   results,
   statCategory,
-  statLabel,
+  statLabel: _statLabel,
   challengeNumber,
   date,
   streak,
   onClose,
 }) {
   const [copied, setCopied] = useState(false);
-  const [showEmojis, setShowEmojis] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShowEmojis(true), 300);
-    return () => clearTimeout(t);
-  }, []);
-
-  const emoji = STAT_EMOJI[statLabel] || '\u{1F3AE}';
-  const isPerfect = score === totalRounds;
-  const percentage = totalRounds > 0 ? Math.round((score / totalRounds) * 100) : 0;
 
   const formatDate = (d) => {
     const dt = new Date(d + 'T00:00:00Z');
@@ -38,7 +20,6 @@ export default function ShareCard({
 
   // Build trail string for URL (1 = correct, 0 = wrong)
   const trailStr = results.map(r => r.correct ? '1' : '0').join('');
-  const emojiTrail = results.map(r => r.correct ? '\u2705' : '\u274C').join('');
 
   // Share URL with OG image unfurling
   const shareParams = new URLSearchParams({
@@ -72,13 +53,6 @@ export default function ShareCard({
     } else {
       handleCopy();
     }
-  }
-
-  function getScoreColor() {
-    if (isPerfect) return 'text-accent-gold';
-    if (percentage >= 70) return 'text-accent-win';
-    if (percentage >= 40) return 'text-accent-blue';
-    return 'text-accent-lose';
   }
 
   // Image preview URL (through PHP proxy, same domain)

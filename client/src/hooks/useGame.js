@@ -206,6 +206,7 @@ export default function useGame(mode = 'challenge') {
       setError(err.message);
       setState(STATES.IDLE);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- finishGame uses only stable setters + deps already listed
   }, [state, mode, currentRound, challengeData, gameA, gameB, statCategory, score, results]);
 
   function finishGame(finalScore, finalResults) {
@@ -339,7 +340,7 @@ function markScoreSynced(type, dateOrId) {
       return !(e.type === 'endless' && e.data.timestamp === dateOrId);
     });
     localStorage.setItem(UNSYNCED_KEY, JSON.stringify(filtered));
-  } catch {}
+  } catch { /* localStorage may be unavailable */ }
 }
 
 function getUnsyncedScores() {

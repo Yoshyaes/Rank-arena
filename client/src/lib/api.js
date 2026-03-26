@@ -48,7 +48,7 @@ async function request(apiPath, options = {}, retries = 0) {
     return res.json();
   } catch (err) {
     if (err.name === 'AbortError') {
-      throw new Error('Request timed out — please try again');
+      throw new Error('Request timed out — please try again', { cause: err });
     }
     throw err;
   } finally {

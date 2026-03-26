@@ -2,13 +2,6 @@ const router = require('express').Router();
 const sharp = require('sharp');
 const { STAT_LABELS } = require('../lib/constants');
 
-const STAT_EMOJI = {
-  metacritic: '\u{1F4CA}',
-  sales_millions: '\u{1F4B0}',
-  peak_players: '\u{1F3AE}',
-  avg_playtime_hours: '\u23F1\uFE0F',
-  user_score: '\u2B50',
-};
 
 function getCommentary(score, total) {
   const pct = total > 0 ? score / total : 0;

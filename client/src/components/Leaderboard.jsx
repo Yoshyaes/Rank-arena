@@ -14,39 +14,52 @@ export default function Leaderboard() {
   const [hasMore, setHasMore] = useState(false);
   const [total, setTotal] = useState(0);
   const [userRank, setUserRank] = useState(null);
+  const [retryCount, setRetryCount] = useState(0);
 
-  const loadLeaderboard = useCallback(async (append = false) => {
-    if (append) {
-      setLoadingMore(true);
-    } else {
-      setLoading(true);
-      setData([]);
+  const fetchData = useCallback(async (currentTab, offset = 0) => {
+    if (currentTab === 'daily') {
+      return fetchDailyLeaderboard(null, offset, PAGE_SIZE);
     }
+    return fetchEndlessLeaderboard(offset, PAGE_SIZE);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setData([]);
     setError(null);
+    fetchData(tab).then(res => {
+      if (cancelled) return;
+      setData(res.leaderboard || []);
+      setHasMore(res.hasMore || false);
+      setTotal(res.total || 0);
+      setUserRank(res.userRank || null);
+    }).catch(err => {
+      if (cancelled) return;
+      setError(err.message);
+    }).finally(() => {
+      if (!cancelled) setLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [tab, fetchData, retryCount]);
+
+  const retry = useCallback(() => setRetryCount(c => c + 1), []);
+
+  const loadMore = useCallback(async () => {
+    setLoadingMore(true);
     try {
-      const offset = append ? data.length : 0;
-      let res;
-      if (tab === 'daily') {
-        res = await fetchDailyLeaderboard(null, offset, PAGE_SIZE);
-      } else {
-        res = await fetchEndlessLeaderboard(offset, PAGE_SIZE);
-      }
+      const res = await fetchData(tab, data.length);
       const entries = res.leaderboard || [];
-      setData(prev => append ? [...prev, ...entries] : entries);
+      setData(prev => [...prev, ...entries]);
       setHasMore(res.hasMore || false);
       setTotal(res.total || 0);
       setUserRank(res.userRank || null);
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
       setLoadingMore(false);
     }
-  }, [tab, data.length]);
-
-  useEffect(() => {
-    loadLeaderboard(false);
-  }, [tab]);
+  }, [tab, data.length, fetchData]);
 
   return (
     <div className="max-w-lg mx-auto">
@@ -77,7 +90,7 @@ export default function Leaderboard() {
         <div className="text-center py-12">
           <p className="text-accent-lose mb-3">{error}</p>
           <button
-            onClick={() => loadLeaderboard(false)}
+            onClick={retry}
             className="text-sm text-accent-blue hover:text-text-primary transition-colors"
           >
             Try again
@@ -91,7 +104,7 @@ export default function Leaderboard() {
       ) : (
         <>
           <div className="space-y-2">
-            {data.map((entry, i) => (
+            {data.map((entry) => (
               <div
                 key={`${entry.displayName}-${entry.score}-${entry.rank}`}
                 className={`flex items-center gap-4 px-4 py-3 rounded-xl ${
@@ -122,7 +135,7 @@ export default function Leaderboard() {
           {hasMore && (
             <div className="text-center mt-4">
               <button
-                onClick={() => loadLeaderboard(true)}
+                onClick={loadMore}
                 disabled={loadingMore}
                 className="text-sm text-accent-blue hover:text-text-primary transition-colors disabled:opacity-50"
               >

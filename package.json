@@ -10,7 +10,11 @@
     "start": "node server/index.js",
     "seed": "node server/db/seed.js",
     "fetch-covers": "node server/scripts/fetchCovers.js",
-    "generate-challenge": "node server/lib/challengeGenerator.js"
+    "generate-challenge": "node server/lib/challengeGenerator.js",
+    "test": "npx vitest run --config vitest.config.js",
+    "test:client": "cd client && npx vitest run",
+    "test:all": "npm test && npm run test:client",
+    "lint": "npx eslint server/ && cd client && npx eslint src/"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
@@ -24,5 +28,11 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
+    "vitest": "^4.1.2"
   }
 }
