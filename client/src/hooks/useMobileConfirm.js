@@ -20,7 +20,7 @@ export default function useMobileConfirm(makeChoice) {
 
   const handleCardTap = useCallback((side) => {
     if (isMobile) {
-      setSelectedCard(prev => prev === side ? side : side);
+      setSelectedCard(side);
     } else {
       makeChoice(side);
     }
@@ -29,7 +29,9 @@ export default function useMobileConfirm(makeChoice) {
   const handleConfirm = useCallback(() => {
     if (selectedCard) {
       makeChoice(selectedCard);
-      setSelectedCard(null);
+      // Don't clear selection here — let resetSelection handle it
+      // after the round transitions, so the card stays highlighted
+      // while the API call is in flight
     }
   }, [selectedCard, makeChoice]);
 

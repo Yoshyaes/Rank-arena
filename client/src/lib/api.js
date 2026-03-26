@@ -11,7 +11,7 @@ function buildUrl(apiPath) {
   return `/arena/api${apiPath}`;
 }
 
-async function request(apiPath, options = {}) {
+async function request(apiPath, options = {}, retries = 0) {
   const url = buildUrl(apiPath);
 
   // For GET requests with query params through the proxy, append them
@@ -21,15 +21,39 @@ async function request(apiPath, options = {}) {
     finalUrl = `/arena/api-proxy.php?path=${encodeURIComponent(path.replace(/^\//, ''))}&${query}`;
   }
 
-  const res = await fetch(finalUrl, {
-    headers: { 'Content-Type': 'application/json', ...options.headers },
-    ...options,
-  });
-  if (!res.ok) {
-    const error = await res.json().catch(() => ({ message: 'Request failed' }));
-    throw new Error(error.message || `HTTP ${res.status}`);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+
+  try {
+    const res = await fetch(finalUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'RankArena',
+        ...options.headers,
+      },
+      signal: controller.signal,
+      ...options,
+    });
+
+    if (!res.ok) {
+      // Retry on server errors (5xx) and rate limits (429), up to 2 retries for GET
+      if (retries < 2 && !options.method && (res.status >= 500 || res.status === 429)) {
+        const delay = (retries + 1) * 1000;
+        await new Promise(r => setTimeout(r, delay));
+        return request(apiPath, options, retries + 1);
+      }
+      const error = await res.json().catch(() => ({ message: 'Request failed' }));
+      throw new Error(error.message || `HTTP ${res.status}`);
+    }
+    return res.json();
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      throw new Error('Request timed out — please try again');
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
   }
-  return res.json();
 }
 
 export function fetchTodayChallenge() {
@@ -69,13 +93,21 @@ export function submitEndlessResult(score) {
   });
 }
 
-export function fetchDailyLeaderboard(date) {
-  const params = date ? `?date=${date}` : '';
-  return request(`/leaderboard/daily${params}`);
+export function fetchDailyLeaderboard(date, offset = 0, limit = 20) {
+  const params = new URLSearchParams();
+  if (date) params.set('date', date);
+  if (offset > 0) params.set('offset', String(offset));
+  if (limit !== 20) params.set('limit', String(limit));
+  const qs = params.toString();
+  return request(`/leaderboard/daily${qs ? '?' + qs : ''}`);
 }
 
-export function fetchEndlessLeaderboard() {
-  return request('/leaderboard/endless');
+export function fetchEndlessLeaderboard(offset = 0, limit = 20) {
+  const params = new URLSearchParams();
+  if (offset > 0) params.set('offset', String(offset));
+  if (limit !== 20) params.set('limit', String(limit));
+  const qs = params.toString();
+  return request(`/leaderboard/endless${qs ? '?' + qs : ''}`);
 }
 
 export function fetchUserStats() {

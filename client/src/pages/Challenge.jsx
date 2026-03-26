@@ -48,6 +48,7 @@ export default function Challenge() {
 
   function getCardState(side) {
     if (state === STATES.IDLE && selectedCard === side) return 'selected';
+    if (state === STATES.ROUND_ACTIVE && selectedCard === side) return 'selected';
     if (state === STATES.IDLE || state === STATES.ROUND_ACTIVE || state === STATES.LOADING) {
       return 'idle';
     }

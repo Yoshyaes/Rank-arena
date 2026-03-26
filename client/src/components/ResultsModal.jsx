@@ -39,7 +39,7 @@ export default function ResultsModal({
   useEffect(() => {
     if (visible) {
       setShowEmojis(false);
-      const t = setTimeout(() => setShowEmojis(true), 400);
+      const t = setTimeout(() => setShowEmojis(true), 300);
       return () => clearTimeout(t);
     }
   }, [visible]);
@@ -59,7 +59,7 @@ export default function ResultsModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-label="Game results">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
@@ -118,7 +118,7 @@ export default function ResultsModal({
           <div className="flex gap-1.5 justify-center flex-wrap mb-5">
             {results.map((r, i) => (
               <div
-                key={i}
+                key={r.round ?? i}
                 className={`w-7 h-7 rounded-md flex items-center justify-center
                   ${r.correct ? 'bg-accent-win/20 border border-accent-win/30' : 'bg-accent-lose/20 border border-accent-lose/30'}`}
                 style={{
@@ -155,6 +155,7 @@ export default function ResultsModal({
             {mode === 'challenge' && (
               <button
                 onClick={() => setShowShare(true)}
+                aria-label="Share your results"
                 className="btn-text w-full py-3.5 rounded-full bg-accent-gold text-black
                   hover:brightness-110 transition-all flex items-center justify-center gap-2"
               >

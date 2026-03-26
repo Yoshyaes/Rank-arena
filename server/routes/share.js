@@ -1,13 +1,6 @@
 const router = require('express').Router();
 const sharp = require('sharp');
-
-const STAT_LABELS = {
-  metacritic: 'Metacritic Score',
-  sales_millions: 'Total Sales',
-  peak_players: 'Peak Steam Players',
-  avg_playtime_hours: 'Avg Playtime',
-  user_score: 'User Score',
-};
+const { STAT_LABELS } = require('../lib/constants');
 
 const STAT_EMOJI = {
   metacritic: '\u{1F4CA}',

@@ -87,15 +87,89 @@ function insertDailyResult(userId, date, score) {
   return { user_id: userId, challenge_date: date, score };
 }
 
-function getDailyLeaderboard(date, limit = 20) {
+function getDailyResult(userId, date) {
+  return db.prepare(
+    'SELECT * FROM daily_results WHERE user_id = ? AND challenge_date = ?'
+  ).get(userId, date) || null;
+}
+
+// Atomically insert daily result + update streak in a transaction
+const saveDailyResultWithStreak = db.transaction((userId, date, score) => {
+  const stmt = db.prepare(
+    'INSERT OR IGNORE INTO daily_results (user_id, challenge_date, score) VALUES (?, ?, ?)'
+  );
+  const insertResult = stmt.run(userId, date, score);
+  if (insertResult.changes === 0) return null;
+
+  // Update streak
+  const streak = db.prepare('SELECT * FROM streaks WHERE user_id = ?').get(userId);
+  if (streak) {
+    const lastPlayed = streak.last_played;
+    const dayDiff = lastPlayed
+      ? Math.floor((new Date(date + 'T00:00:00Z') - new Date(lastPlayed + 'T00:00:00Z')) / 86400000)
+      : -1;
+
+    if (dayDiff === 1) {
+      const newStreak = streak.current_streak + 1;
+      const longest = Math.max(newStreak, streak.longest_streak);
+      db.prepare(
+        `INSERT INTO streaks (user_id, current_streak, longest_streak, last_played)
+         VALUES (?, ?, ?, ?)
+         ON CONFLICT(user_id) DO UPDATE SET
+           current_streak = excluded.current_streak,
+           longest_streak = excluded.longest_streak,
+           last_played = excluded.last_played`
+      ).run(userId, newStreak, longest, date);
+    } else if (dayDiff !== 0) {
+      db.prepare(
+        `INSERT INTO streaks (user_id, current_streak, longest_streak, last_played)
+         VALUES (?, ?, ?, ?)
+         ON CONFLICT(user_id) DO UPDATE SET
+           current_streak = excluded.current_streak,
+           longest_streak = excluded.longest_streak,
+           last_played = excluded.last_played`
+      ).run(userId, 1, Math.max(1, streak.longest_streak), date);
+    }
+  } else {
+    db.prepare(
+      `INSERT INTO streaks (user_id, current_streak, longest_streak, last_played)
+       VALUES (?, ?, ?, ?)`
+    ).run(userId, 1, 1, date);
+  }
+
+  return { user_id: userId, challenge_date: date, score };
+});
+
+function getDailyLeaderboard(date, limit = 20, offset = 0) {
   return db.prepare(
     `SELECT dr.score, dr.completed_at, u.display_name
      FROM daily_results dr
      LEFT JOIN users u ON dr.user_id = u.id
      WHERE dr.challenge_date = ?
      ORDER BY dr.score DESC, dr.completed_at ASC
-     LIMIT ?`
-  ).all(date, limit);
+     LIMIT ? OFFSET ?`
+  ).all(date, limit, offset);
+}
+
+function getDailyLeaderboardCount(date) {
+  const row = db.prepare(
+    'SELECT COUNT(*) as total FROM daily_results WHERE challenge_date = ?'
+  ).get(date);
+  return row?.total || 0;
+}
+
+function getUserDailyRank(userId, date) {
+  const row = db.prepare(
+    `SELECT COUNT(*) + 1 as rank FROM daily_results
+     WHERE challenge_date = ? AND (score > (SELECT score FROM daily_results WHERE user_id = ? AND challenge_date = ?)
+       OR (score = (SELECT score FROM daily_results WHERE user_id = ? AND challenge_date = ?)
+           AND completed_at < (SELECT completed_at FROM daily_results WHERE user_id = ? AND challenge_date = ?)))`
+  ).get(date, userId, date, userId, date, userId, date);
+  const userResult = db.prepare(
+    'SELECT score FROM daily_results WHERE user_id = ? AND challenge_date = ?'
+  ).get(userId, date);
+  if (!userResult) return null;
+  return { rank: row?.rank || 1, score: userResult.score };
 }
 
 // Endless scores
@@ -107,15 +181,35 @@ function insertEndlessScore(userId, score) {
   return { user_id: userId, score };
 }
 
-function getEndlessLeaderboard(limit = 20) {
+function getEndlessLeaderboard(limit = 20, offset = 0) {
   return db.prepare(
     `SELECT MAX(es.score) as score, es.achieved_at, u.display_name
      FROM endless_scores es
      LEFT JOIN users u ON es.user_id = u.id
      GROUP BY es.user_id
      ORDER BY score DESC, es.achieved_at ASC
-     LIMIT ?`
-  ).all(limit);
+     LIMIT ? OFFSET ?`
+  ).all(limit, offset);
+}
+
+function getEndlessLeaderboardCount() {
+  const row = db.prepare(
+    'SELECT COUNT(DISTINCT user_id) as total FROM endless_scores'
+  ).get();
+  return row?.total || 0;
+}
+
+function getUserEndlessRank(userId) {
+  const userBest = db.prepare(
+    'SELECT MAX(score) as score FROM endless_scores WHERE user_id = ?'
+  ).get(userId);
+  if (!userBest?.score) return null;
+  const row = db.prepare(
+    `SELECT COUNT(*) + 1 as rank FROM (
+       SELECT user_id, MAX(score) as best FROM endless_scores GROUP BY user_id
+     ) sub WHERE sub.best > ?`
+  ).get(userBest.score);
+  return { rank: row?.rank || 1, score: userBest.score };
 }
 
 // Streaks
@@ -170,9 +264,15 @@ module.exports = {
   insertChallenge,
   getRecentGameIds,
   insertDailyResult,
+  getDailyResult,
+  saveDailyResultWithStreak,
   getDailyLeaderboard,
+  getDailyLeaderboardCount,
+  getUserDailyRank,
   insertEndlessScore,
   getEndlessLeaderboard,
+  getEndlessLeaderboardCount,
+  getUserEndlessRank,
   getStreak,
   upsertStreak,
   upsertUser,

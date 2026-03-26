@@ -64,6 +64,7 @@ export default function Endless() {
 
   function getCardState(side) {
     if (state === STATES.IDLE && selectedCard === side) return 'selected';
+    if (state === STATES.ROUND_ACTIVE && selectedCard === side) return 'selected';
     if (state === STATES.IDLE || state === STATES.ROUND_ACTIVE || state === STATES.LOADING) {
       return 'idle';
     }
@@ -172,7 +173,7 @@ export default function Endless() {
       <ResultsModal
         visible={state === STATES.GAME_OVER && isComplete}
         score={score}
-        totalRounds={score}
+        totalRounds={results.length}
         results={results}
         statCategory={statCategory}
         statLabel={statLabel}

@@ -29,12 +29,14 @@ export default function GameCard({
   return (
     <button
       onClick={onClick}
+      aria-label={game?.title ? `Select ${game.title}` : 'Select this game'}
       disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}
       className={`
         relative w-full rounded-2xl overflow-hidden transition-all duration-150 ease-out
         border-2 text-left cursor-pointer
         ${cardState === 'idle' ? 'border-border bg-bg-card hover:border-accent-blue hover:bg-bg-card-hover hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]' : ''}
-        ${isSelected ? 'border-accent-blue bg-bg-card-hover shadow-[0_0_24px_rgba(59,130,246,0.25)]' : ''}
+        ${isSelected && !disabled ? 'border-accent-blue bg-bg-card-hover shadow-[0_0_24px_rgba(59,130,246,0.25)]' : ''}
+        ${isSelected && disabled ? 'border-accent-blue bg-bg-card-hover shadow-[0_0_24px_rgba(59,130,246,0.25)] animate-pulse' : ''}
         ${isCorrect ? 'border-accent-win' : ''}
         ${isWinner ? 'border-border' : ''}
         ${isWrong ? 'border-accent-lose' : ''}
@@ -73,6 +75,8 @@ export default function GameCard({
             src={game.cover_url}
             alt={game?.title}
             loading="lazy"
+            width={640}
+            height={400}
             onError={() => setImgError(true)}
             className="w-full h-full object-cover"
           />

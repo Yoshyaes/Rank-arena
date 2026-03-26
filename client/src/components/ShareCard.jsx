@@ -23,7 +23,7 @@ export default function ShareCard({
   const [showEmojis, setShowEmojis] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setShowEmojis(true), 200);
+    const t = setTimeout(() => setShowEmojis(true), 300);
     return () => clearTimeout(t);
   }, []);
 
@@ -46,7 +46,8 @@ export default function ShareCard({
     c: statCategory || 'metacritic', trail: trailStr,
     streak: streak?.current || 0, d: date,
   });
-  const shareUrl = `https://twoaveragegamers.com/arena/share.php?${shareParams}`;
+  const baseUrl = typeof window !== 'undefined' ? `${window.location.origin}/arena` : 'https://twoaveragegamers.com/arena';
+  const shareUrl = `${baseUrl}/share.php?${shareParams}`;
 
   // Short share text — let the image card do the talking
   const shareText = `Rank Arena Daily #${challengeNumber} \u2014 can you beat my score?\n${shareUrl}`;
@@ -92,7 +93,7 @@ export default function ShareCard({
     <div className="absolute inset-0 bg-bg-surface rounded-3xl flex flex-col animate-card-pop overflow-hidden">
       {/* Header */}
       <div className="relative bg-gradient-to-r from-accent-blue to-accent-purple px-6 py-3">
-        <button onClick={onClose} className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors">
+        <button onClick={onClose} aria-label="Close share card" className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>

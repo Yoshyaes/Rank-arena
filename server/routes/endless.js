@@ -88,12 +88,23 @@ router.post('/score', (req, res) => {
 router.post('/result', optionalAuth, (req, res) => {
   try {
     const { score, wp_user_id, wp_display_name } = req.body;
-    if (typeof score !== 'number' || score < 0) {
+    if (typeof score !== 'number' || !Number.isInteger(score) || score < 0 || score > 500) {
       return res.status(400).json({ message: 'Invalid score' });
     }
 
     let userId = req.user?.id;
     if (wp_user_id) {
+      // Verify WP user via HMAC signature if WP_AUTH_SECRET is configured
+      const wpSecret = process.env.WP_AUTH_SECRET;
+      if (wpSecret) {
+        const crypto = require('crypto');
+        const expected = crypto.createHmac('sha256', wpSecret)
+          .update(String(wp_user_id))
+          .digest('hex');
+        if (req.body.wp_auth_sig !== expected) {
+          return res.status(403).json({ message: 'Invalid WordPress auth signature' });
+        }
+      }
       userId = 'wp_' + wp_user_id;
       queries.upsertUser(userId, null, wp_display_name || 'Player');
     }

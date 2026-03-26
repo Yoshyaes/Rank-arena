@@ -2,6 +2,13 @@ const router = require('express').Router();
 const queries = require('../db/queries');
 const { generateChallenge, getStatLabel } = require('../lib/challengeGenerator');
 const { optionalAuth } = require('../middleware/auth');
+const rateLimit = require('express-rate-limit');
+
+const challengeSubmitLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
+  message: { message: 'Too many requests, please slow down' },
+});
 
 // In-memory cache for today's challenge
 let cachedChallenge = null;
@@ -76,7 +83,7 @@ router.get('/today', (req, res) => {
 });
 
 // POST /api/challenge/submit
-router.post('/submit', (req, res) => {
+router.post('/submit', challengeSubmitLimiter, (req, res) => {
   try {
     const { round, choice, date } = req.body;
 
@@ -84,9 +91,15 @@ router.post('/submit', (req, res) => {
       return res.status(400).json({ message: 'Invalid request' });
     }
 
+    // Always validate against server's current date to prevent stale client submissions
+    const today = getTodayDateStr();
+    if (date !== today) {
+      return res.status(400).json({ message: 'Challenge date mismatch — please refresh' });
+    }
+
     const challenge = getTodayChallenge();
-    if (!challenge || challenge.challenge_date !== date) {
-      return res.status(400).json({ message: 'Challenge date mismatch' });
+    if (!challenge) {
+      return res.status(404).json({ message: 'No challenge available' });
     }
 
     const matchups = challenge.matchups;
@@ -143,35 +156,31 @@ router.post('/result', optionalAuth, (req, res) => {
     let displayName = req.user?.displayName;
 
     if (wp_user_id) {
+      // Verify WP user via HMAC signature if WP_AUTH_SECRET is configured
+      const wpSecret = process.env.WP_AUTH_SECRET;
+      if (wpSecret) {
+        const crypto = require('crypto');
+        const expected = crypto.createHmac('sha256', wpSecret)
+          .update(String(wp_user_id))
+          .digest('hex');
+        if (req.body.wp_auth_sig !== expected) {
+          return res.status(403).json({ message: 'Invalid WordPress auth signature' });
+        }
+      }
       userId = 'wp_' + wp_user_id;
       displayName = wp_display_name || 'Player';
-      // Upsert the WordPress user into our users table
       queries.upsertUser(userId, null, displayName);
     }
 
     if (userId) {
-      const result = queries.insertDailyResult(userId, date, score);
-
-      // Update streak
-      const streak = queries.getStreak(userId);
-      if (streak) {
-        const lastPlayed = streak.last_played;
-        const dayDiff = lastPlayed
-          ? Math.floor((new Date(date + 'T00:00:00Z') - new Date(lastPlayed + 'T00:00:00Z')) / 86400000)
-          : -1;
-
-        if (dayDiff === 0) {
-          // Already played today
-        } else if (dayDiff === 1) {
-          const newStreak = streak.current_streak + 1;
-          const longest = Math.max(newStreak, streak.longest_streak);
-          queries.upsertStreak(userId, newStreak, longest, date);
-        } else {
-          queries.upsertStreak(userId, 1, Math.max(1, streak.longest_streak), date);
-        }
-      } else {
-        queries.upsertStreak(userId, 1, 1, date);
+      // Check if already submitted for today
+      const existing = queries.getDailyResult(userId, date);
+      if (existing) {
+        return res.json({ saved: false, alreadyPlayed: true, result: existing });
       }
+
+      // Insert result + update streak atomically
+      const result = queries.saveDailyResultWithStreak(userId, date, score);
 
       return res.json({ saved: true, result });
     }

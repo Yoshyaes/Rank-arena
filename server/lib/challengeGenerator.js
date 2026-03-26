@@ -1,12 +1,5 @@
 const queries = require('../db/queries');
-
-const STAT_LABELS = {
-  metacritic: 'Metacritic Score',
-  sales_millions: 'Total Sales',
-  peak_players: 'Peak Steam Players',
-  avg_playtime_hours: 'Avg Playtime',
-  user_score: 'User Score',
-};
+const { STAT_LABELS } = require('./constants');
 
 function getStatLabel(category) {
   return STAT_LABELS[category] || category;
@@ -168,4 +161,4 @@ function shuffleArray(arr) {
   return arr;
 }
 
-module.exports = { generateChallenge, getStatLabel, getStatCategoryForDate, STAT_LABELS };
+module.exports = { generateChallenge, getStatLabel, getStatCategoryForDate };

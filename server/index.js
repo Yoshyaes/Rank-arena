@@ -4,12 +4,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+const csrfProtection = require('./middleware/csrf');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(csrfProtection);
 
 // API routes — mounted at both /api and /arena/api for flexibility
 app.use('/api/challenge', require('./routes/challenge'));

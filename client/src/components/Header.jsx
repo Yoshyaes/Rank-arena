@@ -21,6 +21,7 @@ export default function Header() {
             href="https://twoaveragegamers.com/"
             className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors shrink-0"
             title="Back to Two Average Gamers"
+            aria-label="Back to Two Average Gamers"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />

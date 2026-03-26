@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult } from '../lib/api';
 
+const REVEAL_DELAY_MS = 1500;
+
 // States: LOADING | IDLE | ROUND_ACTIVE | REVEALING | NEXT_ROUND | GAME_OVER
 const STATES = {
   LOADING: 'LOADING',
@@ -31,6 +33,14 @@ export default function useGame(mode = 'challenge') {
   const [error, setError] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
   const usedGameIds = useRef(new Set());
+  const revealTimerRef = useRef(null);
+
+  // Cleanup reveal timer on unmount
+  useEffect(() => {
+    return () => {
+      if (revealTimerRef.current) clearTimeout(revealTimerRef.current);
+    };
+  }, []);
 
   // Load challenge or endless pair
   useEffect(() => {
@@ -104,9 +114,8 @@ export default function useGame(mode = 'challenge') {
     setState(STATES.LOADING);
     setError(null);
     try {
-      const excludeArr = Array.from(usedGameIds.current);
       // Clear exclude set if too large (with 50 games, we need to recycle)
-      if (excludeArr.length > 30) {
+      if (usedGameIds.current.size > 30) {
         usedGameIds.current.clear();
       }
       const data = await fetchEndlessPair(Array.from(usedGameIds.current));
@@ -181,7 +190,8 @@ export default function useGame(mode = 'challenge') {
       }
 
       // After reveal animation
-      setTimeout(() => {
+      revealTimerRef.current = setTimeout(() => {
+        revealTimerRef.current = null;
         if (!result.correct) {
           finishGame(result.correct ? score + 1 : score, newResults);
         } else if (mode === 'challenge' && currentRound >= challengeData.matchups.length - 1) {
@@ -190,7 +200,7 @@ export default function useGame(mode = 'challenge') {
         } else {
           setState(STATES.NEXT_ROUND);
         }
-      }, 1500);
+      }, REVEAL_DELAY_MS);
 
     } catch (err) {
       setError(err.message);
