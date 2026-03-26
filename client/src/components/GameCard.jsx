@@ -6,7 +6,7 @@ export default function GameCard({
   statValue,
   statCategory,
   statLabel,
-  cardState = 'idle', // 'idle' | 'correct' | 'wrong' | 'winner'
+  cardState = 'idle', // 'idle' | 'selected' | 'correct' | 'wrong' | 'winner'
   onClick,
   disabled = false,
   isRevealing = false,
@@ -19,20 +19,22 @@ export default function GameCard({
     statCategory,
   });
 
-  const showStat = cardState !== 'idle';
-  const isCorrect = cardState === 'correct';       // The card YOU picked correctly
-  const isWinner = cardState === 'winner';          // The other card (just reveals stat, no icon)
+  const showStat = cardState !== 'idle' && cardState !== 'selected';
+  const isSelected = cardState === 'selected';
+  const isCorrect = cardState === 'correct';
+  const isWinner = cardState === 'winner';
   const isWrong = cardState === 'wrong';
-  const isRevealed = isCorrect || isWinner;         // Both show green border + overlay
+  const isRevealed = isCorrect || isWinner;
 
   return (
     <button
       onClick={onClick}
-      disabled={disabled || cardState !== 'idle'}
+      disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}
       className={`
         relative w-full rounded-2xl overflow-hidden transition-all duration-150 ease-out
         border-2 text-left cursor-pointer
         ${cardState === 'idle' ? 'border-border bg-bg-card hover:border-accent-blue hover:bg-bg-card-hover hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]' : ''}
+        ${isSelected ? 'border-accent-blue bg-bg-card-hover shadow-[0_0_24px_rgba(59,130,246,0.25)]' : ''}
         ${isCorrect ? 'border-accent-win' : ''}
         ${isWinner ? 'border-border' : ''}
         ${isWrong ? 'border-accent-lose' : ''}

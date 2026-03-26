@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import useStreak from '../hooks/useStreak';
+import useMobileConfirm from '../hooks/useMobileConfirm';
 import GameCard from '../components/GameCard';
 import StatBadge from '../components/StatBadge';
 import ActionButtons from '../components/ActionButtons';
@@ -31,6 +32,13 @@ export default function Challenge() {
     STATES,
   } = useGame('challenge');
 
+  const { selectedCard, handleCardTap, handleConfirm, resetSelection } = useMobileConfirm(makeChoice);
+
+  // Reset selection when round changes
+  useEffect(() => {
+    resetSelection();
+  }, [currentRound, resetSelection]);
+
   // Record streak when game completes
   useEffect(() => {
     if (isComplete && challengeData?.date) {
@@ -39,6 +47,7 @@ export default function Challenge() {
   }, [isComplete, challengeData?.date]);
 
   function getCardState(side) {
+    if (state === STATES.IDLE && selectedCard === side) return 'selected';
     if (state === STATES.IDLE || state === STATES.ROUND_ACTIVE || state === STATES.LOADING) {
       return 'idle';
     }
@@ -110,7 +119,7 @@ export default function Challenge() {
             statCategory={statCategory}
             statLabel={statLabel}
             cardState={getCardState('a')}
-            onClick={() => makeChoice('a')}
+            onClick={() => handleCardTap('a')}
             disabled={buttonsDisabled}
             isRevealing={isRevealing}
           />
@@ -129,7 +138,7 @@ export default function Challenge() {
             statCategory={statCategory}
             statLabel={statLabel}
             cardState={getCardState('b')}
-            onClick={() => makeChoice('b')}
+            onClick={() => handleCardTap('b')}
             disabled={buttonsDisabled}
             isRevealing={isRevealing}
           />
@@ -138,11 +147,13 @@ export default function Challenge() {
 
       {/* Action buttons */}
       <ActionButtons
-        onHigher={() => makeChoice('a')}
-        onLower={() => makeChoice('b')}
+        onHigher={() => handleCardTap('a')}
+        onLower={() => handleCardTap('b')}
         disabled={buttonsDisabled}
         gameATitle={gameA?.title}
         gameBTitle={gameB?.title}
+        selectedCard={selectedCard}
+        onConfirm={handleConfirm}
       />
 
       {/* Next round button */}
