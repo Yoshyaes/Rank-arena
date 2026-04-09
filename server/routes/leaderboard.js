@@ -22,7 +22,11 @@ router.get('/daily', optionalAuth, (req, res) => {
 
     // Include user's own rank if authenticated
     let userRank = null;
-    const userId = req.user?.id || (req.query.wp_user_id ? 'wp_' + req.query.wp_user_id : null);
+    const rawWpId = req.query.wp_user_id;
+    if (rawWpId !== undefined && !/^\d+$/.test(rawWpId)) {
+      return res.status(400).json({ message: 'Invalid wp_user_id' });
+    }
+    const userId = req.user?.id || (rawWpId ? 'wp_' + rawWpId : null);
     if (userId) {
       userRank = queries.getUserDailyRank(userId, date);
     }
@@ -51,7 +55,11 @@ router.get('/endless', optionalAuth, (req, res) => {
 
     // Include user's own rank if authenticated
     let userRank = null;
-    const userId = req.user?.id || (req.query.wp_user_id ? 'wp_' + req.query.wp_user_id : null);
+    const rawWpId = req.query.wp_user_id;
+    if (rawWpId !== undefined && !/^\d+$/.test(rawWpId)) {
+      return res.status(400).json({ message: 'Invalid wp_user_id' });
+    }
+    const userId = req.user?.id || (rawWpId ? 'wp_' + rawWpId : null);
     if (userId) {
       userRank = queries.getUserEndlessRank(userId);
     }
