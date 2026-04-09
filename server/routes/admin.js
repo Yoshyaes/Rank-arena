@@ -11,7 +11,12 @@ const adminLimiter = rateLimit({
   message: { message: 'Too many admin requests' },
 });
 
-router.post('/challenge', adminAuth, adminLimiter, (req, res) => {
+// Rate limiter must run BEFORE auth so that brute-force attempts are counted
+// even when they fail authentication.
+router.use(adminLimiter);
+router.use(adminAuth);
+
+router.post('/challenge', (req, res) => {
   try {
     const { challenge_date, stat_category, matchups, auto_generate } = req.body;
 
