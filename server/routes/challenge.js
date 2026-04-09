@@ -156,16 +156,17 @@ router.post('/result', optionalAuth, (req, res) => {
     let displayName = req.user?.displayName;
 
     if (wp_user_id) {
-      // Verify WP user via HMAC signature if WP_AUTH_SECRET is configured
+      // Fail-secure: reject WP-authenticated requests if the secret is not configured
       const wpSecret = process.env.WP_AUTH_SECRET;
-      if (wpSecret) {
-        const crypto = require('crypto');
-        const expected = crypto.createHmac('sha256', wpSecret)
-          .update(String(wp_user_id))
-          .digest('hex');
-        if (req.body.wp_auth_sig !== expected) {
-          return res.status(403).json({ message: 'Invalid WordPress auth signature' });
-        }
+      if (!wpSecret) {
+        return res.status(503).json({ message: 'WordPress authentication is not configured on this server' });
+      }
+      const crypto = require('crypto');
+      const expected = crypto.createHmac('sha256', wpSecret)
+        .update(String(wp_user_id))
+        .digest('hex');
+      if (req.body.wp_auth_sig !== expected) {
+        return res.status(403).json({ message: 'Invalid WordPress auth signature' });
       }
       userId = 'wp_' + wp_user_id;
       displayName = wp_display_name || 'Player';
