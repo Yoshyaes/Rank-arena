@@ -34,6 +34,10 @@ async function fetchCovers() {
 
   for (const game of games) {
     const searchTitle = sanitizeTitle(game.title);
+    // NOTE: RAWG API does not support Authorization headers — the key must go in the
+    // query string. This means it appears in server access logs. Ensure access logs
+    // are access-controlled and rotate the key if it is ever exposed. This is a
+    // one-off admin script; the key is never sent to browsers.
     const url = `https://api.rawg.io/api/games?key=${RAWG_KEY}&search=${encodeURIComponent(searchTitle)}&page_size=1`;
 
     try {

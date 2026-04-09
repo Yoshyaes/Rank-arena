@@ -12,6 +12,9 @@ const endlessLimiter = rateLimit({
 
 const STAT_CATEGORIES = ['metacritic', 'sales_millions', 'peak_players', 'avg_playtime_hours'];
 
+// 50 rounds × 10 points per round
+const ENDLESS_MAX_SCORE = 500;
+
 // GET /api/endless/pair — SAFE data only, no stats
 router.get('/pair', endlessLimiter, (req, res) => {
   try {
@@ -88,7 +91,7 @@ router.post('/score', (req, res) => {
 router.post('/result', optionalAuth, (req, res) => {
   try {
     const { score, wp_user_id, wp_display_name } = req.body;
-    if (typeof score !== 'number' || !Number.isInteger(score) || score < 0 || score > 500) {
+    if (typeof score !== 'number' || !Number.isInteger(score) || score < 0 || score > ENDLESS_MAX_SCORE) {
       return res.status(400).json({ message: 'Invalid score' });
     }
 

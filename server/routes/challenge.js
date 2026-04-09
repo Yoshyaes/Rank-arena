@@ -10,10 +10,6 @@ const challengeSubmitLimiter = rateLimit({
   message: { message: 'Too many requests, please slow down' },
 });
 
-// In-memory cache for today's challenge
-let cachedChallenge = null;
-let cachedDate = null;
-
 const LAUNCH_DATE = new Date('2026-03-22T00:00:00Z');
 
 function getChallengeNumber(dateStr) {
@@ -27,22 +23,17 @@ function getTodayDateStr() {
 
 function getTodayChallenge() {
   const today = getTodayDateStr();
-  if (cachedDate === today && cachedChallenge) {
-    return cachedChallenge;
-  }
 
+  // Always read from SQLite — fast enough for this workload and works correctly
+  // across multiple processes (PM2 workers, clusters) without stale state.
   let challenge = queries.getChallengeByDate(today);
 
   if (!challenge) {
     challenge = generateChallenge(today);
     if (!challenge) {
+      // generateChallenge may have inserted it; re-read from DB
       challenge = queries.getChallengeByDate(today);
     }
-  }
-
-  if (challenge) {
-    cachedChallenge = challenge;
-    cachedDate = today;
   }
 
   return challenge;
