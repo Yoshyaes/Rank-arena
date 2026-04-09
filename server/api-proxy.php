@@ -16,6 +16,14 @@ if (file_exists($wp_load)) {
 $path = isset($_GET['path']) ? $_GET['path'] : '';
 $path = ltrim($path, '/');
 
+// Block path traversal: reject any path containing '..' to prevent escaping /api/
+if (strpos($path, '..') !== false) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Invalid path']);
+    exit;
+}
+
 $target = "http://127.0.0.1:3001/api/" . $path;
 
 // Forward query string (excluding our 'path' param)

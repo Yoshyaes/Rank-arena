@@ -2,6 +2,15 @@ const router = require('express').Router();
 const sharp = require('sharp');
 const { STAT_LABELS } = require('../lib/constants');
 
+// Escape special characters before inserting any string into SVG XML
+function svgEscape(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 
 function getCommentary(score, total) {
   const pct = total > 0 ? score / total : 0;
@@ -57,12 +66,23 @@ router.get('/image', async (req, res) => {
     const score = parseInt(req.query.s) || 0;
     const total = parseInt(req.query.t) || 10;
     const challengeNum = parseInt(req.query.n) || 1;
-    const statCategory = req.query.c || 'metacritic';
-    const trail = req.query.trail || '';
-    const streakDays = parseInt(req.query.streak) || 0;
-    const dateStr = req.query.d || new Date().toISOString().split('T')[0];
 
-    const statLabel = STAT_LABELS[statCategory] || statCategory;
+    // Strict allowlist — reject unknown categories rather than falling back to raw input
+    const statCategory = STAT_LABELS[req.query.c] ? req.query.c : 'metacritic';
+
+    // Cap trail length and allowlist characters ('1' = correct, '0' = incorrect)
+    const trail = String(req.query.trail || '').slice(0, 20).replace(/[^01]/g, '');
+
+    const streakDays = parseInt(req.query.streak) || 0;
+
+    // Validate date format to prevent raw user input reaching SVG
+    const rawDate = req.query.d || '';
+    const dateStr = /^\d{4}-\d{2}-\d{2}$/.test(rawDate)
+      ? rawDate
+      : new Date().toISOString().split('T')[0];
+
+    // statLabel is always a safe hardcoded constant after the allowlist above
+    const statLabel = STAT_LABELS[statCategory];
     const pct = total > 0 ? score / total : 0;
     const color = getScoreColor(score, total);
     const commentary = getCommentary(score, total);
@@ -104,11 +124,11 @@ router.get('/image', async (req, res) => {
 
   <!-- Title -->
   <text x="${width / 2}" y="32" text-anchor="middle" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="20" font-weight="800" fill="#F59E0B" letter-spacing="2">RANK ARENA</text>
-  <text x="${width / 2}" y="55" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">Daily #${challengeNum} \u2022 ${formattedDate}</text>
+  <text x="${width / 2}" y="55" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="13" fill="rgba(255,255,255,0.8)">Daily #${challengeNum} \u2022 ${svgEscape(formattedDate)}</text>
 
   <!-- Stat category badge -->
   <rect x="${width / 2 - 70}" y="85" width="140" height="28" rx="14" fill="#1C2128" stroke="#1E2530" stroke-width="1"/>
-  <text x="${width / 2}" y="104" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#64748B">${statLabel}</text>
+  <text x="${width / 2}" y="104" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#64748B">${svgEscape(statLabel)}</text>
 
   <!-- Score ring -->
   ${buildScoreRing(width / 2, 185, 50, pct, color)}
@@ -118,7 +138,7 @@ router.get('/image', async (req, res) => {
   <text x="${width / 2}" y="212" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="14" fill="#64748B">/ ${total}</text>
 
   <!-- Commentary -->
-  <text x="${width / 2}" y="260" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="${isPerfect ? '#F59E0B' : '#94A3B8'}">${isPerfect ? '\u2728 ' : ''}${commentary}${isPerfect ? ' \u2728' : ''}</text>
+  <text x="${width / 2}" y="260" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="${isPerfect ? '#F59E0B' : '#94A3B8'}">${isPerfect ? '\u2728 ' : ''}${svgEscape(commentary)}${isPerfect ? ' \u2728' : ''}</text>
 
   <!-- Emoji trail -->
   ${buildTrailSVG(trail, trailStartX, 280)}

@@ -10,10 +10,6 @@ const challengeSubmitLimiter = rateLimit({
   message: { message: 'Too many requests, please slow down' },
 });
 
-// In-memory cache for today's challenge
-let cachedChallenge = null;
-let cachedDate = null;
-
 const LAUNCH_DATE = new Date('2026-03-22T00:00:00Z');
 
 function getChallengeNumber(dateStr) {
@@ -27,22 +23,17 @@ function getTodayDateStr() {
 
 function getTodayChallenge() {
   const today = getTodayDateStr();
-  if (cachedDate === today && cachedChallenge) {
-    return cachedChallenge;
-  }
 
+  // Always read from SQLite — fast enough for this workload and works correctly
+  // across multiple processes (PM2 workers, clusters) without stale state.
   let challenge = queries.getChallengeByDate(today);
 
   if (!challenge) {
     challenge = generateChallenge(today);
     if (!challenge) {
+      // generateChallenge may have inserted it; re-read from DB
       challenge = queries.getChallengeByDate(today);
     }
-  }
-
-  if (challenge) {
-    cachedChallenge = challenge;
-    cachedDate = today;
   }
 
   return challenge;
@@ -156,16 +147,17 @@ router.post('/result', optionalAuth, (req, res) => {
     let displayName = req.user?.displayName;
 
     if (wp_user_id) {
-      // Verify WP user via HMAC signature if WP_AUTH_SECRET is configured
+      // Fail-secure: reject WP-authenticated requests if the secret is not configured
       const wpSecret = process.env.WP_AUTH_SECRET;
-      if (wpSecret) {
-        const crypto = require('crypto');
-        const expected = crypto.createHmac('sha256', wpSecret)
-          .update(String(wp_user_id))
-          .digest('hex');
-        if (req.body.wp_auth_sig !== expected) {
-          return res.status(403).json({ message: 'Invalid WordPress auth signature' });
-        }
+      if (!wpSecret) {
+        return res.status(503).json({ message: 'WordPress authentication is not configured on this server' });
+      }
+      const crypto = require('crypto');
+      const expected = crypto.createHmac('sha256', wpSecret)
+        .update(String(wp_user_id))
+        .digest('hex');
+      if (req.body.wp_auth_sig !== expected) {
+        return res.status(403).json({ message: 'Invalid WordPress auth signature' });
       }
       userId = 'wp_' + wp_user_id;
       displayName = wp_display_name || 'Player';
