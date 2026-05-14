@@ -5,6 +5,11 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Legacy: postbuild used to write a copy here. Now redirects to the
+# TAG-rank-arena workspace via scripts/postbuild-copy-dist.mjs. Any local
+# wp-plugin/ remnants are build artifacts only — never commit them.
+wp-plugin/
+
 # SQLite database files (regenerated via npm run seed)
 data/*.db
 data/*.db-shm

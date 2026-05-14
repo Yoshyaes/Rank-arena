@@ -7,6 +7,7 @@
     "dev:client": "cd client && npx vite",
     "dev:server": "cd server && node --watch index.js",
     "build": "cd client && npx vite build",
+    "postbuild": "node scripts/postbuild-copy-dist.mjs",
     "start": "node server/index.js",
     "seed": "node server/db/seed.js",
     "fetch-covers": "node server/scripts/fetchCovers.js",

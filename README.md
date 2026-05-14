@@ -67,6 +67,29 @@ npm start
 
 Express serves the built frontend from `/dist` and handles all `/api/*` routes.
 
+### Build for the TAG WordPress plugin
+
+This repo holds the React + Node source. The deployed WordPress plugin (PHP + the React `dist/` it serves + the TAG Arcade integration) lives in a separate repo: [`Yoshyaes/TAG-rank-arena`](https://github.com/Yoshyaes/TAG-rank-arena).
+
+`npm run build` triggers a `postbuild` step (`scripts/postbuild-copy-dist.mjs`) that copies the freshly built `dist/` into the TAG-rank-arena workspace, ready for deploy:
+
+```bash
+# 1. Build + auto-copy dist into TAG-rank-arena
+npm run build
+
+# 2. From the tag-wp-tools workspace, deploy the plugin to Cloudways
+cd "../TAG Wordpress Website"
+./scripts/deploy/deploy-plugin.sh plugins/rank-arena plugins/rank-arena
+```
+
+The postbuild target defaults to `../TAG Wordpress Website/plugins/rank-arena` (sibling of this repo on Fred's machine). Override with the `TAG_RANK_ARENA_PLUGIN_DIR` env var when working elsewhere:
+
+```bash
+TAG_RANK_ARENA_PLUGIN_DIR=/path/to/TAG-rank-arena npm run build
+```
+
+PHP edits (Arcade registration, REST endpoints, etc.) belong in `Yoshyaes/TAG-rank-arena`, not in this repo. This repo's `wp-plugin/` directory is legacy from before the split and is now gitignored.
+
 ## Create a Daily Challenge Manually
 
 ```bash
