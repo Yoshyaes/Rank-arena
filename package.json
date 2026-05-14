@@ -3,19 +3,12 @@
   "version": "1.0.0",
   "description": "Rank Arena — Daily Higher/Lower game for Two Average Gamers",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:client": "cd client && npx vite",
-    "dev:server": "cd server && node --watch index.js",
+    "dev": "cd client && npx vite",
     "build": "cd client && npx vite build",
     "postbuild": "node scripts/postbuild-copy-dist.mjs",
-    "start": "node server/index.js",
-    "seed": "node server/db/seed.js",
-    "fetch-covers": "node server/scripts/fetchCovers.js",
-    "generate-challenge": "node server/lib/challengeGenerator.js",
-    "test": "npx vitest run --config vitest.config.js",
-    "test:client": "cd client && npx vitest run",
-    "test:all": "npm test && npm run test:client",
-    "lint": "npx eslint server/ && cd client && npx eslint src/"
+    "test": "cd client && npx vitest run",
+    "test:legacy-server": "npx vitest run --config vitest.config.js",
+    "lint": "cd client && npx eslint src/"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",

@@ -2,74 +2,51 @@
 
 Daily Higher/Lower game for **Two Average Gamers**. Players guess which of two video games has the higher stat — Metacritic score, total sales, peak Steam players, or average playtime.
 
-## Setup
+This repo holds the React (Vite) client source. The production WordPress plugin that serves the game lives separately at [`Yoshyaes/TAG-rank-arena`](https://github.com/Yoshyaes/TAG-rank-arena) and consumes the bundle this repo builds.
 
-### Prerequisites
-- Node.js 18+
-- PostgreSQL database
+## Architecture
 
-### Install
+```
+Yoshyaes/Rank-arena              (this repo — React client source)
+  └─ client/                     React + Vite app
+  └─ scripts/postbuild-copy-dist.mjs   copies dist/ into TAG-rank-arena workspace
+  └─ legacy/server/              ORIGINAL Express + better-sqlite3 backend.
+                                 Retired when the API moved to the WP plugin
+                                 (Apr 2026). Kept for reference + the code-review
+                                 audit docs. Not run in production.
+```
+
+The runtime stack:
+- **Client:** React 18 + Vite. Mounts on `#rank-arena-root` inside the WP `[rank_arena]` shortcode (or `#root` for standalone dev). Tailwind utilities are scoped to that root via `important: '#rank-arena-root'` so the surrounding TAG theme isn't affected.
+- **Server:** WordPress plugin (`Yoshyaes/TAG-rank-arena`). REST namespace `rank-arena/v1`. Cookie + `X-WP-Nonce` auth. MySQL via `$wpdb`.
+- **Design tokens:** `client/src/theme/` — `tokens.css` + `tailwind-preset.js` are the shared TAG palette used across game plugins.
+
+## Development
 
 ```bash
 npm install
 cd client && npm install && cd ..
-```
-
-### Environment Variables
-
-Copy `.env.example` to `.env` and fill in:
-
-```bash
-cp .env.example .env
-```
-
-Required variables:
-- `DATABASE_URL` — PostgreSQL connection string
-- `SUPABASE_URL` / `SUPABASE_ANON_KEY` / `SUPABASE_SERVICE_KEY` — for auth (optional for dev)
-- `RAWG_API_KEY` — for fetching game cover art
-- `ADMIN_PASSWORD` — for the admin challenge creation endpoint
-
-### Database Setup
-
-Run the schema and seed data:
-
-```bash
-npm run seed
-```
-
-This creates all tables, inserts 50+ games from `data/games.json`, and generates daily challenges from 3 days ago through 14 days from now.
-
-### Fetch Cover Art
-
-After seeding, fetch cover art from RAWG:
-
-```bash
-npm run fetch-covers
-```
-
-### Development
-
-Run Express + Vite concurrently:
-
-```bash
 npm run dev
 ```
 
-- Frontend: http://localhost:5173
-- API: http://localhost:3001
-
-### Production Build
+- Frontend on http://localhost:5173 (Vite).
+- API calls hit `/wp-json/rank-arena/v1/*`. Set `WP_DEV_URL` to point Vite's dev proxy at a local WordPress install (defaults to `http://localhost:8080`):
 
 ```bash
-npm run build
-npm start
+WP_DEV_URL=http://localhost:8080 npm run dev
 ```
 
-Express serves the built frontend from `/dist` and handles all `/api/*` routes.
+Standalone dev (no WordPress at all) loads via the fallback `#root` mount in `client/index.html`. The game UI renders but API calls fail until you proxy a real WP install or stub the responses.
 
-### Build for the TAG WordPress plugin
+### Lint + tests
 
-This repo holds the React + Node source. The deployed WordPress plugin (PHP + the React `dist/` it serves + the TAG Arcade integration) lives in a separate repo: [`Yoshyaes/TAG-rank-arena`](https://github.com/Yoshyaes/TAG-rank-arena).
+```bash
+npm run lint           # client/src ESLint
+npm test               # client vitest
+npm run test:legacy-server   # only if you're poking the legacy/server/ code
+```
+
+## Build for the TAG WordPress plugin
 
 `npm run build` triggers a `postbuild` step (`scripts/postbuild-copy-dist.mjs`) that copies the freshly built `dist/` into the TAG-rank-arena workspace, ready for deploy:
 
@@ -90,18 +67,21 @@ TAG_RANK_ARENA_PLUGIN_DIR=/path/to/TAG-rank-arena npm run build
 
 PHP edits (Arcade registration, REST endpoints, etc.) belong in `Yoshyaes/TAG-rank-arena`, not in this repo. This repo's `wp-plugin/` directory is legacy from before the split and is now gitignored.
 
-## Create a Daily Challenge Manually
+## Legacy server (`legacy/server/`)
+
+The original Express + better-sqlite3 backend that powered Rank Arena during initial development. Retired when the API moved to the WP plugin. Kept here because:
+
+- It documents the original API contract that the React client was built against.
+- `legacy/server/code-review.md` and `legacy/server/FIXES_APPLIED.md` capture a security audit + remediations performed in April 2026. Some classes of issues (CORS, HMAC verification, rate limiting, SVG injection, path traversal) are worth re-checking against the new WP plugin REST API.
+- The remote branch `fix/code-review-issues` on `Yoshyaes/Rank-arena` was the working branch for those fixes.
+
+The legacy code is not built or deployed by the current pipeline. Dependencies it still references (`express`, `cors`, `better-sqlite3`, `sharp`, `express-rate-limit`, `@supabase/supabase-js`, etc.) are retained in `package.json` so the legacy code can still be run locally for reference.
+
+If you want to run it:
 
 ```bash
-curl -X POST http://localhost:3001/api/admin/challenge \
-  -H "Authorization: Basic $(echo -n 'admin:YOUR_PASSWORD' | base64)" \
-  -H "Content-Type: application/json" \
-  -d '{"challenge_date": "2026-03-26", "stat_category": "metacritic", "auto_generate": true}'
+cd legacy/server
+node index.js
 ```
 
-## Deploy on Replit
-
-1. Import the repo
-2. Set environment variables in Replit Secrets
-3. Run `npm run seed` in the shell
-4. Set the run command to `npm run build && npm start`
+You'll need a `.env` with `DATABASE_URL`, `RAWG_API_KEY`, `ADMIN_PASSWORD`, etc. See `legacy/server/.env.example` in the `fix/code-review-issues` branch for the full list.
