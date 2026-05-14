@@ -1,12 +1,7 @@
-import Header from './Header';
-
+/**
+ * Layout shell is a no-op now: the WordPress page is the wrapper. Kept as
+ * a component so any older imports still resolve, but it just passes children.
+ */
 export default function Layout({ children }) {
-  return (
-    <div className="min-h-screen bg-bg-primary">
-      <Header />
-      <main className="max-w-[1200px] mx-auto px-4 pb-8">
-        {children}
-      </main>
-    </div>
-  );
+  return children;
 }

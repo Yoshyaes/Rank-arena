@@ -1,34 +1,31 @@
-// In production, API goes through PHP proxy at /arena/api-proxy.php
-// In development, Vite proxies /arena/api to localhost:3001
-const IS_PROD = import.meta.env.PROD;
+/**
+ * Rank Arena API client.
+ * Production: hits WordPress REST at /wp-json/rank-arena/v1/* (cookie auth + nonce)
+ * Dev: same endpoints, optionally proxied via Vite to a local WP install.
+ *
+ * Reads `window.rankArena` injected by the [rank_arena] shortcode:
+ *   { apiUrl, nonce, siteUrl, userId, isAdmin }
+ * If absent, falls back to `/wp-json/rank-arena/v1` (works when served from same origin).
+ */
 
-function buildUrl(apiPath) {
-  if (IS_PROD) {
-    // Route through PHP proxy: /arena/api-proxy.php?path=challenge/today
-    const cleanPath = apiPath.replace(/^\//, '');
-    return `/arena/api-proxy.php?path=${encodeURIComponent(cleanPath)}`;
-  }
-  return `/arena/api${apiPath}`;
-}
+const ctx = typeof window !== 'undefined' ? window.rankArena : null;
+const API_BASE = ctx?.apiUrl || '/wp-json/rank-arena/v1';
+const NONCE    = ctx?.nonce  || '';
+export const SITE_URL = ctx?.siteUrl || '/';
+export const VIEWER_ID = ctx?.userId || 0;
 
-async function request(apiPath, options = {}, retries = 0) {
-  const url = buildUrl(apiPath);
-
-  // For GET requests with query params through the proxy, append them
-  let finalUrl = url;
-  if (IS_PROD && apiPath.includes('?')) {
-    const [path, query] = apiPath.split('?');
-    finalUrl = `/arena/api-proxy.php?path=${encodeURIComponent(path.replace(/^\//, ''))}&${query}`;
-  }
-
+async function request(path, options = {}, retries = 0) {
+  const url = `${API_BASE}${path}`;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
 
   try {
-    const res = await fetch(finalUrl, {
+    const res = await fetch(url, {
+      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
         'X-Requested-With': 'RankArena',
+        ...(NONCE ? { 'X-WP-Nonce': NONCE } : {}),
         ...options.headers,
       },
       signal: controller.signal,
@@ -36,13 +33,11 @@ async function request(apiPath, options = {}, retries = 0) {
     });
 
     if (!res.ok) {
-      // Retry on server errors (5xx) and rate limits (429), up to 2 retries for GET
       if (retries < 2 && !options.method && (res.status >= 500 || res.status === 429)) {
-        const delay = (retries + 1) * 1000;
-        await new Promise(r => setTimeout(r, delay));
-        return request(apiPath, options, retries + 1);
+        await new Promise(r => setTimeout(r, (retries + 1) * 1000));
+        return request(path, options, retries + 1);
       }
-      const error = await res.json().catch(() => ({ message: 'Request failed' }));
+      const error = await res.json().catch(() => ({ message: `HTTP ${res.status}` }));
       throw new Error(error.message || `HTTP ${res.status}`);
     }
     return res.json();
@@ -54,6 +49,20 @@ async function request(apiPath, options = {}, retries = 0) {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+export function isLoggedIn() {
+  return !!VIEWER_ID;
+}
+
+export function getLoginUrl() {
+  const root = SITE_URL.replace(/\/$/, '');
+  const here = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : root);
+  return `${root}/wp-login.php?redirect_to=${here}`;
+}
+
+export function fetchMe() {
+  return request('/me');
 }
 
 export function fetchTodayChallenge() {
@@ -75,8 +84,8 @@ export function submitChallengeResult(date, score) {
 }
 
 export function fetchEndlessPair(excludeIds = []) {
-  const params = excludeIds.length ? `?exclude=${excludeIds.join(',')}` : '';
-  return request(`/endless/pair${params}`);
+  const qs = excludeIds.length ? `?exclude=${excludeIds.join(',')}` : '';
+  return request(`/endless/pair${qs}`);
 }
 
 export function submitEndlessAnswer(gameAId, gameBId, statCategory, choice) {
@@ -112,4 +121,13 @@ export function fetchEndlessLeaderboard(offset = 0, limit = 20) {
 
 export function fetchUserStats() {
   return request('/user/stats');
+}
+
+/** Server-rendered share image; produces a URL the user can share or that <img> can render. */
+export function shareImageUrl({ score, total, number, statCategory, trail, streak, date }) {
+  const params = new URLSearchParams({
+    s: String(score), t: String(total), n: String(number),
+    c: statCategory, trail, streak: String(streak), d: date,
+  });
+  return `${API_BASE}/share/image?${params.toString()}`;
 }

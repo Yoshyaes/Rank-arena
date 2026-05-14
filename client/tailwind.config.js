@@ -1,8 +1,18 @@
+import tagPreset from './src/theme/tailwind-preset.js';
+
 /** @type {import('tailwindcss').Config} */
 export default {
+  presets: [tagPreset],
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  // Scope utilities to the plugin's root div - prevents the same theme-nav
+  // bleed-through that affected Connections (unlayered .hidden beating the
+  // theme's @layer utilities .md\:flex). Safe across both plugins.
+  important: '#rank-arena-root',
   theme: {
     extend: {
+      // Legacy aliases - kept so existing components still compile while we
+      // migrate them onto tag-* tokens. CSS vars they reference now resolve
+      // to the new TAG palette via index.css.
       colors: {
         'bg-primary': 'var(--bg-primary)',
         'bg-card': 'var(--bg-card)',
@@ -18,10 +28,8 @@ export default {
         'border': 'var(--border)',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-        grotesk: ['Space Grotesk', 'sans-serif'],
+        grotesk: ['"Space Grotesk"', 'sans-serif'],
       },
     },
   },
-  plugins: [],
 };

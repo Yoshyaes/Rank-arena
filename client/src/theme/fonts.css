@@ -1,0 +1,12 @@
+/* TAG Game UI Kit - Font imports
+ * Bungee (display H1/H2 - arcade-bold)
+ * Space Grotesk (body, UI labels)
+ * Press Start 2P (decorative micro-labels at 10-12px only) */
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+
+:root {
+  --tag-font-display: 'Bungee', cursive;
+  --tag-font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --tag-font-pixel: 'Press Start 2P', monospace;
+}

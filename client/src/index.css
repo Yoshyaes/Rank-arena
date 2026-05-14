@@ -1,153 +1,156 @@
+@import './theme/fonts.css';
+@import './theme/tokens.css';
+@import './theme/animations.css';
+@import './theme/components.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Legacy var aliases - lets existing components keep working
+ * during the visual migration; everything points to the new TAG palette. */
 :root {
-  --bg-primary: #080B0F;
-  --bg-card: #111418;
-  --bg-card-hover: #191E25;
-  --bg-surface: #1C2128;
-  --accent-win: #22C55E;
-  --accent-lose: #EF4444;
-  --accent-gold: #F59E0B;
-  --accent-blue: #3B82F6;
-  --accent-purple: #8B5CF6;
-  --text-primary: #F1F5F9;
-  --text-secondary: #64748B;
-  --border: #1E2530;
+  --bg-primary: var(--tag-surface-void);
+  --bg-card: var(--tag-surface-midnight);
+  --bg-card-hover: var(--tag-surface-steel);
+  --bg-surface: var(--tag-surface-steel);
+  --accent-win: var(--tag-status-success);
+  --accent-lose: var(--tag-status-error);
+  --accent-gold: var(--tag-status-gold);
+  --accent-blue: var(--tag-accent-cyan);
+  --accent-purple: var(--tag-accent-purple);
+  --text-primary: var(--tag-text-primary);
+  --text-secondary: var(--tag-text-secondary);
+  --border: var(--tag-border-input);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
+/* Scope all global styling to the plugin's root divs. Don't touch html/body -
+ * those belong to the WordPress theme. Standalone Vite dev #root keeps the
+ * full-page bg purely for local development. */
+#rank-arena-root {
+  width: 100%;
+  font-family: var(--tag-font-body);
+  color: var(--tag-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Stat numbers */
-.stat-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1.1;
+#rank-arena-root *,
+#rank-arena-root *::before,
+#rank-arena-root *::after {
+  box-sizing: border-box;
 }
 
-/* Score counter */
-.score-counter {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: var(--tag-surface-void);
+  color: var(--tag-text-primary);
+  font-family: var(--tag-font-body);
 }
 
-/* Stat label */
-.stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+/* Stat numbers in Bungee for arcade pop */
+.ra-stat-number {
+  font-family: var(--tag-font-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
 }
 
-/* Button text */
-.btn-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
+.ra-score-counter {
+  font-family: var(--tag-font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
-/* Game title on card */
-.card-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
+.ra-stat-label {
+  font-family: var(--tag-font-pixel);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  color: var(--tag-accent-cyan);
+  text-transform: uppercase;
+}
+
+.ra-card-title {
+  font-family: var(--tag-font-body);
+  font-size: clamp(1rem, 3vw, 1.125rem);
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.25;
+  color: var(--tag-text-primary);
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--tag-surface-void); }
+::-webkit-scrollbar-thumb { background: var(--tag-border-input); border-radius: 3px; }
+
+/* Legacy class aliases - map old custom classes onto the new TAG kit
+ * so unmigrated page-level classNames render correctly without per-file edits. */
+.score-counter { font-family: var(--tag-font-display); font-size: 1.5rem; font-weight: 400; }
+.stat-number   { font-family: var(--tag-font-display); font-size: clamp(2rem, 8vw, 3rem); line-height: 1; }
+.stat-label    { font-family: var(--tag-font-pixel); font-size: 0.625rem; letter-spacing: 0.05em; color: var(--tag-accent-cyan); text-transform: uppercase; }
+.card-title    { font-family: var(--tag-font-body); font-size: clamp(1rem, 3vw, 1.125rem); font-weight: 700; line-height: 1.25; color: var(--tag-text-primary); }
+.btn-text      { font-family: var(--tag-font-body); font-weight: 700; letter-spacing: 0.02em; }
+.font-grotesk  { font-family: var(--tag-font-body); }
+
+/* In-page tab strip - !important guards against WP theme link styles */
+#rank-arena-root .ra-tab-nav {
+  position: static !important;
+  z-index: auto !important;
+}
+#rank-arena-root .ra-tab,
+#rank-arena-root a.ra-tab {
+  flex: 1 1 0% !important;
+  text-align: center !important;
+  padding: 0.625rem 0.75rem !important;
+  border-radius: var(--tag-radius-sm) !important;
+  font-family: var(--tag-font-body) !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
+  border: 1px solid var(--tag-border-input) !important;
+  background: var(--tag-surface-midnight) !important;
+  color: var(--tag-text-secondary) !important;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease !important;
+}
+#rank-arena-root .ra-tab:hover,
+#rank-arena-root a.ra-tab:hover {
+  color: var(--tag-text-primary) !important;
+  background: var(--tag-surface-steel) !important;
+  text-decoration: none !important;
+}
+#rank-arena-root .ra-tab-active,
+#rank-arena-root a.ra-tab-active {
+  background: var(--tag-accent-cyan) !important;
+  color: var(--tag-surface-void) !important;
+  border-color: var(--tag-accent-cyan) !important;
+  text-decoration: none !important;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+/* GameCard cover aspect ratio - square on phones to keep both cards visible
+ * side-by-side without scroll; widescreen on tablet+ where there's room. */
+.ra-cover { aspect-ratio: 1 / 1; }
+@media (min-width: 640px) { .ra-cover { aspect-ratio: 16 / 10; } }
+
+/* StatBadge sizes down on phones so it doesn't dominate when floating between
+ * narrow cards. The component itself ships at desktop size; we shrink via CSS
+ * scale to avoid touching the JS for breakpoint logic. */
+@media (max-width: 639px) {
+  #rank-arena-root .ra-stat-badge { transform: scale(0.78); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+/* Result trail dot */
+.ra-trail-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--tag-border-input);
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
-
-/* Slide-up animation for modals */
-@keyframes slide-up {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-up {
-  animation: slide-up 400ms ease-out forwards;
-}
-
-/* Share card entrance */
-@keyframes card-pop {
-  0% { transform: scale(0.85); opacity: 0; }
-  70% { transform: scale(1.03); }
-  100% { transform: scale(1); opacity: 1; }
-}
-.animate-card-pop {
-  animation: card-pop 300ms ease-out forwards;
-}
-
-/* Emoji pop-in with bounce */
-@keyframes pop-in {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.3); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Score glow pulse */
-@keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.3)); }
-  50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6)); }
-}
-.animate-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Sparkle for perfect score */
-@keyframes sparkle {
-  0% { transform: scale(0) rotate(0deg); opacity: 1; }
-  50% { transform: scale(1) rotate(180deg); opacity: 0.8; }
-  100% { transform: scale(0) rotate(360deg); opacity: 0; }
-}
-
-/* Button success flash */
-@keyframes success-flash {
-  0% { background-color: var(--accent-win); }
-  100% { background-color: var(--accent-blue); }
-}
-
-/* Score ring fill */
-@keyframes ring-fill {
-  from { stroke-dashoffset: 283; }
-}
+.ra-trail-dot.is-correct { background: var(--tag-status-success); border-color: var(--tag-status-success); }
+.ra-trail-dot.is-wrong   { background: var(--tag-status-error);   border-color: var(--tag-status-error); }
+.ra-trail-dot.is-current { box-shadow: 0 0 8px rgba(34, 197, 212, 0.6); border-color: var(--tag-accent-cyan); }

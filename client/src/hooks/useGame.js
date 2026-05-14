@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult } from '../lib/api';
 
-const REVEAL_DELAY_MS = 1500;
+const REVEAL_DELAY_MS = 700;
 
 // States: LOADING | IDLE | ROUND_ACTIVE | REVEALING | NEXT_ROUND | GAME_OVER
 const STATES = {

@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/arena">
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// Mount inside WordPress's [rank_arena] root if present, otherwise the standalone #root.
+const target =
+  document.getElementById('rank-arena-root') ||
+  document.getElementById('root');
+
+if (target) {
+  ReactDOM.createRoot(target).render(
+    <React.StrictMode>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </React.StrictMode>
+  );
+}

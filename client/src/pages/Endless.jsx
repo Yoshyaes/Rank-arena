@@ -114,9 +114,8 @@ export default function Endless() {
         </div>
       </div>
 
-      {/* Game area */}
-      <div className="flex flex-col md:flex-row items-center md:items-stretch gap-4 md:gap-0 max-w-4xl mx-auto">
-        <div className="w-full md:w-[45%]">
+      <div className="relative flex flex-row items-stretch gap-2 sm:gap-3 md:gap-0 max-w-4xl mx-auto">
+        <div className="flex-1 min-w-0 md:w-[45%] md:flex-none">
           <GameCard
             game={gameA}
             statValue={gameAStat}
@@ -129,11 +128,17 @@ export default function Endless() {
           />
         </div>
 
-        <div className="flex items-center justify-center md:w-[10%] -my-3 md:my-0">
+        <div className="hidden md:flex items-center justify-center md:w-[10%]">
+          <StatBadge statCategory={statCategory} />
+        </div>
+        <div
+          className="md:hidden absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+          aria-hidden="true"
+        >
           <StatBadge statCategory={statCategory} />
         </div>
 
-        <div className="w-full md:w-[45%]">
+        <div className="flex-1 min-w-0 md:w-[45%] md:flex-none">
           <GameCard
             game={gameB}
             statValue={gameBStat}

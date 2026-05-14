@@ -1,0 +1,250 @@
+/* TAG Game UI Kit - Reusable component classes
+ * Drop-in styles that match the live TAG theme. */
+
+/* ============================================================
+ * Card surfaces
+ * ============================================================ */
+
+/* Hero card with the animated gradient border (TAG signature).
+ * Usage: <div class="tag-card"> ... </div>
+ * The ::before pseudo-element renders the animated border. */
+.tag-card {
+  position: relative;
+  background: var(--tag-gradient-card);
+  border-radius: var(--tag-radius-lg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.tag-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;                    /* border thickness */
+  border-radius: inherit;
+  background: var(--tag-gradient-border);
+  background-size: 200% 200%;
+  animation: tag-border-flow 6s ease infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lighter variant - solid hairline border, no animation. Use for list rows. */
+.tag-card-flat {
+  background: var(--tag-surface-midnight);
+  border: 1px solid var(--tag-border-hairline);
+  border-radius: var(--tag-radius-md);
+}
+
+/* Elevated surface (hover/focus interaction) */
+.tag-card-flat:hover {
+  background: var(--tag-surface-steel);
+  transform: translateY(-1px);
+  box-shadow: var(--tag-shadow-hover);
+  transition: transform var(--tag-duration-fast) var(--tag-ease),
+              background-color var(--tag-duration-base) var(--tag-ease),
+              box-shadow var(--tag-duration-base) var(--tag-ease);
+}
+
+/* ============================================================
+ * Buttons
+ * ============================================================ */
+
+.tag-btn-primary,
+.tag-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;             /* 44px touch target */
+  min-width: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: var(--tag-radius-sm);
+  font-family: var(--tag-font-body);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--tag-duration-fast) var(--tag-ease),
+              background-color var(--tag-duration-base) var(--tag-ease),
+              box-shadow var(--tag-duration-base) var(--tag-ease),
+              opacity var(--tag-duration-base) var(--tag-ease);
+}
+
+.tag-btn-primary {
+  background: var(--tag-accent-cyan);
+  color: var(--tag-surface-void);
+}
+.tag-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--tag-shadow-hover);
+  filter: brightness(1.05);
+}
+.tag-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+.tag-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tag-btn-ghost {
+  background: var(--tag-surface-steel);
+  color: var(--tag-text-primary);
+  border-color: var(--tag-border-input);
+}
+.tag-btn-ghost:hover:not(:disabled) {
+  background: var(--tag-surface-slate);
+  transform: translateY(-1px);
+}
+
+/* Large bottom-sheet CTA - 56px tall thumb-zone target */
+.tag-btn-xl {
+  height: 3.5rem;
+  font-size: 1rem;
+  padding: 0 1.75rem;
+  border-radius: var(--tag-radius-md);
+}
+
+/* ============================================================
+ * Inputs
+ * ============================================================ */
+
+.tag-input {
+  width: 100%;
+  height: 2.75rem;             /* 44px */
+  padding: 0 1rem;
+  background: rgba(30, 36, 56, 0.8);
+  border: 1px solid var(--tag-border-input);
+  border-radius: var(--tag-radius-sm);
+  color: var(--tag-text-primary);
+  font-family: var(--tag-font-body);
+  font-size: 0.9375rem;
+  transition: border-color var(--tag-duration-base) var(--tag-ease),
+              box-shadow var(--tag-duration-base) var(--tag-ease);
+}
+.tag-input::placeholder { color: var(--tag-text-muted); }
+.tag-input:focus {
+  outline: none;
+  border-color: var(--tag-accent-cyan);
+  box-shadow: var(--tag-shadow-focus);
+}
+
+/* ============================================================
+ * Labels and badges
+ * ============================================================ */
+
+/* Tiny pixel-art arcade label - cyan, 10-12px max.
+ * Usage: <span class="tag-pixel-label">DAILY #42</span> */
+.tag-pixel-label {
+  display: inline-block;
+  font-family: var(--tag-font-pixel);
+  font-size: 0.625rem;         /* 10px - keep small */
+  letter-spacing: 0.05em;
+  color: var(--tag-accent-cyan);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background: rgba(34, 197, 212, 0.12);
+  color: var(--tag-accent-cyan);
+  border-radius: var(--tag-radius-pill);
+  font-family: var(--tag-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Status pill variants */
+.tag-badge-success { background: rgba(34, 197, 94, 0.12); color: var(--tag-status-success); }
+.tag-badge-error   { background: rgba(239, 68, 68, 0.12); color: var(--tag-status-error); }
+.tag-badge-gold    { background: rgba(255, 215, 0, 0.12); color: var(--tag-status-gold); }
+
+/* ============================================================
+ * Headings (Bungee for display)
+ * ============================================================ */
+
+.tag-h1,
+.tag-h2 {
+  font-family: var(--tag-font-display);
+  color: var(--tag-text-primary);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.tag-h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+.tag-h2 { font-size: clamp(1.25rem, 3.5vw, 1.75rem); line-height: 1.2; }
+
+.tag-text-meta {
+  font-family: var(--tag-font-body);
+  color: var(--tag-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+ * Bottom sheet (mobile modal pattern)
+ * ============================================================ */
+
+.tag-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 26, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 50;
+}
+
+.tag-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 51;
+  background: var(--tag-surface-midnight);
+  border-top: 1px solid var(--tag-border-hairline);
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 1.5rem;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .tag-sheet {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--tag-radius-lg);
+    border: 1px solid var(--tag-border-hairline);
+    width: 32rem;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+/* Sticky bottom action bar (mobile thumb-zone CTAs) */
+.tag-sticky-actions {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  background: linear-gradient(to top, var(--tag-surface-void) 70%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 30;
+}

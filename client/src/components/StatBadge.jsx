@@ -1,19 +1,43 @@
 const STAT_DISPLAY = {
-  metacritic: { emoji: '\u{1F4CA}', label: 'Meta' },
-  sales_millions: { emoji: '\u{1F4B0}', label: 'Sales' },
-  peak_players: { emoji: '\u{1F3AE}', label: 'Players' },
-  avg_playtime_hours: { emoji: '\u23F1\uFE0F', label: 'Playtime' },
-  user_score: { emoji: '\u2B50', label: 'Score' },
+  metacritic:        { glyph: 'M', label: 'META' },
+  sales_millions:    { glyph: '$', label: 'SALES' },
+  peak_players:      { glyph: 'P', label: 'PEAK' },
+  avg_playtime_hours:{ glyph: 'H', label: 'HOURS' },
+  user_score:        { glyph: 'U', label: 'USER' },
 };
 
 export default function StatBadge({ statCategory }) {
-  const display = STAT_DISPLAY[statCategory] || { emoji: '?', label: statCategory };
+  const display = STAT_DISPLAY[statCategory] || { glyph: '?', label: 'STAT' };
 
   return (
-    <div className="flex items-center justify-center z-10">
-      <div className="w-14 h-14 rounded-full bg-bg-surface border-2 border-border flex flex-col items-center justify-center shadow-lg">
-        <span className="text-lg leading-none">{display.emoji}</span>
-        <span className="text-[10px] font-semibold uppercase text-text-secondary mt-0.5 tracking-wide">
+    <div className="ra-stat-badge flex items-center justify-center z-10" aria-hidden="true">
+      <div
+        className="w-16 h-16 rounded-full flex flex-col items-center justify-center"
+        style={{
+          background: 'var(--tag-surface-midnight)',
+          border: '2px solid var(--tag-accent-cyan)',
+          boxShadow: '0 0 14px rgba(34, 197, 212, 0.35), inset 0 0 10px rgba(108, 99, 255, 0.15)',
+        }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--tag-font-display)',
+            fontSize: '1.25rem',
+            color: 'var(--tag-accent-cyan)',
+            lineHeight: 1,
+          }}
+        >
+          {display.glyph}
+        </span>
+        <span
+          className="mt-0.5"
+          style={{
+            fontFamily: 'var(--tag-font-pixel)',
+            fontSize: '0.5rem',
+            letterSpacing: '0.05em',
+            color: 'var(--tag-text-secondary)',
+          }}
+        >
           {display.label}
         </span>
       </div>

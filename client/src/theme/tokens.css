@@ -1,0 +1,68 @@
+/* TAG Game UI Kit - Design Tokens
+ * Mirrors live TAG theme tokens. Single source of truth for surfaces, text,
+ * accents, borders, status, and gradients. */
+
+:root {
+  /* Surfaces (background layers) */
+  --tag-surface-void: #0B0F1A;
+  --tag-surface-midnight: #151A2B;
+  --tag-surface-steel: #1E2438;
+  --tag-surface-slate: #2A3148;
+
+  /* Text */
+  --tag-text-primary: #F0F2F7;
+  --tag-text-secondary: #8B95A8;
+  --tag-text-muted: #5A6478;
+
+  /* Accents (brand) */
+  --tag-accent-cyan: #22C5D4;
+  --tag-accent-purple: #6C63FF;
+
+  /* Borders */
+  --tag-border-hairline: rgba(255, 255, 255, 0.05);
+  --tag-border-input: rgba(255, 255, 255, 0.10);
+  --tag-border-focus-ring: 0 0 0 3px rgba(34, 197, 212, 0.15);
+
+  /* Status */
+  --tag-status-success: #22C55E;
+  --tag-status-error: #EF4444;
+  --tag-status-warning: #F59E0B;
+  --tag-status-gold: #FFD700;
+
+  /* Gradients */
+  --tag-gradient-card: linear-gradient(160deg, rgba(21, 26, 43, 0.90) 0%, rgba(11, 15, 26, 0.95) 100%);
+  --tag-gradient-border: linear-gradient(135deg, #22C5D4, #6C63FF, #22C5D4);
+  --tag-gradient-hero-wash: linear-gradient(to left, rgba(34, 197, 212, 0.05), transparent);
+
+  /* Shadows */
+  --tag-shadow-focus: 0 0 0 3px rgba(34, 197, 212, 0.15);
+  --tag-shadow-hover: 0 4px 20px rgba(34, 197, 212, 0.15);
+  --tag-shadow-card-hover: 0 8px 30px rgba(0, 212, 255, 0.15);
+
+  /* Motion */
+  --tag-duration-fast: 0.15s;
+  --tag-duration-base: 0.20s;
+  --tag-ease: ease;
+
+  /* Radii */
+  --tag-radius-sm: 0.5rem;   /* 8px */
+  --tag-radius-md: 0.75rem;  /* 12px */
+  --tag-radius-lg: 1rem;     /* 16px */
+  --tag-radius-pill: 9999px;
+
+  /* Tier accents (for puzzle / leaderboard categories) */
+  --tag-tier-green: #22C55E;
+  --tag-tier-blue: #3B82F6;
+  --tag-tier-purple: #A855F7;
+  --tag-tier-gold: #EAB308;
+}
+
+/* Selection styling that matches the brand */
+::selection {
+  background: var(--tag-accent-cyan);
+  color: var(--tag-surface-void);
+}
+::-moz-selection {
+  background: var(--tag-accent-cyan);
+  color: var(--tag-surface-void);
+}
