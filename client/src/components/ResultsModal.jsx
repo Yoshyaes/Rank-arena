@@ -52,6 +52,12 @@ export default function ResultsModal({
   const panelRef = useRef(null);
   const closeBtnRef = useRef(null);
   const lastFocusRef = useRef(null);
+  // Read inside the keydown listener below, which only re-attaches when
+  // `open` changes -- a plain closure over showShare would go stale the
+  // moment the share panel opens or closes without the listener itself
+  // being re-created.
+  const showShareRef = useRef(false);
+  showShareRef.current = showShare;
 
   useEffect(() => {
     if (visible) {
@@ -81,7 +87,16 @@ export default function ResultsModal({
 
     function onKeyDown(e) {
       if (e.key === 'Escape') {
-        close();
+        // Back out one level at a time. On Android, dismissing the native
+        // Web Share sheet can synthesize an Escape keydown on the page --
+        // without this, that closed the whole results modal and dropped
+        // the player straight through to the board underneath instead of
+        // back to the results screen they just shared from.
+        if (showShareRef.current) {
+          setShowShare(false);
+        } else {
+          close();
+        }
         return;
       }
       if (e.key !== 'Tab' || !panelRef.current) return;

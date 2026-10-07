@@ -30,7 +30,13 @@ const GameCard = forwardRef(function GameCard({
     statCategory,
   });
 
-  const showStat = cardState !== 'idle' && cardState !== 'selected';
+  // B4 changed the unpicked-correct card's state from 'winner' to 'idle' (it
+  // shouldn't show a WIN badge when the player was right), but that state
+  // also used to be this component's only signal to reveal the stat value --
+  // so the fix for the badge silently broke the reveal for that card too.
+  // isRevealing is the real "has this round been answered" signal; use that
+  // instead of overloading cardState for both jobs.
+  const showStat = isRevealing || (cardState !== 'idle' && cardState !== 'selected');
   const isSelected = cardState === 'selected';
   const isCorrect = cardState === 'correct';
   const isWinner = cardState === 'winner';
