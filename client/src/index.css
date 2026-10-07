@@ -98,26 +98,43 @@
 .btn-text      { font-family: var(--tag-font-body); font-weight: 700; letter-spacing: 0.02em; }
 .font-grotesk  { font-family: var(--tag-font-body); }
 
-/* In-page tab strip - !important guards against WP theme link styles */
+/* In-page tab strip - !important guards against WP theme link styles.
+ * R3: a 36px segmented pill control (quiet border, only the active tab
+ * filled) in place of the old three-equal-boxes row, and pulled up close
+ * to the theme's title row (.tag-arcade-titlerow, which already carries
+ * the H1 + How to play button) so the two read as one compact header
+ * block. They stay two DOM rows -- the H1 is theme-rendered PHP, this nav
+ * is the plugin's React root, and there's no clean way to splice a
+ * client-rendered nav into server-rendered markup -- but the visual gap
+ * between them collapses to near zero instead of the old 16px+16px. */
 #rank-arena-root .ra-tab-nav {
   position: static !important;
   z-index: auto !important;
+  display: inline-flex !important;
+  gap: 2px !important;
+  padding: 2px !important;
+  border: 1px solid var(--tag-border-input) !important;
+  border-radius: var(--tag-radius-pill) !important;
+  background: var(--tag-surface-midnight) !important;
+  margin-top: -8px !important;
 }
 #rank-arena-root .ra-tab,
 #rank-arena-root a.ra-tab {
   flex: 1 1 0% !important;
   text-align: center !important;
-  padding: 0.625rem 0.75rem !important;
-  border-radius: var(--tag-radius-sm) !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  padding: 0 0.75rem !important;
+  border-radius: var(--tag-radius-pill) !important;
   font-family: var(--tag-font-body) !important;
-  font-size: 0.875rem !important;
+  font-size: 0.8125rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em !important;
   text-decoration: none !important;
-  border: 1px solid var(--tag-border-input) !important;
-  background: var(--tag-surface-midnight) !important;
+  border: none !important;
+  background: transparent !important;
   color: var(--tag-text-secondary) !important;
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease !important;
+  transition: background-color 180ms ease, color 180ms ease !important;
 }
 #rank-arena-root .ra-tab:hover,
 #rank-arena-root a.ra-tab:hover {
@@ -129,8 +146,13 @@
 #rank-arena-root a.ra-tab-active {
   background: var(--tag-accent-cyan) !important;
   color: var(--tag-surface-void) !important;
-  border-color: var(--tag-accent-cyan) !important;
   text-decoration: none !important;
+}
+
+/* R5: a real focus ring now that the cards' inline outline:none is gone. */
+#rank-arena-root .tag-card:focus-visible {
+  outline: 3px solid var(--tag-accent-cyan);
+  outline-offset: 2px;
 }
 
 /* GameCard cover aspect ratio - square on phones to keep both cards visible

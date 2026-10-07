@@ -8,19 +8,29 @@ function truncate(str, max) {
   return str.length > max ? str.slice(0, max - 1) + '…' : str;
 }
 
+const PROMPTS = {
+  sales_millions:      'Which sold more copies?',
+  metacritic:          'Which scored higher on Metacritic?',
+  peak_players:        'Which peaked higher on Steam?',
+  avg_playtime_hours:  'Which do people play longer?',
+  user_score:          'Which rated higher by players?',
+};
+const DEFAULT_PROMPT = 'Which has the higher stat? Tap a card or use a button.';
+
 export default function ActionButtons({
   onHigher, onLower, disabled = false,
-  gameATitle, gameBTitle, selectedCard, onConfirm,
+  gameATitle, gameBTitle, selectedCard, onConfirm, statCategory,
 }) {
   const nameA = gameATitle ? truncate(gameATitle, 14) : 'LEFT';
   const nameB = gameBTitle ? truncate(gameBTitle, 14) : 'RIGHT';
+  const prompt = PROMPTS[statCategory] || DEFAULT_PROMPT;
 
   return (
     <>
       {/* Inline (desktop): two side-by-side picker buttons */}
       <div className="hidden sm:block mt-6 max-w-2xl mx-auto">
         <p className="text-center mb-3" style={{ color: 'var(--tag-text-secondary)', fontSize: '0.875rem' }}>
-          Which has the higher stat? Tap a card or use a button.
+          {prompt}
         </p>
         <div className="flex gap-3 w-full">
           <button

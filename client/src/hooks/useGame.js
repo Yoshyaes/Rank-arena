@@ -1,7 +1,10 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult } from '../lib/api';
+import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult, fetchMyResult, isLoggedIn } from '../lib/api';
 
-const REVEAL_DELAY_MS = 700;
+// R9: a wrong answer holds the reveal longer so the number that beat you is
+// actually readable before the round moves on; a correct answer stays snappy.
+const REVEAL_DELAY_CORRECT_MS = 700;
+const REVEAL_DELAY_WRONG_MS = 2000;
 
 // States: LOADING | IDLE | ROUND_ACTIVE | REVEALING | NEXT_ROUND | GAME_OVER
 const STATES = {
@@ -92,6 +95,25 @@ export default function useGame(mode = 'challenge') {
         }
       }
 
+      // R7: neither local check found anything, but a logged-in player may
+      // have already completed today's challenge on a different device or
+      // with cleared storage -- ask the server before assuming it's a fresh
+      // game. Results detail isn't in this payload (just the aggregate
+      // score), so the trail renders sparse in that fallback case.
+      if (isLoggedIn()) {
+        const serverResult = await fetchMyResult(data.date);
+        if (serverResult.played) {
+          setScore(serverResult.score);
+          setResults([]);
+          setCurrentRound(serverResult.total || data.matchups.length);
+          setStatCategory(data.statCategory);
+          setStatLabel(data.statLabel);
+          setIsComplete(true);
+          setState(STATES.GAME_OVER);
+          return;
+        }
+      }
+
       // Fresh game
       setStatCategory(data.statCategory);
       setStatLabel(data.statLabel);
@@ -174,33 +196,34 @@ export default function useGame(mode = 'challenge') {
       const newResults = [...results, roundResult];
       setResults(newResults);
 
-      if (result.correct) {
-        const newScore = score + 1;
-        setScore(newScore);
+      const newScore = result.correct ? score + 1 : score;
+      if (result.correct) setScore(newScore);
 
-        // Save progress for challenge mode
-        if (mode === 'challenge') {
-          const progressKey = `rankArena_progress_${challengeData.date}`;
-          localStorage.setItem(progressKey, JSON.stringify({
-            score: newScore,
-            results: newResults,
-            currentRound: currentRound + 1,
-          }));
-        }
+      // Save progress for challenge mode on every round, a miss included --
+      // Daily plays all ten rounds now (R4), so a miss mid-run still needs
+      // to survive a refresh, not just a correct answer.
+      if (mode === 'challenge') {
+        const progressKey = `rankArena_progress_${challengeData.date}`;
+        localStorage.setItem(progressKey, JSON.stringify({
+          score: newScore,
+          results: newResults,
+          currentRound: currentRound + 1,
+        }));
       }
 
       // After reveal animation
       revealTimerRef.current = setTimeout(() => {
         revealTimerRef.current = null;
-        if (!result.correct) {
-          finishGame(result.correct ? score + 1 : score, newResults);
-        } else if (mode === 'challenge' && currentRound >= challengeData.matchups.length - 1) {
-          // Completed all rounds
-          finishGame(score + 1, newResults);
+        const isLastRound = mode === 'challenge' && currentRound >= challengeData.matchups.length - 1;
+        if (mode === 'endless' && !result.correct) {
+          // Endless stays sudden-death: any miss ends the run.
+          finishGame(newScore, newResults);
+        } else if (isLastRound) {
+          finishGame(newScore, newResults);
         } else {
           setState(STATES.NEXT_ROUND);
         }
-      }, REVEAL_DELAY_MS);
+      }, result.correct ? REVEAL_DELAY_CORRECT_MS : REVEAL_DELAY_WRONG_MS);
 
     } catch (err) {
       setError(err.message);

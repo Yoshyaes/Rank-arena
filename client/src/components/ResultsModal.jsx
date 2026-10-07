@@ -1,5 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ShareCard from './ShareCard';
+
+// R6: the theme's share-discord.js / share-text.js overlays check this
+// before building their own floating buttons, since Copy Result and Share
+// to Discord now live inside this modal's own button stack.
+if (typeof window !== 'undefined') {
+  window.rankArenaModalHandlesShare = true;
+}
 
 function getCommentary(score, totalRounds, mode) {
   if (mode === 'endless') {
@@ -41,9 +48,14 @@ export default function ResultsModal({
 }) {
   const [showShare, setShowShare] = useState(false);
   const [showEmojis, setShowEmojis] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const panelRef = useRef(null);
+  const closeBtnRef = useRef(null);
+  const lastFocusRef = useRef(null);
 
   useEffect(() => {
     if (visible) {
+      setDismissed(false);
       vibrate(score === totalRounds && totalRounds > 0 ? [40, 40, 80] : 30);
       setShowEmojis(false);
       const t = setTimeout(() => setShowEmojis(true), 280);
@@ -51,7 +63,52 @@ export default function ResultsModal({
     }
   }, [visible, score, totalRounds]);
 
-  if (!visible) return null;
+  const open = visible && !dismissed;
+
+  function close() {
+    setDismissed(true);
+    setShowShare(false);
+  }
+
+  // R6: lock body scroll and move focus inside while the modal is open;
+  // restore both on close. Escape closes it the same as the X button.
+  useEffect(() => {
+    if (!open) return;
+    lastFocusRef.current = document.activeElement;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeBtnRef.current?.focus();
+
+    function onKeyDown(e) {
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      if (e.key !== 'Tab' || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll(
+        'button, a[href], input, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+      lastFocusRef.current?.focus?.();
+    };
+  }, [open]);
+
+  if (!open) return null;
 
   const isPerfect  = score === totalRounds && totalRounds > 0;
   const percentage = totalRounds > 0 ? Math.round((score / totalRounds) * 100) : 0;
@@ -78,7 +135,8 @@ export default function ResultsModal({
       />
 
       <div
-        className="tag-anim-slide-up relative w-full sm:max-w-md mx-0 sm:mx-4 overflow-hidden"
+        ref={panelRef}
+        className="tag-anim-slide-up relative w-full sm:max-w-md mx-0 sm:mx-4 overflow-y-auto"
         style={{
           background: 'var(--tag-surface-midnight)',
           border: '1px solid var(--tag-border-hairline)',
@@ -87,10 +145,23 @@ export default function ResultsModal({
           borderBottomLeftRadius: '0',
           borderBottomRightRadius: '0',
           boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.4)',
+          maxHeight: 'calc(100vh - 32px)',
         }}
       >
         {/* Top accent bar (signature TAG cyan→purple) */}
         <div className="h-1" style={{ background: 'var(--tag-gradient-border)', backgroundSize: '200% 200%', animation: 'tag-border-flow 6s ease infinite' }} />
+
+        <button
+          ref={closeBtnRef}
+          onClick={close}
+          aria-label="Close results"
+          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center"
+          style={{ background: 'var(--tag-surface-steel)', color: 'var(--tag-text-secondary)' }}
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
         <div className="p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
           {/* Drag handle */}

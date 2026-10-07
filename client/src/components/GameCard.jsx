@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import useCounter from '../hooks/useCounter';
 
 // Short labels for the per-card stat chip. The full label still appears in the
@@ -6,13 +6,13 @@ import useCounter from '../hooks/useCounter';
 // at full width on narrow phones.
 const STAT_SHORT = {
   metacritic:        'META',
-  sales_millions:    'SALES (M)',
+  sales_millions:    'SALES',
   peak_players:      'PEAK',
   avg_playtime_hours:'HOURS',
   user_score:        'USER',
 };
 
-export default function GameCard({
+const GameCard = forwardRef(function GameCard({
   game,
   statValue,
   statCategory,
@@ -21,7 +21,7 @@ export default function GameCard({
   onClick,
   disabled = false,
   isRevealing = false,
-}) {
+}, ref) {
   const [imgError, setImgError] = useState(false);
 
   const displayValue = useCounter(statValue, {
@@ -48,13 +48,13 @@ export default function GameCard({
 
   return (
     <button
+      ref={ref}
       onClick={onClick}
       aria-label={game?.title ? `Select ${game.title}` : 'Select this game'}
       disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}
       className={`tag-card relative w-full h-full text-left cursor-pointer transition-all duration-150 ease-out ${ringClass} ${disabled && cardState === 'idle' ? 'opacity-70 cursor-not-allowed' : ''}`}
       style={{
         background: 'var(--tag-gradient-card)',
-        outline: 'none',
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -233,4 +233,6 @@ export default function GameCard({
       </div>
     </button>
   );
-}
+});
+
+export default GameCard;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import useStreak from '../hooks/useStreak';
@@ -7,6 +7,9 @@ import GameCard from '../components/GameCard';
 import StatBadge from '../components/StatBadge';
 import ActionButtons from '../components/ActionButtons';
 import ResultsModal from '../components/ResultsModal';
+import RawgCredit from '../components/RawgCredit';
+
+const AUTO_ADVANCE_MS = 1500;
 
 export default function Challenge() {
   const navigate = useNavigate();
@@ -32,12 +35,55 @@ export default function Challenge() {
     STATES,
   } = useGame('challenge');
 
-  const { selectedCard, handleCardTap, handleConfirm, resetSelection } = useMobileConfirm(makeChoice);
+  const { selectedCard, handleCardTap, handleConfirm, resetSelection, selectCard } = useMobileConfirm(makeChoice);
+  const cardARef = useRef(null);
+  const cardBRef = useRef(null);
 
   // Reset selection when round changes
   useEffect(() => {
     resetSelection();
   }, [currentRound, resetSelection]);
+
+  // R5: move focus to card A whenever a new round renders.
+  useEffect(() => {
+    if (state === STATES.IDLE) cardARef.current?.focus();
+  }, [currentRound, state, STATES.IDLE]);
+
+  // R5: auto-advance 1.5s after a reveal; any key or tap skips the wait.
+  useEffect(() => {
+    if (state !== STATES.NEXT_ROUND) return;
+    const timer = setTimeout(nextRound, AUTO_ADVANCE_MS);
+    function skip() { clearTimeout(timer); nextRound(); }
+    window.addEventListener('keydown', skip, { once: true });
+    window.addEventListener('pointerdown', skip, { once: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('keydown', skip);
+      window.removeEventListener('pointerdown', skip);
+    };
+  }, [state, STATES.NEXT_ROUND, nextRound]);
+
+  // R5: Left/1 selects card A, Right/2 selects card B, Enter/Space confirms.
+  // Goes through selectCard (not handleCardTap) so desktop keyboard users
+  // get the same select-then-confirm step mobile tap already has, instead
+  // of a click's immediate submit.
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (state !== STATES.IDLE) return;
+      if (e.key === 'ArrowLeft' || e.key === '1') {
+        e.preventDefault();
+        selectCard('a');
+      } else if (e.key === 'ArrowRight' || e.key === '2') {
+        e.preventDefault();
+        selectCard('b');
+      } else if ((e.key === 'Enter' || e.key === ' ') && selectedCard) {
+        e.preventDefault();
+        handleConfirm();
+      }
+    }
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [state, STATES.IDLE, selectedCard, selectCard, handleConfirm]);
 
   // Record streak when game completes
   useEffect(() => {
@@ -59,8 +105,9 @@ export default function Challenge() {
       if (!lastResult) return 'idle';
 
       if (isCorrect) {
-        // Both cards show as "correct" state when answer is right
-        return side === lastResult.correctAnswer ? 'correct' : 'winner';
+        // Only the picked (correct) card shows "correct"; the other card is
+        // idle, not "winner" -- there's no winner when the player was right.
+        return side === lastResult.correctAnswer ? 'correct' : 'idle';
       } else {
         // Wrong: the picked card is wrong, the other is the winner
         return side === lastResult.choice ? 'wrong' : 'winner';
@@ -100,7 +147,7 @@ export default function Challenge() {
           <span className="text-text-secondary text-sm uppercase tracking-wide">
             Daily #{challengeData?.challengeNumber}
           </span>
-          <span className="score-counter text-accent-blue">{score}</span>
+          <span className="score-counter text-accent-blue">{score} / {totalRounds}</span>
           <span className="text-text-secondary text-sm">
             Round {Math.min(currentRound + 1, totalRounds)} / {totalRounds}
           </span>
@@ -114,6 +161,7 @@ export default function Challenge() {
       <div className="relative flex flex-row items-stretch gap-2 sm:gap-3 md:gap-0 max-w-4xl mx-auto">
         <div className="flex-1 min-w-0 md:w-[45%] md:flex-none">
           <GameCard
+            ref={cardARef}
             game={gameA}
             statValue={gameAStat}
             statCategory={statCategory}
@@ -125,20 +173,15 @@ export default function Challenge() {
           />
         </div>
 
-        {/* Stat badge - absolute on mobile so it floats between cards without
-            stealing layout width; flex item on desktop for the original 10% gap. */}
+        {/* Stat badge - desktop only (R3): on phones it floated over the cards
+            with no room to spare, so it's dropped there rather than shrunk. */}
         <div className="hidden md:flex items-center justify-center md:w-[10%]">
-          <StatBadge statCategory={statCategory} />
-        </div>
-        <div
-          className="md:hidden absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
-          aria-hidden="true"
-        >
           <StatBadge statCategory={statCategory} />
         </div>
 
         <div className="flex-1 min-w-0 md:w-[45%] md:flex-none">
           <GameCard
+            ref={cardBRef}
             game={gameB}
             statValue={gameBStat}
             statCategory={statCategory}
@@ -160,6 +203,7 @@ export default function Challenge() {
         gameBTitle={gameB?.title}
         selectedCard={selectedCard}
         onConfirm={handleConfirm}
+        statCategory={statCategory}
       />
 
       {/* Next round button */}
@@ -173,6 +217,8 @@ export default function Challenge() {
           </button>
         </div>
       )}
+
+      <RawgCredit />
 
       {/* Results modal */}
       <ResultsModal

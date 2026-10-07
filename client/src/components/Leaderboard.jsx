@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchDailyLeaderboard, fetchEndlessLeaderboard, getLoginUrl } from '../lib/api';
+import { fetchDailyLeaderboard, fetchEndlessLeaderboard, fetchUserStats, getLoginUrl } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 
 const PAGE_SIZE = 20;
+const YOUR_STATS_THRESHOLD = 10;
 
 const MEDALS = ['🥇', '🥈', '🥉'];
 
@@ -17,6 +18,7 @@ export default function Leaderboard() {
   const [total, setTotal] = useState(0);
   const [userRank, setUserRank] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [userStats, setUserStats] = useState(null);
 
   const fetchData = useCallback(async (currentTab, offset = 0) => {
     if (currentTab === 'daily') return fetchDailyLeaderboard(null, offset, PAGE_SIZE);
@@ -40,6 +42,18 @@ export default function Leaderboard() {
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
   }, [tab, fetchData, retryCount]);
+
+  // R8: a leaderboard with under 10 players reads as a dead product. Swap
+  // in the viewer's own stats instead, once we know how few players there are.
+  useEffect(() => {
+    if (loading || !user || total >= YOUR_STATS_THRESHOLD) {
+      setUserStats(null);
+      return;
+    }
+    let cancelled = false;
+    fetchUserStats().then(stats => { if (!cancelled) setUserStats(stats); }).catch(() => {});
+    return () => { cancelled = true; };
+  }, [loading, user, total]);
 
   const retry = useCallback(() => setRetryCount(c => c + 1), []);
 
@@ -100,6 +114,32 @@ export default function Leaderboard() {
         <div className="text-center py-12">
           <p className="mb-3" style={{ color: 'var(--tag-status-error)' }}>{error}</p>
           <button onClick={retry} className="tag-btn-ghost">Try again</button>
+        </div>
+      ) : userStats ? (
+        <div>
+          <p className="tag-pixel-label text-center mb-4">Your stats</p>
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { label: 'Streak', value: userStats.currentStreak },
+              { label: 'Best score', value: userStats.bestDailyScore },
+              { label: 'Games played', value: userStats.totalGamesPlayed },
+            ].map(stat => (
+              <div
+                key={stat.label}
+                className="tag-card-flat flex flex-col items-center justify-center py-4 px-2 text-center"
+              >
+                <span style={{ fontFamily: 'var(--tag-font-display)', fontSize: '1.75rem', color: 'var(--tag-accent-cyan)' }}>
+                  {stat.value}
+                </span>
+                <span className="mt-1" style={{ color: 'var(--tag-text-secondary)', fontSize: '0.75rem' }}>
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="text-center mt-4" style={{ color: 'var(--tag-text-secondary)', fontSize: '0.8125rem' }}>
+            Fewer than {YOUR_STATS_THRESHOLD} players so far today — the full leaderboard fills in as more people play.
+          </p>
         </div>
       ) : data.length === 0 ? (
         <div className="text-center py-12" style={{ color: 'var(--tag-text-secondary)' }}>

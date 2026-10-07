@@ -19,7 +19,7 @@ export default function App() {
         <div className="w-full mx-auto max-w-[1100px] px-3 sm:px-5 pb-40 sm:pb-10">
           <nav
             aria-label="Rank Arena sections"
-            className="ra-tab-nav mb-4 flex gap-2"
+            className="ra-tab-nav mb-4"
           >
             {tabs.map(t => (
               <NavLink

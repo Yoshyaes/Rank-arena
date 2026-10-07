@@ -26,6 +26,14 @@ export default function useMobileConfirm(makeChoice) {
     }
   }, [isMobile, makeChoice]);
 
+  // Keyboard nav (R5) always goes through select-then-confirm, desktop
+  // included, so Left/Right/1/2 pick a card and Enter/Space is a real
+  // confirm step -- unlike a mouse click, which still submits immediately
+  // on desktop via handleCardTap above.
+  const selectCard = useCallback((side) => {
+    setSelectedCard(side);
+  }, []);
+
   const handleConfirm = useCallback(() => {
     if (selectedCard) {
       makeChoice(selectedCard);
@@ -45,5 +53,6 @@ export default function useMobileConfirm(makeChoice) {
     handleCardTap,
     handleConfirm,
     resetSelection,
+    selectCard,
   };
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { shareImageUrl, SITE_URL } from '../lib/api';
+import { shareImageUrl, shareToDiscord, isLoggedIn, SITE_URL } from '../lib/api';
 
 export default function ShareCard({
   score,
@@ -13,6 +13,8 @@ export default function ShareCard({
   onClose,
 }) {
   const [copied, setCopied] = useState(false);
+  const [discordState, setDiscordState] = useState('idle'); // idle | sending | sent | error
+  const [discordError, setDiscordError] = useState('');
 
   const formatDate = (d) => {
     const dt = new Date((d || '') + 'T00:00:00Z');
@@ -20,6 +22,7 @@ export default function ShareCard({
   };
 
   const trailStr = results.map(r => r.correct ? '1' : '0').join('');
+  const trailEmoji = results.map(r => r.correct ? '\u{1F7E9}' : '\u{1F7E5}').join('');
 
   const root = SITE_URL.replace(/\/$/, '');
   const arenaUrl = `${root}/arena/`;
@@ -29,7 +32,14 @@ export default function ShareCard({
     trail: trailStr, streak: streak?.current || 0, date,
   });
 
-  const shareText = `Rank Arena Daily #${challengeNumber} — ${score}/${totalRounds}. Beat me at ${arenaUrl}`;
+  // R6: unified share text across every path (this card's Copy/Share, the
+  // theme's share-text.js overlay, and the Discord embed) -- title+number,
+  // trail+score, plain URL, each on its own line.
+  const shareText = [
+    `Rank Arena #${challengeNumber}`,
+    `${trailEmoji} ${score}/${totalRounds}`,
+    arenaUrl,
+  ].join('\n');
 
   async function handleCopy() {
     try {
@@ -47,6 +57,22 @@ export default function ShareCard({
       } catch { /* fall through to copy */ }
     }
     handleCopy();
+  }
+
+  async function handleDiscordShare() {
+    setDiscordState('sending');
+    setDiscordError('');
+    try {
+      await shareToDiscord({
+        score, total: totalRounds, number: challengeNumber,
+        statCategory: statCategory || 'metacritic',
+        streak: streak?.current || 0, date,
+      });
+      setDiscordState('sent');
+    } catch (err) {
+      setDiscordState('error');
+      setDiscordError(err.message || "Couldn't share to Discord");
+    }
   }
 
   return (
@@ -100,20 +126,53 @@ export default function ShareCard({
       </div>
 
       {/* Action buttons */}
-      <div className="px-6 pb-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] flex gap-3">
-        <button
-          onClick={handleCopy}
-          className="tag-btn-ghost tag-btn-xl flex-1"
-          style={copied ? { background: 'var(--tag-status-success)', color: 'var(--tag-surface-void)', borderColor: 'var(--tag-status-success)' } : undefined}
+      <div className="px-6 pb-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] flex flex-col gap-3">
+        <div className="flex gap-3">
+          <button
+            data-ra-copy-result="1"
+            onClick={handleCopy}
+            className="tag-btn-ghost tag-btn-xl flex-1"
+            style={copied ? { background: 'var(--tag-status-success)', color: 'var(--tag-surface-void)', borderColor: 'var(--tag-status-success)' } : undefined}
+          >
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+          <button
+            onClick={handleShare}
+            className="tag-btn-primary tag-btn-xl flex-1"
+          >
+            {(typeof navigator !== 'undefined' && navigator.share) ? 'Share' : 'Copy link'}
+          </button>
+        </div>
+
+        <a
+          href={imagePreviewUrl}
+          download={`rank-arena-${date || 'today'}.png`}
+          className="tag-btn-ghost tag-btn-xl w-full text-center"
         >
-          {copied ? 'COPIED' : 'COPY'}
-        </button>
-        <button
-          onClick={handleShare}
-          className="tag-btn-primary tag-btn-xl flex-1"
-        >
-          {(typeof navigator !== 'undefined' && navigator.share) ? 'SHARE' : 'COPY LINK'}
-        </button>
+          Save image
+        </a>
+
+        {/* R6: Discord share, ported from the theme's floating share-discord.js
+            overlay into the modal's own button stack. Logged-out visitors
+            never had that overlay either, so this mirrors the same gate. */}
+        {isLoggedIn() && (
+          <button
+            data-ra-discord-share="1"
+            onClick={handleDiscordShare}
+            disabled={discordState === 'sending' || discordState === 'sent'}
+            className="tag-btn-ghost tag-btn-xl w-full"
+            style={discordState === 'sent' ? { background: 'var(--tag-status-success)', color: 'var(--tag-surface-void)', borderColor: 'var(--tag-status-success)' } : undefined}
+          >
+            {discordState === 'sending' ? 'Sharing…'
+              : discordState === 'sent' ? 'Shared to Discord'
+              : 'Share Score to Discord'}
+          </button>
+        )}
+        {discordState === 'error' && (
+          <p className="text-center" style={{ color: 'var(--tag-status-error)', fontSize: '0.75rem' }}>
+            {discordError}
+          </p>
+        )}
       </div>
     </div>
   );

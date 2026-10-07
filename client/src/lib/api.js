@@ -65,6 +65,14 @@ export function fetchMe() {
   return request('/me');
 }
 
+// R7: lets a logged-in player's completed-today state follow them across
+// devices/cleared storage, not just the localStorage check loadChallenge()
+// already does. Returns { played: false } for a logged-out viewer's 401 too
+// -- callers only act on played === true.
+export function fetchMyResult(date) {
+  return request(`/me/result?date=${encodeURIComponent(date)}`).catch(() => ({ played: false }));
+}
+
 export function fetchTodayChallenge() {
   return request('/challenge/today');
 }
@@ -130,4 +138,17 @@ export function shareImageUrl({ score, total, number, statCategory, trail, strea
     c: statCategory, trail, streak: String(streak), d: date,
   });
   return `${API_BASE}/share/image?${params.toString()}`;
+}
+
+// R6: ported from the theme's share-discord.js overlay so the button can
+// live inside the results modal instead of a separate floating widget.
+// Logged-in only (same as the REST route); rate-limited server-side to one
+// post per user per date, surfaced to the caller as a 409.
+export function shareToDiscord({ score, total, number, statCategory, streak, date }) {
+  return request('/share/discord', {
+    method: 'POST',
+    body: JSON.stringify({
+      s: score, t: total, n: number, c: statCategory, streak, d: date,
+    }),
+  });
 }
