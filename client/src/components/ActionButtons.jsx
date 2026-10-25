@@ -1,3 +1,5 @@
+import useAdClearance from '../hooks/useAdClearance';
+
 function vibrate(pattern) {
   if (typeof navigator !== 'undefined' && navigator.vibrate) {
     try { navigator.vibrate(pattern); } catch { /* ignore */ }
@@ -24,6 +26,7 @@ export default function ActionButtons({
   const nameA = gameATitle ? truncate(gameATitle, 14) : 'LEFT';
   const nameB = gameBTitle ? truncate(gameBTitle, 14) : 'RIGHT';
   const prompt = PROMPTS[statCategory] || DEFAULT_PROMPT;
+  const adClearance = useAdClearance();
 
   return (
     <>
@@ -55,14 +58,22 @@ export default function ActionButtons({
       </div>
 
       {/* Sticky bottom (mobile): thumb-zone CTAs.
+          `sm:hidden` must stay in step with MOBILE_BREAKPOINT (640) in
+          useMobileConfirm, or a width range ends up with no Confirm.
           The TAG site renders its own #tag-bottom-bar (community nav) at
           fixed bottom:0 z-40 on mobile, so we sit ABOVE it with a 64px offset
-          plus safe-area inset, and z-50 so the CTAs are always reachable. */}
+          (--ra-bottom-offset, overridable by the host page) plus safe-area
+          inset, and z-50 so the CTAs are always reachable.
+          The theme lifts Mediavine's adhesion ad to that same bottom:64px, so
+          the offset is floored at --ra-ad-clearance: the measured distance
+          from the viewport bottom to the top of any visible bottom ad
+          (useAdClearance). Confirm is never under an ad. */}
       <div
         className="sm:hidden"
         style={{
+          '--ra-ad-clearance': `${adClearance}px`,
           position: 'fixed',
-          bottom: 'calc(var(--ra-bottom-offset, 64px) + env(safe-area-inset-bottom, 0px))',
+          bottom: 'max(calc(var(--ra-bottom-offset, 64px) + env(safe-area-inset-bottom, 0px)), var(--ra-ad-clearance, 0px))',
           left: 0,
           right: 0,
           zIndex: 50,

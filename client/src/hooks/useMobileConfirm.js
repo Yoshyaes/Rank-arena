@@ -1,5 +1,12 @@
 import { useState, useCallback, useEffect } from 'react';
 
+// ONE mobile breakpoint for the whole confirm flow. It must equal Tailwind's
+// `sm` (min-width: 640px), because ActionButtons shows the pinned Confirm bar
+// with `sm:hidden` and the desktop picker buttons with `hidden sm:block`.
+// This used to be 768, which left 640-767px in "tap selects" mode with no
+// Confirm button on screen (ARCADE-TOUCH-CONTROLS.md 0.6).
+export const MOBILE_BREAKPOINT = 640;
+
 /**
  * On mobile, card taps select rather than submit immediately.
  * User must tap "Confirm" to finalize their choice.
@@ -11,7 +18,7 @@ export default function useMobileConfirm(makeChoice) {
 
   useEffect(() => {
     function check() {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     }
     check();
     window.addEventListener('resize', check);
