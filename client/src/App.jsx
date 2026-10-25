@@ -16,7 +16,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <div className="w-full mx-auto max-w-[1100px] px-3 sm:px-5 pb-40 sm:pb-10">
+        <div className="w-full mx-auto max-w-[1100px] px-3 sm:px-5 pb-48 sm:pb-10">
           <nav
             aria-label="Rank Arena sections"
             className="ra-tab-nav mb-4"

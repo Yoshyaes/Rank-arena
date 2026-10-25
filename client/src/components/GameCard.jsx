@@ -1,5 +1,6 @@
-import { useState, forwardRef } from 'react';
+import { useState, useRef, useCallback, forwardRef } from 'react';
 import useCounter from '../hooks/useCounter';
+import useSwipeVote from '../hooks/useSwipeVote';
 
 // Short labels for the per-card stat chip. The full label still appears in the
 // floating StatBadge between the two cards, so we don't need to repeat it here
@@ -21,8 +22,24 @@ const GameCard = forwardRef(function GameCard({
   onClick,
   disabled = false,
   isRevealing = false,
+  // Touch only (see useSwipeVote): drag the card up past the line to vote.
+  swipeToVote = false,
+  onSwipeVote,
+  // Short instruction shown on the selected card, e.g. "Tap again to lock in".
+  selectedHint = null,
 }, ref) {
   const [imgError, setImgError] = useState(false);
+  const innerRef = useRef(null);
+  const setRefs = useCallback((node) => {
+    innerRef.current = node;
+    if (typeof ref === 'function') ref(node);
+    else if (ref) ref.current = node;
+  }, [ref]);
+  const swipe = useSwipeVote(innerRef, { enabled: swipeToVote && !disabled, onVote: onSwipeVote });
+  const handleClick = (e) => {
+    if (swipe.consumeClick()) { e.preventDefault(); return; }
+    onClick?.(e);
+  };
 
   const displayValue = useCounter(statValue, {
     duration: 600,
@@ -54,8 +71,10 @@ const GameCard = forwardRef(function GameCard({
 
   return (
     <button
-      ref={ref}
-      onClick={onClick}
+      ref={setRefs}
+      onClick={handleClick}
+      {...swipe.handlers}
+      data-swipe={swipeToVote && !disabled ? (swipe.armed ? 'armed' : swipe.dragging ? 'drag' : 'ready') : undefined}
       aria-label={game?.title ? `Select ${game.title}` : 'Select this game'}
       disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}
       className={`tag-card relative w-full h-full text-left cursor-pointer transition-all duration-150 ease-out ${ringClass} ${disabled && cardState === 'idle' ? 'opacity-70 cursor-not-allowed' : ''}`}
@@ -63,8 +82,21 @@ const GameCard = forwardRef(function GameCard({
         background: 'var(--tag-gradient-card)',
         display: 'flex',
         flexDirection: 'column',
+        // While a swipe can vote, vertical drags on the card belong to the game, not page scroll.
+        touchAction: swipeToVote && !disabled ? 'none' : undefined,
       }}
     >
+      {/* Swipe-to-vote guide: follows the drag, flips to "Release" past the line */}
+      {swipe.dragging && (
+        <div className="ra-swipe-chip" data-armed={swipe.armed ? 'true' : 'false'} aria-hidden="true">
+          <span className="ra-swipe-arrow">&uarr;</span>
+          {swipe.armed ? 'Release to vote' : 'Swipe up to vote'}
+        </div>
+      )}
+      {!swipe.dragging && cardState === 'selected' && selectedHint && (
+        <div className="ra-swipe-chip ra-select-hint" aria-hidden="true">{selectedHint}</div>
+      )}
+
       {/* Result tint overlay */}
       {isCorrect && (
         <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'rgba(34, 197, 94, 0.10)' }} />

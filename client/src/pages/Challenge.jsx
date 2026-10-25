@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import useGame from '../hooks/useGame';
 import useStreak from '../hooks/useStreak';
 import useMobileConfirm from '../hooks/useMobileConfirm';
+import useInputMode from '../hooks/useInputMode';
+import useRevealHaptics from '../hooks/useRevealHaptics';
+import { swallowNextClick } from '../lib/touchKit';
 import GameCard from '../components/GameCard';
 import StatBadge from '../components/StatBadge';
 import ActionButtons from '../components/ActionButtons';
@@ -35,7 +38,17 @@ export default function Challenge() {
     STATES,
   } = useGame('challenge');
 
-  const { selectedCard, handleCardTap, handleConfirm, resetSelection, selectCard } = useMobileConfirm(makeChoice);
+  const inputMode = useInputMode();
+  const { selectedCard, twoStep, handleCardTap, handleConfirm, resetSelection, selectCard, voteNow } =
+    useMobileConfirm(makeChoice, currentRound, { touch: inputMode === 'touch' });
+  // Phase 2 touch: haptic ticks while the stats count up, then success/fail.
+  useRevealHaptics(state === STATES.REVEALING || state === STATES.NEXT_ROUND, isCorrect, currentRound);
+  // When picking is two-step, a selected card says how to commit it (tap again, or Enter).
+  const selectedHint = !twoStep ? null
+    : inputMode === 'keyboard' ? 'Press Enter to lock in'
+    : inputMode === 'touch' ? 'Tap again to lock in'
+    : 'Click again to lock in';
+  const canSwipe = state === STATES.IDLE;
   const cardARef = useRef(null);
   const cardBRef = useRef(null);
 
@@ -53,7 +66,14 @@ export default function Challenge() {
   useEffect(() => {
     if (state !== STATES.NEXT_ROUND) return;
     const timer = setTimeout(nextRound, AUTO_ADVANCE_MS);
-    function skip() { clearTimeout(timer); nextRound(); }
+    function skip(e) {
+      clearTimeout(timer);
+      nextRound();
+      // Touch: the tap that skips the wait must not also land on the next
+      // round's card (Chrome/Safari touch adjustment snaps a tap near a card
+      // onto it). Mouse and keyboard keep their old behaviour.
+      if (e && (e.pointerType === 'touch' || e.pointerType === 'pen')) swallowNextClick();
+    }
     window.addEventListener('keydown', skip, { once: true });
     window.addEventListener('pointerdown', skip, { once: true });
     return () => {
@@ -169,6 +189,9 @@ export default function Challenge() {
             cardState={getCardState('a')}
             onClick={() => handleCardTap('a')}
             disabled={buttonsDisabled}
+            swipeToVote={canSwipe}
+            onSwipeVote={() => voteNow('a')}
+            selectedHint={selectedHint}
             isRevealing={isRevealing}
           />
         </div>
@@ -189,6 +212,9 @@ export default function Challenge() {
             cardState={getCardState('b')}
             onClick={() => handleCardTap('b')}
             disabled={buttonsDisabled}
+            swipeToVote={canSwipe}
+            onSwipeVote={() => voteNow('b')}
+            selectedHint={selectedHint}
             isRevealing={isRevealing}
           />
         </div>
@@ -204,6 +230,7 @@ export default function Challenge() {
         selectedCard={selectedCard}
         onConfirm={handleConfirm}
         statCategory={statCategory}
+        inputMode={inputMode}
       />
 
       {/* Next round button */}

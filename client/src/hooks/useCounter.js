@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { reducedMotion } from '../lib/touchKit';
 
 /**
  * Animates a number from 0 to target value with ease-out cubic.
@@ -14,7 +15,8 @@ export default function useCounter(targetValue, { duration = 600, shouldAnimate 
       return;
     }
 
-    if (!shouldAnimate) {
+    // Reduced motion: show the final number at once (no count-up).
+    if (!shouldAnimate || reducedMotion()) {
       setCurrentValue(targetValue);
       return;
     }

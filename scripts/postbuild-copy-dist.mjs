@@ -9,7 +9,8 @@
 //
 // Target resolution order:
 //   1. process.env.TAG_RANK_ARENA_PLUGIN_DIR (absolute or repo-relative)
-//   2. Sibling default: ../TAG Wordpress Website/plugins/rank-arena
+//   2. Sibling default: ../TAG Wordpress Website/tag-arcade/rank-arena/plugin
+//      (the arcade folder reorg of 2026-10-21 moved it from plugins/rank-arena)
 //      (matches Fred's machine; will fail loudly elsewhere so people notice)
 //
 // The script wipes <target>/dist/ before copying so stale assets never leak
@@ -25,7 +26,7 @@ const sourceDist = join(repoRoot, 'dist');
 const targetOverride = process.env.TAG_RANK_ARENA_PLUGIN_DIR;
 const targetPluginDir = targetOverride
   ? resolve(targetOverride)
-  : resolve(repoRoot, '..', 'TAG Wordpress Website', 'plugins', 'rank-arena');
+  : resolve(repoRoot, '..', 'TAG Wordpress Website', 'tag-arcade', 'rank-arena', 'plugin');
 const targetDist = join(targetPluginDir, 'dist');
 
 if (!existsSync(sourceDist)) {
