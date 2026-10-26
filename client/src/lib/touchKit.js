@@ -78,3 +78,49 @@ export function swallowNextClick(ms = 700) {
   window.addEventListener('pointerdown', done, true);
   t = setTimeout(done, ms);
 }
+
+// ---- Phase 3 (Touch Kit 1.1): juice, telemetry, coach. Each is feature-
+// detected on its own, so kit 1.0.0 (no juice / success / coach) and no kit
+// are both silent no-ops.
+
+function kitCall(fn) {
+  try { return fn(); } catch { return null; } // feedback and telemetry never break the game
+}
+
+/** One-frame press squash on a node (kit juice.press). `hap` is the haptic kind, or false. */
+export function juicePress(node, hap = 'tick') {
+  const k = kit();
+  if (!node || !k || !k.juice || typeof k.juice.press !== 'function') return false;
+  return !!kitCall(() => k.juice.press(node, { haptic: hap }));
+}
+
+/** Success pop on a node (kit juice.pop): scale + flash, flash only under reduced motion. */
+export function juicePop(node, hap = false) {
+  const k = kit();
+  if (!node || !k || !k.juice || typeof k.juice.pop !== 'function') return false;
+  return !!kitCall(() => k.juice.pop(node, { haptic: hap }));
+}
+
+/** The game's first real success (arcade_first_success_ms; the kit sends only the first per page). */
+export function trackSuccess(label) {
+  const k = kit();
+  if (!k || typeof k.success !== 'function') return false;
+  return !!kitCall(() => k.success(label));
+}
+
+/** A finished run (arcade_round_complete, via 'explicit'). */
+export function trackRoundComplete(props) {
+  const k = kit();
+  if (!k || typeof k.roundComplete !== 'function') return false;
+  return !!kitCall(() => k.roundComplete(props));
+}
+
+export const COACH_KEY = 'rank-arena-v1';
+
+/** Starts the kit coach; null when the kit has none (1.0.0 / no kit) or this device already saw it. */
+export function startCoach(opts) {
+  const k = kit();
+  if (!k || typeof k.coach !== 'function') return null;
+  if (opts && opts.key && k.coach.seen && kitCall(() => k.coach.seen(opts.key))) return null;
+  return kitCall(() => k.coach(opts)) || null;
+}

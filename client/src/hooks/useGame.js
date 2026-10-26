@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { trackSuccess, trackRoundComplete } from '../lib/touchKit';
 import { fetchTodayChallenge, submitAnswer, fetchEndlessPair, submitEndlessAnswer, submitChallengeResult, submitEndlessResult, fetchMyResult, isLoggedIn } from '../lib/api';
 
 // R9: a wrong answer holds the reveal longer so the number that beat you is
@@ -174,6 +175,9 @@ export default function useGame(mode = 'challenge') {
       setGameBStat(result.game_b_stat);
       setIsCorrect(result.correct);
       setState(STATES.REVEALING);
+      // Telemetry (Phase 3): the first correct pick is this game's first
+      // success; the kit sends only the first call on a page.
+      if (result.correct) trackSuccess('first_correct');
 
       // Track used game IDs for endless mode
       if (mode === 'endless') {
@@ -236,6 +240,11 @@ export default function useGame(mode = 'challenge') {
     setScore(finalScore);
     setIsComplete(true);
     setState(STATES.GAME_OVER);
+    // Telemetry (Phase 3): a run played to its end. Only reached live, never
+    // when a finished daily is restored from storage or the server.
+    trackRoundComplete(mode === 'challenge'
+      ? { mode: 'daily', score: finalScore, rounds: finalResults.length }
+      : { mode: 'endless', score: finalScore, rounds: finalResults.length });
 
     if (mode === 'challenge' && challengeData) {
       // Save to localStorage

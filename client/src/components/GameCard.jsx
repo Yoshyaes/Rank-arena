@@ -1,6 +1,8 @@
-import { useState, useRef, useCallback, forwardRef } from 'react';
+import { useState, useRef, useCallback, useEffect, forwardRef } from 'react';
 import useCounter from '../hooks/useCounter';
 import useSwipeVote from '../hooks/useSwipeVote';
+import { COUNT_UP_MS } from '../hooks/useRevealHaptics';
+import { juicePress, juicePop, reducedMotion } from '../lib/touchKit';
 
 // Short labels for the per-card stat chip. The full label still appears in the
 // floating StatBadge between the two cards, so we don't need to repeat it here
@@ -40,6 +42,17 @@ const GameCard = forwardRef(function GameCard({
     if (swipe.consumeClick()) { e.preventDefault(); return; }
     onClick?.(e);
   };
+  // Phase 3 juice: a finger press squashes the card the same frame, with a
+  // light tick (kit 1.1 juice.press; touch and pen only, so mouse and
+  // keyboard are unchanged; a no-op without the kit).
+  const cardOpen = !disabled && (cardState === 'idle' || cardState === 'selected');
+  const handlers = {
+    ...swipe.handlers,
+    onPointerDown: (e) => {
+      swipe.handlers.onPointerDown(e);
+      if (cardOpen && (e.pointerType === 'touch' || e.pointerType === 'pen')) juicePress(innerRef.current, 'tick');
+    },
+  };
 
   const displayValue = useCounter(statValue, {
     duration: 600,
@@ -59,6 +72,14 @@ const GameCard = forwardRef(function GameCard({
   const isWinner = cardState === 'winner';
   const isWrong = cardState === 'wrong';
 
+  // Phase 3 success beat: the correct card pops as the count-up lands (the
+  // success haptic is fired by useRevealHaptics at the same moment).
+  useEffect(() => {
+    if (!isCorrect) return undefined;
+    const t = setTimeout(() => juicePop(innerRef.current), reducedMotion() ? 0 : COUNT_UP_MS);
+    return () => clearTimeout(t);
+  }, [isCorrect]);
+
   const ringClass = isSelected
     ? 'ring-2 ring-tag-cyan ring-offset-2 ring-offset-tag-void'
     : isCorrect
@@ -73,7 +94,7 @@ const GameCard = forwardRef(function GameCard({
     <button
       ref={setRefs}
       onClick={handleClick}
-      {...swipe.handlers}
+      {...handlers}
       data-swipe={swipeToVote && !disabled ? (swipe.armed ? 'armed' : swipe.dragging ? 'drag' : 'ready') : undefined}
       aria-label={game?.title ? `Select ${game.title}` : 'Select this game'}
       disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}

@@ -5,6 +5,7 @@ import useStreak from '../hooks/useStreak';
 import useMobileConfirm from '../hooks/useMobileConfirm';
 import useInputMode from '../hooks/useInputMode';
 import useRevealHaptics from '../hooks/useRevealHaptics';
+import useFirstVisitCoach from '../hooks/useFirstVisitCoach';
 import { swallowNextClick } from '../lib/touchKit';
 import GameCard from '../components/GameCard';
 import StatBadge from '../components/StatBadge';
@@ -50,6 +51,12 @@ export default function Challenge() {
     : 'Click again to lock in';
   const canSwipe = state === STATES.IDLE;
   const cardARef = useRef(null);
+  // Phase 3 first 20 seconds: ghost-hand swipe on a first touch visit;
+  // finished by any vote.
+  useFirstVisitCoach(cardARef, {
+    ready: state === STATES.IDLE && inputMode === 'touch',
+    voted: state !== STATES.IDLE && state !== STATES.LOADING,
+  });
   const cardBRef = useRef(null);
 
   // Reset selection when round changes
