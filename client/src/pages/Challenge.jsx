@@ -80,6 +80,9 @@ export default function Challenge() {
       // round's card (Chrome/Safari touch adjustment snaps a tap near a card
       // onto it). Mouse and keyboard keep their old behaviour.
       if (e && (e.pointerType === 'touch' || e.pointerType === 'pen')) swallowNextClick();
+      // Keyboard: the next round renders and focuses card A before the
+      // browser's default Enter/Space action, which would then click it.
+      if (e && (e.key === 'Enter' || e.key === ' ')) e.preventDefault();
     }
     window.addEventListener('keydown', skip, { once: true });
     window.addEventListener('pointerdown', skip, { once: true });

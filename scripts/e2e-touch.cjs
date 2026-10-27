@@ -134,7 +134,7 @@ async function touchRun(browser, vp, name, { kit = true, kit10 = false, reduce =
   const { ctx, page, errors } = await setup(browser, { vp, touch: true, kit, kit10, reduce });
   const kit11 = kit && !kit10;
   const tracked = (n) => page.evaluate((x) => window.__track.filter((e) => e.name === x).map((e) => e.params), n);
-  if (kit) check('kit version', (await page.evaluate(() => window.tagArcade.touchKit)) === (kit10 ? '1.0.0' : '1.1.0'));
+  if (kit) check('kit version', (await page.evaluate(() => window.tagArcade.touchKit)) === (kit10 ? '1.0.0' : '1.1.1'));
   const cdp = await ctx.newCDPSession(page);
   const shot = (s) => path.join(OUT, `${name}-${s}.png`);
   await page.locator(cardA).scrollIntoViewIfNeeded();
@@ -268,11 +268,15 @@ async function desktopRun(browser) {
   await page.waitForTimeout(400);
   check('desktop: one click submits (unchanged)', (await page.locator(cardA).isDisabled()), { before, after: await scoreText(page) });
   await page.screenshot({ path: path.join(OUT, 'desktop-reveal.png') });
-  // keyboard: arrows select, Enter confirms
-  // Skip the auto-advance with the Next button. NOT Enter: a pre-existing bug (present on the Phase 2 base too)
-  // makes the Enter that skips the wait also vote card A in the next round. Reported as an open item.
-  await page.locator('#rank-arena-root button', { hasText: 'Next' }).click({ timeout: 5000 });
+  // The key that skips the reveal wait must only skip: it used to also vote card A in the next round.
+  const next = page.locator('#rank-arena-root button', { hasText: 'Next' });
+  const neitherVoted = async () => !(await page.locator(cardA).isDisabled()) && !(await page.locator(cardB).isDisabled());
+  await next.waitFor({ timeout: 5000 });
+  await page.keyboard.press(' ');
   await waitIdle(page, 2);
+  await page.waitForTimeout(400);
+  check('desktop: Space that skips the reveal does not vote in the next round', await neitherVoted());
+  // keyboard: arrows select, Enter confirms
   await page.keyboard.press('ArrowRight');
   await page.waitForTimeout(100);
   check('desktop: keyboard select does not submit', !(await page.locator(cardB).isDisabled()));
@@ -280,6 +284,11 @@ async function desktopRun(browser) {
   await page.keyboard.press('Enter');
   await page.waitForTimeout(400);
   check('desktop: Enter confirms', await page.locator(cardB).isDisabled());
+  await next.waitFor({ timeout: 5000 });
+  await page.keyboard.press('Enter');
+  await waitIdle(page, 3);
+  await page.waitForTimeout(400);
+  check('desktop: Enter that skips the reveal does not vote in the next round', await neitherVoted());
   check('desktop: no page errors', errors.length === 0, errors);
   await ctx.close();
 }
