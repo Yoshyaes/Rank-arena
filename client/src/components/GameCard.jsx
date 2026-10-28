@@ -1,5 +1,8 @@
-import { useState, forwardRef } from 'react';
+import { useState, useRef, useCallback, useEffect, forwardRef } from 'react';
 import useCounter from '../hooks/useCounter';
+import useSwipeVote from '../hooks/useSwipeVote';
+import { COUNT_UP_MS } from '../hooks/useRevealHaptics';
+import { juicePress, juicePop, reducedMotion } from '../lib/touchKit';
 
 // Short labels for the per-card stat chip. The full label still appears in the
 // floating StatBadge between the two cards, so we don't need to repeat it here
@@ -21,8 +24,35 @@ const GameCard = forwardRef(function GameCard({
   onClick,
   disabled = false,
   isRevealing = false,
+  // Touch only (see useSwipeVote): drag the card up past the line to vote.
+  swipeToVote = false,
+  onSwipeVote,
+  // Short instruction shown on the selected card, e.g. "Tap again to lock in".
+  selectedHint = null,
 }, ref) {
   const [imgError, setImgError] = useState(false);
+  const innerRef = useRef(null);
+  const setRefs = useCallback((node) => {
+    innerRef.current = node;
+    if (typeof ref === 'function') ref(node);
+    else if (ref) ref.current = node;
+  }, [ref]);
+  const swipe = useSwipeVote(innerRef, { enabled: swipeToVote && !disabled, onVote: onSwipeVote });
+  const handleClick = (e) => {
+    if (swipe.consumeClick()) { e.preventDefault(); return; }
+    onClick?.(e);
+  };
+  // Phase 3 juice: a finger press squashes the card the same frame, with a
+  // light tick (kit 1.1 juice.press; touch and pen only, so mouse and
+  // keyboard are unchanged; a no-op without the kit).
+  const cardOpen = !disabled && (cardState === 'idle' || cardState === 'selected');
+  const handlers = {
+    ...swipe.handlers,
+    onPointerDown: (e) => {
+      swipe.handlers.onPointerDown(e);
+      if (cardOpen && (e.pointerType === 'touch' || e.pointerType === 'pen')) juicePress(innerRef.current, 'tick');
+    },
+  };
 
   const displayValue = useCounter(statValue, {
     duration: 600,
@@ -42,6 +72,14 @@ const GameCard = forwardRef(function GameCard({
   const isWinner = cardState === 'winner';
   const isWrong = cardState === 'wrong';
 
+  // Phase 3 success beat: the correct card pops as the count-up lands (the
+  // success haptic is fired by useRevealHaptics at the same moment).
+  useEffect(() => {
+    if (!isCorrect) return undefined;
+    const t = setTimeout(() => juicePop(innerRef.current), reducedMotion() ? 0 : COUNT_UP_MS);
+    return () => clearTimeout(t);
+  }, [isCorrect]);
+
   const ringClass = isSelected
     ? 'ring-2 ring-tag-cyan ring-offset-2 ring-offset-tag-void'
     : isCorrect
@@ -54,8 +92,10 @@ const GameCard = forwardRef(function GameCard({
 
   return (
     <button
-      ref={ref}
-      onClick={onClick}
+      ref={setRefs}
+      onClick={handleClick}
+      {...handlers}
+      data-swipe={swipeToVote && !disabled ? (swipe.armed ? 'armed' : swipe.dragging ? 'drag' : 'ready') : undefined}
       aria-label={game?.title ? `Select ${game.title}` : 'Select this game'}
       disabled={disabled || (cardState !== 'idle' && cardState !== 'selected')}
       className={`tag-card relative w-full h-full text-left cursor-pointer transition-all duration-150 ease-out ${ringClass} ${disabled && cardState === 'idle' ? 'opacity-70 cursor-not-allowed' : ''}`}
@@ -63,8 +103,21 @@ const GameCard = forwardRef(function GameCard({
         background: 'var(--tag-gradient-card)',
         display: 'flex',
         flexDirection: 'column',
+        // While a swipe can vote, vertical drags on the card belong to the game, not page scroll.
+        touchAction: swipeToVote && !disabled ? 'none' : undefined,
       }}
     >
+      {/* Swipe-to-vote guide: follows the drag, flips to "Release" past the line */}
+      {swipe.dragging && (
+        <div className="ra-swipe-chip" data-armed={swipe.armed ? 'true' : 'false'} aria-hidden="true">
+          <span className="ra-swipe-arrow">&uarr;</span>
+          {swipe.armed ? 'Release to vote' : 'Swipe up to vote'}
+        </div>
+      )}
+      {!swipe.dragging && cardState === 'selected' && selectedHint && (
+        <div className="ra-swipe-chip ra-select-hint" aria-hidden="true">{selectedHint}</div>
+      )}
+
       {/* Result tint overlay */}
       {isCorrect && (
         <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'rgba(34, 197, 94, 0.10)' }} />

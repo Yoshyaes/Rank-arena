@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import useMobileConfirm from './useMobileConfirm';
+import useMobileConfirm, { MOBILE_BREAKPOINT } from './useMobileConfirm';
 
 describe('useMobileConfirm', () => {
   let makeChoice;
@@ -113,6 +113,28 @@ describe('useMobileConfirm', () => {
     act(() => {
       result.current.handleCardTap('b');
     });
+    expect(result.current.selectedCard).toBe('b');
+  });
+  // 0.6: the pinned Confirm bar is `sm:hidden` (shown below 640px), so
+  // "tap selects" must use the same breakpoint. At 640-767px a tap used to
+  // only select, with no Confirm button anywhere on screen.
+  it('uses the Tailwind sm breakpoint (640) shared with the pinned Confirm bar', () => {
+    expect(MOBILE_BREAKPOINT).toBe(640);
+  });
+
+  it('submits immediately at 700px (no pinned Confirm bar at that width)', () => {
+    Object.defineProperty(window, 'innerWidth', { value: 700, writable: true });
+    const { result } = renderHook(() => useMobileConfirm(makeChoice));
+    act(() => { result.current.handleCardTap('a'); });
+    expect(makeChoice).toHaveBeenCalledWith('a');
+    expect(result.current.isMobile).toBe(false);
+  });
+
+  it('selects (needs Confirm) at 639px', () => {
+    Object.defineProperty(window, 'innerWidth', { value: 639, writable: true });
+    const { result } = renderHook(() => useMobileConfirm(makeChoice));
+    act(() => { result.current.handleCardTap('b'); });
+    expect(makeChoice).not.toHaveBeenCalled();
     expect(result.current.selectedCard).toBe('b');
   });
 });

@@ -170,7 +170,7 @@ export default function ResultsModal({
           ref={closeBtnRef}
           onClick={close}
           aria-label="Close results"
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center"
+          className="ra-close-btn absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center"
           style={{ background: 'var(--tag-surface-steel)', color: 'var(--tag-text-secondary)' }}
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

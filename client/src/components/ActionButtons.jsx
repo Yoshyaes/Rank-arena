@@ -1,8 +1,5 @@
-function vibrate(pattern) {
-  if (typeof navigator !== 'undefined' && navigator.vibrate) {
-    try { navigator.vibrate(pattern); } catch { /* ignore */ }
-  }
-}
+import useAdClearance from '../hooks/useAdClearance';
+import { haptic } from '../lib/touchKit';
 
 function truncate(str, max) {
   return str.length > max ? str.slice(0, max - 1) + '…' : str;
@@ -15,15 +12,27 @@ const PROMPTS = {
   avg_playtime_hours:  'Which do people play longer?',
   user_score:          'Which rated higher by players?',
 };
-const DEFAULT_PROMPT = 'Which has the higher stat? Tap a card or use a button.';
+const DEFAULT_PROMPT = {
+  touch: 'Which has the higher stat? Tap a card or use a button.',
+  other: 'Which has the higher stat? Click a card or use a button.',
+};
+
+// The one-line how-to above the phone action bar, per input actually in use.
+export function barPrompt(inputMode, hasSelection) {
+  if (inputMode === 'keyboard') return hasSelection ? 'Enter locks it in' : 'Arrow keys to pick, Enter to lock in';
+  if (inputMode === 'touch') return hasSelection ? 'Or tap the card again' : 'Swipe a card up to vote, or tap to pick';
+  return hasSelection ? 'Or click the card again' : 'Click a card, then confirm';
+}
 
 export default function ActionButtons({
   onHigher, onLower, disabled = false,
   gameATitle, gameBTitle, selectedCard, onConfirm, statCategory,
+  inputMode = 'touch',
 }) {
   const nameA = gameATitle ? truncate(gameATitle, 14) : 'LEFT';
   const nameB = gameBTitle ? truncate(gameBTitle, 14) : 'RIGHT';
-  const prompt = PROMPTS[statCategory] || DEFAULT_PROMPT;
+  const prompt = PROMPTS[statCategory] || DEFAULT_PROMPT[inputMode === 'touch' ? 'touch' : 'other'];
+  const adClearance = useAdClearance();
 
   return (
     <>
@@ -34,7 +43,7 @@ export default function ActionButtons({
         </p>
         <div className="flex gap-3 w-full">
           <button
-            onClick={() => { vibrate(15); onHigher(); }}
+            onClick={() => { haptic('tap', 15); onHigher(); }}
             disabled={disabled}
             className="tag-btn-primary tag-btn-xl flex-1"
             style={selectedCard === 'a' ? { boxShadow: 'var(--tag-shadow-hover)', filter: 'brightness(1.1)' } : undefined}
@@ -42,7 +51,7 @@ export default function ActionButtons({
             <span className="truncate">{nameA}</span>
           </button>
           <button
-            onClick={() => { vibrate(15); onLower(); }}
+            onClick={() => { haptic('tap', 15); onLower(); }}
             disabled={disabled}
             className="tag-btn-ghost tag-btn-xl flex-1"
             style={selectedCard === 'b'
@@ -55,14 +64,22 @@ export default function ActionButtons({
       </div>
 
       {/* Sticky bottom (mobile): thumb-zone CTAs.
+          `sm:hidden` must stay in step with MOBILE_BREAKPOINT (640) in
+          useMobileConfirm, or a width range ends up with no Confirm.
           The TAG site renders its own #tag-bottom-bar (community nav) at
           fixed bottom:0 z-40 on mobile, so we sit ABOVE it with a 64px offset
-          plus safe-area inset, and z-50 so the CTAs are always reachable. */}
+          (--ra-bottom-offset, overridable by the host page) plus safe-area
+          inset, and z-50 so the CTAs are always reachable.
+          The theme lifts Mediavine's adhesion ad to that same bottom:64px, so
+          the offset is floored at --ra-ad-clearance: the measured distance
+          from the viewport bottom to the top of any visible bottom ad
+          (useAdClearance). Confirm is never under an ad. */}
       <div
         className="sm:hidden"
         style={{
+          '--ra-ad-clearance': `${adClearance}px`,
           position: 'fixed',
-          bottom: 'calc(var(--ra-bottom-offset, 64px) + env(safe-area-inset-bottom, 0px))',
+          bottom: 'max(calc(var(--ra-bottom-offset, 64px) + env(safe-area-inset-bottom, 0px)), var(--ra-ad-clearance, 0px))',
           left: 0,
           right: 0,
           zIndex: 50,
@@ -72,9 +89,12 @@ export default function ActionButtons({
           WebkitBackdropFilter: 'blur(8px)',
         }}
       >
+        {!disabled ? (
+          <p className="ra-touch-prompt" aria-live="polite">{barPrompt(inputMode, !!selectedCard)}</p>
+        ) : null}
         {selectedCard && onConfirm ? (
           <button
-            onClick={() => { vibrate([20, 40, 20]); onConfirm(); }}
+            onClick={() => { haptic('heavy', [20, 40, 20]); onConfirm(); }}
             className="tag-btn-primary tag-btn-xl w-full"
             style={{ animation: 'tag-glow 2s ease-in-out infinite' }}
           >
@@ -83,14 +103,14 @@ export default function ActionButtons({
         ) : (
           <div className="flex gap-2">
             <button
-              onClick={() => { vibrate(15); onHigher(); }}
+              onClick={() => { haptic('tap', 15); onHigher(); }}
               disabled={disabled}
               className="tag-btn-primary tag-btn-xl flex-1"
             >
               <span className="truncate">{nameA}</span>
             </button>
             <button
-              onClick={() => { vibrate(15); onLower(); }}
+              onClick={() => { haptic('tap', 15); onLower(); }}
               disabled={disabled}
               className="tag-btn-ghost tag-btn-xl flex-1"
               style={{ background: 'var(--tag-accent-purple)', color: 'var(--tag-surface-void)', borderColor: 'var(--tag-accent-purple)' }}

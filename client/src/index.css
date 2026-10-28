@@ -176,3 +176,79 @@
 .ra-trail-dot.is-correct { background: var(--tag-status-success); border-color: var(--tag-status-success); }
 .ra-trail-dot.is-wrong   { background: var(--tag-status-error);   border-color: var(--tag-status-error); }
 .ra-trail-dot.is-current { box-shadow: 0 0 8px rgba(34, 197, 212, 0.6); border-color: var(--tag-accent-cyan); }
+
+/* ---------- Touch (ARCADE-TOUCH-CONTROLS.md Phase 2) ----------
+ * Everything below only changes coarse-pointer (touch) layouts or the new
+ * swipe/hint elements, so mouse and keyboard desktop look the same. */
+
+/* 44px minimum targets on touch (G4). The segmented tabs are 32px for mouse. */
+@media (pointer: coarse) {
+  #rank-arena-root .ra-tab,
+  #rank-arena-root a.ra-tab {
+    height: 44px !important;
+    line-height: 44px !important;
+  }
+}
+
+/* Swipe-to-vote guide and the "tap again" hint on a selected card. */
+#rank-arena-root .ra-swipe-chip {
+  position: absolute;
+  z-index: 30;
+  left: 50%;
+  top: 0.5rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  max-width: calc(100% - 1rem);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--tag-radius-pill);
+  background: rgba(11, 15, 26, 0.82);
+  border: 1px solid var(--tag-accent-cyan);
+  color: var(--tag-text-primary);
+  font-family: var(--tag-font-body);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+#rank-arena-root .ra-swipe-chip[data-armed="true"] {
+  background: var(--tag-accent-cyan);
+  color: var(--tag-surface-void);
+}
+#rank-arena-root .ra-swipe-arrow { font-size: 0.9rem; line-height: 1; }
+#rank-arena-root .ra-select-hint { animation: ra-hint-in 180ms ease-out; }
+@keyframes ra-hint-in { from { opacity: 0; transform: translate(-50%, 4px); } to { opacity: 1; transform: translateX(-50%); } }
+#rank-arena-root .tag-card[data-swipe="armed"] { box-shadow: 0 0 0 3px var(--tag-accent-cyan), 0 18px 40px rgba(34, 197, 212, 0.35); }
+
+/* Touch-aware instruction line in the mobile action bar. */
+#rank-arena-root .ra-touch-prompt {
+  margin: 0 0 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--tag-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #rank-arena-root .ra-select-hint { animation: none; }
+}
+html.tag-reduced-motion #rank-arena-root .ra-select-hint { animation: none; }
+
+/* Close buttons: 32px circle (results) and a bare 20px X (share card) for mouse; 44px on touch, centred on the same spot. */
+@media (pointer: coarse) {
+  #rank-arena-root .ra-close-btn,
+  .ra-close-btn {
+    width: 44px !important;
+    height: 44px !important;
+    top: 6px !important;
+    right: 6px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #rank-arena-root .ra-close-btn--bare,
+  .ra-close-btn--bare { top: 0 !important; right: 0 !important; }
+}
